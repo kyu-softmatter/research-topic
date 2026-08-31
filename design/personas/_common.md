@@ -1,43 +1,45 @@
-# 가치 페르소나 공통 계약
+# The common contract for value personas
 
-작성: 2026-08-31 · 개정: 2026-08-31 (인명 제거) · 상태: `sketch`
-관련: [ideas.md](../ideas.md) `T-005`~`T-019` · `C-002` · `C-005` · BD `personas/_common.md`
+Drafted 2026-08-31 · revised 2026-08-31 (names removed) · status `sketch`
+Related: [ideas.md](../ideas.md) `T-005`–`T-019` · `C-002` · `C-005` · BD `personas/_common.md`
 
-BD의 축 페르소나 계약을 승계하되 **두 곳만 바꾼다.** 나머지는 그대로다.
+Inherits BD's axis-persona contract with **two changes.** Everything else carries over.
 
-| 무엇 | BD 축 페르소나 | 가치 페르소나 |
+| What | BD axis persona | Value persona |
 |---|---|---|
-| 분할 단위 | 엄밀성 축 `A1`~`A10` — **축당 하나** | **가치 축의 극** `V1`~`V6` — **축당 둘** (`T-018`) |
-| 출력 타입 | 판정 (`verdict`) | **질문 + 조건 충족 여부** (`T-005`) |
-| falsifier의 출처 | 코드 검사 | **문헌군 궤적 정합** (`T-014`) |
-| 상충 | 버그 — 반박 금지 | **산출물 — 분기로 기록** (`T-011`) |
-| 나머지 7개 금지 | — | 그대로 승계 (§4) |
+| Unit of division | Rigor axes `A1`–`A10` — **one per axis** | Poles of a value axis `V1`–`V6` — **two per axis** (`T-018`) |
+| Output type | A verdict | **Questions + whether conditions are met** (`T-005`) |
+| Where the falsifier comes from | A code check | **Trajectory consistency of a body of literature** (`T-014`) |
+| Disagreement | A bug — rebuttal forbidden | **The product — recorded as divergence** (`T-011`) |
+| The other seven prohibitions | — | Inherited unchanged (§4) |
 
-> **페르소나는 개인이 아니다** (`T-018`). `V?`는 **문헌군으로 정의된 계보**이고, 그 문헌군이 실재 연구자들의 것이라는 점은 인용으로만 나타난다. 정의 파일에 **인명 귀속을 쓰지 않는다** (§5). 축과 극의 목록 → [lineages.md](lineages.md).
+> **A persona is not an individual** (`T-018`). A `V?` is **a lineage defined by a body of literature**; that the literature belongs to real researchers shows up only as citations. Definition files **make no attribution by name** (§5). The axes and poles → [lineages.md](lineages.md).
 >
-> **§2의 출력 스키마는 예시다** → [README.md](../../README.md) §0. 확정된 것은 **위 표의 다섯 행과 §3~§5의 금지·절차**이고, 필드 이름과 열거형 값은 구축하는 사람이 정한다.
+> **The output schema in §2 is an example** → [README.md](../../README.md) §0. What is settled is **the five rows above and the prohibitions and procedure in §3–§5**; field names and enum values are for whoever builds this.
 
 ---
 
-## 1. 인터페이스
+## 1. Interface
 
 ```
-입력  : 공유 대상 (키워드 / 주제 후보 / 논문 / 계) + 자기 정의 파일 + 제시된 문헌 목록
-출력  : 질문 2~3개 + 각 질문의 falsifier + 자기 가치 조건의 충족 여부
-금지  : 대상 수정 · 새 지식 주장 · 해답 · 방법 · 코드 · 숫자 생성 · 임계값 결정
+in     : the shared target (keywords / topic candidate / paper / system)
+         + its own definition file + the supplied literature list
+out    : 2-3 questions + a falsifier for each + whether its own value conditions are met
+banned : modifying the target . claiming new knowledge . answers . methods . code
+         . originating numbers . deciding thresholds
 ```
 
-**BD와 같은 것:** 페르소나는 **읽기 전용**이고, 기준을 **지목**만 하고 집행은 하지 않는다.
+**Same as BD:** a persona is **read-only**, and it **names** criteria without enforcing them.
 
-**BD와 다른 것:** 출력이 판정이 아니라 질문이다. BD `I-050`이 그 형태를 이미 규정해 뒀다 —
+**Different from BD:** the output is questions, not a verdict. BD `I-050` already fixed that shape —
 
-> *"질문 2~3개만 써라. 해답·방법·코드 금지. 각 질문은 제시된 문헌 중 최소 1개를 인용하라. 답을 보면 알아볼 수 있을 만큼 미지수를 정확히 지목하라. 결론을 전제하지 마라."*
+> *"Write only 2-3 questions. No answers, methods, or code. Each question must cite at least one of the supplied references. Name the unknown precisely enough that you would recognize the answer on sight. Do not presuppose a conclusion."*
 
-**그 지시를 그대로 쓴다.** BD가 `I-064`에서 이 항목을 `parked`로 두며 남긴 문장 — *"질문 생산이 다시 필요해지면 되살린다"* — 의 조건이 이 레포다.
+**That instruction is used as-is.** The condition BD attached when parking the item under `I-064` — *"revive this if producing questions becomes necessary again"* — is this repo.
 
 ---
 
-## 2. 출력 스키마
+## 2. Output schema
 
 ```json
 {
@@ -61,108 +63,108 @@ BD의 축 페르소나 계약을 승계하되 **두 곳만 바꾼다.** 나머�
 }
 ```
 
-### `met` 값
+### `met` values
 
-| 값 | 뜻 |
+| Value | Meaning |
 |---|---|
-| `yes` | 이 계보의 가치 조건을 갖췄다 — 근거 있음 |
-| `no` | 갖추지 못했다 — 근거 있음 |
-| `unknown` | **판정 불가.** 대상에 그 조건을 볼 재료가 없다 |
+| `yes` | This lineage's value condition is met — with a basis |
+| `no` | Not met — with a basis |
+| `unknown` | **No verdict possible.** The target has no material to judge that condition on |
 
-**기본값은 `yes`가 아니다.** 판정할 근거가 없으면 `unknown`이다 (BD `I-055`).
+**The default is not `yes`.** With no basis for a verdict, it is `unknown` (BD `I-055`).
 
-### 없는 필드
+### Fields that do not exist
 
-- **`value_score` 없음.** 스칼라 금지 → [kb-schema.md](../kb-schema.md) §3. 점수를 내면 평균할 수 있게 되고, 평균하면 분기가 사라진다.
-- **`verdict` 없음.** 가치 확정은 사람 경로다 (`T-007` · BD `I-057`).
-- **숫자 없음.** 페르소나는 숫자를 원발하지 않는다 — `papers_found`는 검색 결과가 채운다.
+- **No `value_score`.** Scalars are forbidden → [kb-schema.md](../kb-schema.md) §3. A score can be averaged, and averaging destroys divergence.
+- **No `verdict`.** Settling value is the human path (`T-007` · BD `I-057`).
+- **No numbers.** A persona originates none — `papers_found` is filled by the search result.
 
-### `trajectory_check` — 이 레포의 유일한 즉시 검사
+### `trajectory_check` — this repo's one immediate check
 
-`T-014`. 극이 "X 방향은 흥미롭다"고 했으면 **그 계보의 문헌군에 X 방향 논문이 실제로 있는지** 본다.
+`T-014`. If a pole says "direction X is interesting," look for whether **X actually appears in that lineage's literature.**
 
-| `verdict` | 뜻 | 다음 |
+| `verdict` | Meaning | Next |
 |---|---|---|
-| `consistent` | 있다 | 증류가 그 방향에서는 맞다 |
-| `contradicted` | 반대 방향이 있다 | **증류 오류.** 정의 파일 수정 |
-| `absent` | 없다 | **ⓐ 증류 오류인가 ⓑ 진짜 빈칸인가 — 자동으로 못 가른다** → `Q-005` |
-| `not_run` | 검사 안 함 | 통과가 아니다 |
+| `consistent` | It is there | The distillation is right in that direction |
+| `contradicted` | The opposite direction is there | **Distillation error.** Fix the definition file |
+| `absent` | It is not there | **ⓐ distillation error or ⓑ a real gap — cannot be told apart automatically** → `Q-005` |
+| `not_run` | Not checked | Not a pass |
 
-> **`absent`가 이 레포의 최상급 산출물(ⓑ)과 최악의 실패(ⓐ)를 같은 값으로 낸다.** 이것이 아직 안 풀린 핵심 문제다. 상의 안건 5 (`Q-005`).
+> **`absent` returns this repo's best product (ⓑ) and its worst failure (ⓐ) as the same value.** This is the core unsolved problem. Agenda 5 (`Q-005`).
 
 ---
 
-## 3. 승계하지 않는 금지 하나 — 분기
+## 3. The one prohibition not inherited — divergence
 
-BD `_common.md` §4의 마지막 금지는 **"다른 페르소나 반박 금지 — 판정 벡터는 합의가 아니다"** 다. 이것만 뺀다.
+The last prohibition in BD `_common.md` §4 is **"no rebutting another persona — a verdict vector is not a consensus."** That one is dropped.
 
-**뺀 자리를 비워 두지 않는다.** 비워 두면 페르소나들이 서로를 논박하는 자연어 뭉치가 나오고 그건 `T-031`(형식 객체) 위반이다 — `C-005`.
+**The vacated slot is not left empty.** Left empty, the personas produce a natural-language mass of counter-argument, which violates `T-031` (formal objects) — `C-005`.
 
-**규정:** 반박이 아니라 **분기 기록**이다.
+**Specified:** not rebuttal but a **divergence record**.
 
-| 허용 | 금지 |
+| Allowed | Forbidden |
 |---|---|
-| 같은 대상에 다른 방향 가치를 붙이는 것 | 다른 페르소나의 **근거를 논박**하는 것 |
-| 갈리는 지점 하나를 지목하는 것 | 갈리는 이유를 상대 페르소나의 오류로 설명하는 것 |
-| 동의하는 사실을 `shared`로 내는 것 | 상대의 정의 파일을 참조하는 것 |
+| Attaching opposite value to the same target | **Rebutting another persona's basis** |
+| Naming the single point of divergence | Explaining the divergence as the other persona's error |
+| Emitting agreed facts as `shared` | Referencing the other's definition file |
 
-**분기 기록을 쓰는 주체는 페르소나가 아니라 게이트다.** 페르소나는 자기 출력만 내고, 두 출력을 대조해 `divergence/` 항목을 만드는 것은 게이트다 (BD `I-098` — *"순서와 진단은 게이트가 갖는다"*).
+**The divergence record is written by the gate, not by a persona.** A persona emits only its own output; comparing two outputs to produce a `divergence/` entry is the gate's job (BD `I-098` — *"ordering and diagnosis belong to the gate"*).
 
-스키마 → [kb-schema.md](../kb-schema.md) §4.3. **`resolvable_by`가 감쇠 장치다** — `not_resolvable`이면 루프를 돌지 않고 사람 경로로 간다 (`T-034` · `C-001`).
+Schema → [kb-schema.md](../kb-schema.md) §4.3. **`resolvable_by` is the damping device** — `not_resolvable` means the topic does not enter the loop and goes to the human path (`T-034` · `C-001`).
 
 ---
 
-## 4. 승계하는 금지 7개
+## 4. The seven prohibitions that are inherited
 
-| 금지 | 왜 (BD 원문 유지) |
+| Prohibited | Why (BD's reasoning kept) |
 |---|---|
-| **대상 수정** | 페르소나는 읽기 전용 |
-| **새 지식 주장** | LLM 생성 도메인 지식은 검증 불가능하고 KB에 섞이면 `I-133` 안티패턴 |
-| **인용 없는 기준** | 각 페르소나의 가치 조건은 **정의 파일에 박힌 상수**이지 대상마다 만드는 값이 아니다 |
-| **해답 제시** | `I-050` — 답을 시키면 LLM은 반드시 그럴듯한 것을 만들어내지만 검증 불가다 |
-| **방법·코드 제시** | 〃 |
-| **숫자 생성** | 두 레포의 공통 규약. 숫자는 검색 결과와 코드가 낸다 |
-| **임계값·허용오차 결정** | 값은 도메인 소유 → [charter.md](../charter.md) §3 |
+| **Modifying the target** | A persona is read-only |
+| **Claiming new knowledge** | LLM-generated domain knowledge is unverifiable, and mixed into the KB it becomes the `I-133` antipattern |
+| **Criteria without a citation** | Each persona's value conditions are **constants written into its definition file**, not values manufactured per target |
+| **Offering answers** | `I-050` — asked for answers, an LLM will always produce something plausible, and unverifiable |
+| **Offering methods or code** | Same |
+| **Originating numbers** | The shared rule of both repos. Numbers come from search results and code |
+| **Deciding thresholds and tolerances** | Values are domain-owned → [charter.md](../charter.md) §3 |
 
-> **가치 조건을 상수로 박는 것이 "새 지식 주장 금지"를 지키는 방식이다.** 페르소나가 실행 시점에 "이 정도면 흥미로워 보입니다"를 만들면 검증 불가능해진다. BD가 임계값에 대해 쓴 문장과 같은 구조다.
+> **Fixing value conditions as constants is how the no-new-knowledge rule gets kept.** A persona that manufactures "this looks interesting enough" at run time is unverifiable. Same structure as what BD wrote about thresholds.
 
 ---
 
-## 5. 정의 파일에 무엇이 들어가나
+## 5. What goes in a definition file
 
-`T-013`의 절차로 만든다.
+Built by the `T-013` procedure.
 
-> **① 가치 조건을 먼저 쓴다** ("이 계보는 무엇을 갖춘 문제를 고르는가")
-> **→ ② 그 조건이 드러난 리뷰 Outlook 절과 논문 궤적을 찾는다**
-> **→ ③ 정합하면 증류한다.**
+> **① Write the value conditions first** ("what does this lineage need before it picks a problem?")
+> **→ ② Find the review Outlook sections and the trajectory where those conditions show**
+> **→ ③ If consistent, distill.**
 
-BD `I-096`(통과 조건 → 원전 → 저자)의 가치판이고, 순서가 같은 이유도 같다 — **인명에서 시작하면 무엇을 증류하는지 모른 채 사람을 모으게 된다.**
+This is the value counterpart of BD `I-096` (pass condition → source → author), and the order is the same for the same reason — **start from names and you end up collecting people without knowing what is being distilled.** After removing names (`T-018`) the order is unchanged: name a lineage first and then gather its literature, and it is the same failure.
 
-| 절 | 내용 |
+| Section | Contents |
 |---|---|
-| **가치 조건** | `c1`, `c2`, ... 각각 한 문장. **상수** |
-| **원전** | 리뷰 Outlook 절 (DOI + 절 번호) · 논문 궤적 (연도순 목록) |
-| **안 한 것** | 인접 분야인데 안 건드린 영역. `T-012`③ |
-| **발동 조건** | 이 페르소나를 언제 부르나 (§6) |
-| **질문 습관** | 이 계보가 **어떤 형태의 질문**을 던지나 — BD `I-053`의 "페르소나마다 다른 검색 쿼리" |
+| **Value conditions** | `c1`, `c2`, ... one sentence each. **Constants** |
+| **Sources** | Review Outlook sections (DOI + section number) · the trajectory (a list in year order) |
+| **What was not done** | An adjacent area left untouched. `T-012`③ |
+| **Trigger condition** | When this persona gets convened (§6) |
+| **Question habits** | What **shape of question** this lineage asks — BD `I-053`'s "a different search query per persona" |
 
-**금지: "이 사람은 X를 시시하다고 볼 것이다" 형태의 문장.** 그건 근거 없는 귀속이고, private 유지의 이유이자(README §8) 증류가 아니라 추측이다. 정의 파일은 **가치 조건과 그 근거의 위치**만 담는다.
-
----
-
-## 6. 발동 조건 — 비용 억제
-
-BD `I-067`이 10축의 비용을 축별 발동 조건으로 눌렀다. 인명을 뺀 뒤(`T-018`) 여기서도 **상한이 생겼다** (`Q-004` 해소) — 다만 **축당 두 극이므로 축이 하나 늘면 소집이 둘 는다.**
-
-- 소집은 **주제당 1회** (BD `I-051`). 매 반복마다 부르지 않는다.
-- 재소집 조건은 **벽에 부딪혔을 때** 하나뿐이고, 그때 "무엇을 시도해서 왜 실패했는지"를 함께 넣는다.
-- **분기가 목적이면 최소 2개를 부른다.** 1개만 부르면 `divergence/`가 생기지 않는다.
+**Forbidden: sentences of the form "this person would find X uninteresting."** That is attribution without a basis — the reason this repo is private (README §8) and not distillation but guesswork. A definition file holds only **value conditions and the locations of their basis.**
 
 ---
 
-## 7. 미결
+## 6. Trigger conditions — holding down cost
 
-- **페르소나 수** (`Q-004`). 사람 단위는 상한이 없다.
-- **`absent`의 ⓐ/ⓑ 판별** (`Q-005`). §2가 이 레포의 핵심 결손으로 지목한 것.
-- **`met` 판정에 게이트가 실행할 검사가 없다.** BD는 falsifier를 코드로 돌렸다. 여기서 코드로 돌 수 있는 것은 `trajectory_check`뿐이고, 그건 **증류 품질**을 재는 것이지 **가치 판단의 옳음**을 재는 게 아니다 → `C-003`.
-- **`shared`를 누가 계산하나.** 게이트가 두 페르소나 출력을 대조한다고 했지만, "둘이 동의하는 사실"을 뽑는 것은 자연어 대조다. 그러면 게이트가 LLM이 되고 BD `I-052`(결정론적 게이트)를 위반한다.
+BD `I-067` held down the cost of ten axes with a per-axis trigger condition. After removing names (`T-018`) there is an upper bound here too (`Q-004` closed) — but **two poles per axis means one more axis is two more convenings.**
+
+- Convene **once per topic** (BD `I-051`). Not once per iteration.
+- The only re-convening condition is **hitting a wall**, and then "what was tried and why it failed" goes in with it.
+- **If divergence is the goal, convene at least two.** Convene one and no `divergence/` exists.
+
+---
+
+## 7. Open
+
+- **The number of poles** — closed as a count (`Q-004`), but the basis for three axes is a draft.
+- **Telling ⓐ from ⓑ in `absent`** (`Q-005`). §2 names this as the repo's core gap.
+- **The gate has no check to run on a `met` verdict.** BD ran falsifiers as code. The only thing runnable as code here is `trajectory_check`, and that measures **distillation quality**, not **whether the value judgment is right** → `C-003`.
+- **Who computes `shared`.** The gate compares two persona outputs, but extracting "facts both agree on" is a natural-language comparison. That would make the gate an LLM and violate BD `I-052` (a deterministic gate).

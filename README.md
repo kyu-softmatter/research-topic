@@ -1,358 +1,362 @@
-# research-topic — 주제 선정과 지식 베이스의 축
+# research-topic — the topic-selection and knowledge axis
 
-세 번째 축. [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope)(실험)와 [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)(시뮬레이션)에게 **무엇을 할지**를 공급하고, 두 축이 만든 것을 **지식으로 되돌려받는** 곳이다.
+The third axis. It supplies [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) (experiment) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) (simulation) with **what to work on**, and takes back what those two produce **as knowledge**.
 
-작성: 2026-08-31 · 상태: `sketch` — **코드 없음. 아이디어 스케치만.**
+Drafted 2026-08-31 · status `sketch` — **no code. An idea sketch only.**
 
 ---
 
-## 0. 이 문서들의 지위 — 먼저 읽을 것
+## 0. What these documents are — read this first
 
-> **이 레포는 아이디어 스케치다. 구축은 하지 않았고, J1·J3의 구축은 Prof. Sho Takatori가 직접 한다** (§5).
+> **This repo is an idea sketch. Nothing is built, and J1/J3 will be built by Prof. Sho Takatori directly** (§5).
 >
-> 따라서 아래 문서에 있는 것은 **세 종류로 갈라져 있고, 섞어 읽으면 안 된다.**
+> So the documents below hold **three different kinds of thing, and reading them as one kind is the mistake to avoid.**
 
-| 지위 | 무엇 | 어디 |
+| Status | What | Where |
 |---|---|---|
-| **결정** | 세 레포의 **경계** · **철학 6개** · 이 레포가 **하지 않는 일** | [charter.md](design/charter.md) · §3 · §9 |
-| **등록만** | 아이디어 · 충돌 · 열린 질문. **해소하지 않았다** | [ideas.md](design/ideas.md) |
-| **논의 재료** | 가치 축 배정 · 스키마 필드 · 문헌 목록. **결정이 아니다** | [lineages.md](design/personas/lineages.md) · [kb-schema.md](design/kb-schema.md) · [_common.md](design/personas/_common.md) |
+| **Decided** | The **boundaries** between the three repos · the **six philosophy items** · what this repo **does not do** | [charter.md](design/charter.md) · §3 · §9 |
+| **Registered only** | Ideas, conflicts, open questions. **Not resolved** | [ideas.md](design/ideas.md) |
+| **Discussion material** | Value-axis assignments · schema fields · literature lists. **Not decisions** | [lineages.md](design/personas/lineages.md) · [kb-schema.md](design/kb-schema.md) · [_common.md](design/personas/_common.md) |
 
-**세 번째 줄이 이 레포에서 가장 오해하기 쉬운 부분이다.** 스키마와 축 배정이 구체적으로 적혀 있는 것은 **그것이 정해졌다는 뜻이 아니라, 논의가 구체적인 대상을 갖도록** 적어 둔 것이다. `T-013`의 절차를 한 번도 돌리지 않았고, 문헌의 상당수는 DOI 미확인이다.
+**The third row is the easy one to misread.** The schemas and axis assignments are written out concretely **not because they are settled**, but so that the discussion has something specific to push against. The `T-013` procedure has never been run once, and much of the literature is unverified by DOI.
 
-**구축하는 사람이 바꿔야 하는 것:**
+**What the builder is expected to change:**
 
-| 무엇 | 현재 상태 | 누가 정하나 |
+| What | Current state | Who decides |
 |---|---|---|
-| 가치 축이 무엇이고 몇 개인가 | 3축 6극 **초안** — 문헌군 인상에 의한 대용품 | **Takatori** (상의 안건 3) |
-| 각 극의 가치 조건 | **비어 있다.** 극의 이름만 있다 | **Takatori** (상의 안건 1·2) |
-| KB 형식 객체의 필드 | 예시 JSON. 원칙만 확정 | **Takatori** (J1·J3) |
-| 엄밀성 축의 통과 조건 형식 | BD `A1`~`A10`에서 역산한 초안 | **Takatori** (J3, 상의 안건 6) |
+| What the value axes are, and how many | 3 axes / 6 poles — **a draft**, standing in for the real thing | **Takatori** (agenda 3) |
+| The value conditions of each pole | **Empty.** Only the pole names exist | **Takatori** (agenda 1–2) |
+| The fields of the KB's formal objects | Example JSON. Only the principle is fixed | **Takatori** (J1 · J3) |
+| The form of a rigor axis's pass conditions | A draft back-derived from BD's `A1`–`A10` | **Takatori** (J3, agenda 6) |
 
-**바꾸지 말아야 하는 것은 §3 철학 여섯 개와 [charter.md](design/charter.md) §3 경계표뿐이다** — 그 둘은 기존 두 레포에서 승계했거나 두 레포의 수렴에서 도출됐으므로, 이 레포 단독으로 바꿀 수 있는 것이 아니다.
+**The only things that should not be changed are the six philosophy items in §3 and the boundary table in [charter.md](design/charter.md) §3** — both were either inherited from the two existing repos or derived from where those two independently converged, so they are not this repo's to change alone.
 
 ---
 
-## 1. 이 레포가 맡는 세 가지 일
+## 1. The three jobs
 
-| # | 일 | 산출물 | 소비자 |
+| # | Job | Product | Consumer |
 |---|---|---|---|
-| **J1** | **지식 베이스 축적** | 형식 객체로 된 KB 항목 + 검색 인덱스 | BD · microscope |
-| **J2** | **과학 주제 선정** | 검증 가능한 형태의 주제 후보 + 가치 근거 | BD · microscope · 사람 |
-| **J3** | **엄밀성 정의의 관리** | 축 정의 · 통과 조건의 형식 · 원전 레지스트리 | BD · microscope |
+| **J1** | **Accumulate the knowledge base** | KB entries as formal objects + a search index | BD · microscope |
+| **J2** | **Select scientific topics** | Topic candidates in falsifiable form, with the basis for their value | BD · microscope · a human |
+| **J3** | **Manage the definitions of rigor** | Axis definitions · the form of pass conditions · the canonical-source registry | BD · microscope |
 
-**J3의 경계는 BD `I-066`을 한 층 올린 것이다.**
+**J3 is BD's `I-066` lifted one level.**
 
 ```
-research-topic   = 기준의 출처      엄밀성 축이 무엇인지 · 통과 조건의 형식 · 원전 목록
-BD · microscope  = 기준의 집행자    자기 도메인에서 그 축을 코드로 돌린다
+research-topic   = the source of criteria     what the rigor axes are, the form of a pass condition, the canonical sources
+BD · microscope  = the enforcers              each runs those axes as code in its own domain
 ```
 
-정의는 여기, 집행은 저기. **이관이 아니다** — BD의 `A1~A10`과 microscope의 `G1~G32`는 그 레포에 그대로 남는다. 여기 오는 것은 **두 레포가 독립적으로 같은 모양에 도달한 부분**뿐이다. → [charter.md](design/charter.md)
+Definitions here, enforcement there. **This is not a migration** — BD's `A1`–`A10` and the microscope's `G1`–`G32` stay where they are. What comes here is only **the part the two repos arrived at independently**. → [charter.md](design/charter.md)
 
 ---
 
-## 2. 3축 루프
+## 2. The three-axis loop
 
 ```text
                       +---------------------------------+
                       |        research-topic           |
                       |                                 |
-                      |  키워드 -> 자료조사 -> 주제 후보  |
-                      |  가치 페르소나가 질문을 낸다      |
-                      |  (판정이 아니라 질문. BD:I-050)   |
+                      |  keywords -> survey -> topics   |
+                      |  value personas ask questions   |
+                      |  (questions, not verdicts.      |
+                      |   BD:I-050)                     |
                       +----+-------------------+--------+
                            |                   ^
-              주제 + 검증 조건                   |  KB 기입
-                           |                   |  실패 기록
-              +------------+------+     +-------+---------+
+              topic + falsification conditions |  KB writes
+                           |                   |  dead ends
+              +------------+------+     +------+----------+
               v                   v     |                 |
    +---------------------+  +---------------------+        |
-   |  BD 에이전트          |  |  agentic-microscope |        |
-   |  시뮬레이션           |  |  실험                |-------+
-   |  A1-A10 판정         |  |  8 렌즈 / 32 게이트   |
+   |  BD agent           |  |  agentic-microscope |        |
+   |  simulation         |  |  experiment         |--------+
+   |  A1-A10 verdicts    |  |  8 lenses / 32 gates|
    +----------+----------+  +----------+----------+
               |                        |
               +-----------+------------+
                           v
-                    결과 · 반례 · 막다른 길
+              results . counterexamples . dead ends
 ```
 
-**사용자의 가설:** 세 축이 서로를 이끌어 positive feedback loop가 된다.
+**The hypothesis:** the three axes pull each other along, forming a positive feedback loop.
 
-**이 레포가 지고 가는 반론:** positive feedback loop는 발산하거나 자기확증한다. 세 축이 서로를 먹이면 **셋이 공유하는 편향이 증폭된다.** 루프에 감쇠가 필요하고, 감쇠는 이 레포가 넣어야 한다 — 주제를 낼 때 **BD·microscope가 반증할 수 있는 형태로만** 낸다. → [ideas.md](design/ideas.md) `C-001`
-
----
-
-## 3. 철학
-
-여섯 개다. 앞의 넷은 두 기존 레포에서 승계하고, 뒤의 둘은 이 레포에서 처음 생긴다.
-
-### ① 기본값은 통과가 아니라 실패 — 승계
-
-BD `I-055`, microscope의 `BLOCKED`. 판정할 근거가 없으면 통과가 아니다. 이 레포에서의 형태: **"이 주제에 가치가 있다"의 기본값은 "모른다"이고, 근거 없이 "있다"로 넘어가는 코드 경로를 만들지 않는다.**
-
-### ② LLM은 숫자를 만들지 않는다 — 승계
-
-BD는 "페르소나가 기준을 지정하고 확정은 코드가 한다", microscope는 "서브에이전트는 닫힌 형태가 없는 절반만 공급하고 어떤 숫자도 원발하지 않는다". 두 레포가 독립적으로 같은 규약에 도달했다. 이 레포도 같다 — 가치 페르소나는 **어디를 볼지**를 말하고, **무엇이 거기 있는지**는 검색 결과가 말한다.
-
-### ③ 판정에는 그것을 뒤집을 검사를 동봉한다 — 승계
-
-BD `I-065`, microscope `kb/expertise/`의 항목별 falsifier. 이 레포에서의 형태: **질문에 "이 질문이 이미 답이 있다면 어디에 있을 것인가"를 붙인다.** 이게 없으면 문헌조사에 종료 조건이 없고, 그러면 **검색 예산이 곧 가치 판정**이 된다. → `T-008` · `T-023`
-
-### ④ 자연어를 상태로 쓰지 않는다 — 승계
-
-BD `I-133` 안티패턴. **J1이 정확히 여기서 죽는다.** KB 항목은 `{주제, 출처, 성립 조건, 반증 조건, 상태}` 형태의 형식 객체이고, LLM이 쓴 요약이 아니다.
-
-### ⑤ 엄밀성에서 상충은 버그, 가치에서 상충은 산출물 — 신규
-
-BD가 분할 단위를 **사람이 아니라 축**으로 고른 근거는 *"축이 다르면 판정이 직교하므로 상충이 애초에 성립하지 않는다"*(`I-067`)였다.
-
-**가치는 직교하지 않는다.** 이론·최소모형 계보가 "무차원군으로 환원되지 않아서 시시하다"고 볼 것과, 실험·창발 계보가 "새 상태가 실물로 나타나서 흥미롭다"고 볼 것은 **같은 계에 대해 동시에 참이다.**
-
-따라서 이 레포는 BD의 금지 목록 8개 중 **"다른 페르소나 반박 금지" 하나만 승계하지 않는다.** 대신 반박의 형태를 규정한다 — 논박이 아니라 **분기(divergence) 기록**: 두 페르소나가 같은 대상에 반대 방향 가치를 붙였을 때 **그 분기 지점 자체가 KB 항목이 된다.** 분기가 큰 주제가 주제 후보의 1순위다.
-
-**딸린 구조 차이:** BD는 **축당 페르소나 하나**(직교가 목적), 여기는 **축당 둘 — 두 극**(상충이 목적). 한 극만 부르면 분기가 생기지 않는다. → `T-018`
-
-**이것이 이 레포에서 가장 위험한 결정이다.** → `C-002` · `C-005`
-
-### ⑥ 가치의 원전은 텍스트북이 아니다 — 신규
-
-BD `I-068`은 *"학파의 통과 기준은 텍스트북에 명시적으로 적혀 있다"*를 근거로 증류 진입점을 인명에서 텍스트북 27종으로 옮겼다. **가치에는 그 근거가 없다** — "무엇이 흥미로운가"는 텍스트북에 안 적혀 있다.
-
-적혀 있는 곳은 셋이다:
-
-| 원전 | 무엇을 주나 |
-|---|---|
-| **리뷰의 Outlook · Open questions 절** | 그 계보가 무엇을 아직 안 풀렸다고 보는가 |
-| **문헌군의 궤적** (시간순) | 그 계보가 실제로 무엇을 고르는가 |
-| **안 한 것** | 인접 분야인데 안 건드린 영역 — 가장 값진 신호이자 가장 읽기 어려운 신호 |
-
-세 번째가 이 레포의 최상급 산출물이고, 동시에 **증류 오류와 구분이 안 되는 것**이다. → `Q-005`
+**The objection this repo carries:** a positive feedback loop either diverges or confirms itself. If the three axes feed each other, **whatever bias they share gets amplified.** The loop needs damping, and the damping has to come from here — topics go out **only in a form BD and the microscope can falsify.** → [ideas.md](design/ideas.md) `C-001`
 
 ---
 
-## 4. 앞으로의 계획
+## 3. Philosophy
 
-단계 번호는 순서이고, 각 단계의 **종료 조건**을 함께 적는다. 종료 조건이 없는 단계는 끝나지 않는다.
+Six items. The first four are inherited from the two existing repos; the last two originate here.
 
-### Phase 0 — 스케치 (지금)
+### ① The default is failure, not passing — inherited
 
-| 할 일 | 종료 조건 |
+BD `I-055`, and the microscope's `BLOCKED`. With no basis for a verdict, there is no pass. Here that reads: **the default for "this topic has value" is "unknown," and no code path exists that moves to "yes" without a basis.**
+
+### ② The LLM does not originate numbers — inherited
+
+BD: personas name the criteria, code settles them. Microscope: the subagent supplies only the half of a judgment that has no closed form, and originates no number. Two repos reached the same rule independently. Same here — a value persona says **where to look**, and the search result says **what is there.**
+
+### ③ Every judgment carries the check that would overturn it — inherited
+
+BD `I-065`, and the per-entry falsifiers in the microscope's `kb/expertise/`. Here that reads: **each question carries "if this already has an answer, where would it be?"** Without it a literature survey has no stopping condition, and then **the search budget becomes the value judgment.** → `T-008` · `T-023`
+
+### ④ Natural language is not state — inherited
+
+BD's `I-133` antipattern. **This is exactly where J1 dies.** KB entries are formal objects of the shape `{topic, source, conditions of validity, falsification condition, state}` — not summaries written by an LLM.
+
+### ⑤ In rigor, disagreement is a bug; in value, disagreement is the product — new
+
+BD divided by **axis rather than by person** on the grounds that *"different axes give orthogonal verdicts, so conflict never arises in the first place"* (`I-067`).
+
+**Value is not orthogonal.** A theory/minimal-model lineage holding that something is uninteresting because it does not reduce to a dimensionless group, and an experiment/emergence lineage holding that it is interesting because a new state shows up in the lab, **are true of the same system at the same time.**
+
+So this repo inherits seven of BD's eight prohibitions and drops one: **"no rebutting another persona."** In its place it fixes the form — not rebuttal but a **divergence record**: when two personas attach opposite value to the same target, **the point of divergence itself becomes a KB entry.** Topics with large divergence are the first-rank candidates.
+
+**Structural consequence:** BD has **one persona per axis** (orthogonality is the goal); here there are **two per axis — the two poles** (disagreement is the goal). Convene one pole and no divergence exists. → `T-018`
+
+**This is the most dangerous decision in the repo.** → `C-002` · `C-005`
+
+### ⑥ The canonical source of value is not a textbook — new
+
+BD's `I-068` moved the distillation entry point from names to 27 textbooks, on the grounds that *"a school's pass criteria are written down explicitly in the textbooks."* **Value has no such grounds** — "what is interesting" is not written in textbooks.
+
+Where it is written, in three places:
+
+| Source | What it gives |
 |---|---|
-| 세 레포의 경계 확정 | [charter.md](design/charter.md) §3 경계표가 겹치는 항목 없이 채워진다 |
-| 아이디어·충돌·질문 등록 | [ideas.md](design/ideas.md) — **해소하지 않는다. 등록만** |
-| microscope `kb/expertise/` 읽기 | `Q-002` 해소 — J1의 근거가 확정되거나 약해진다. **가장 싼 항목** |
+| **The Outlook / Open questions section of a review** | What that lineage holds to be still unsolved |
+| **The trajectory of the body of work** (in time order) | What that lineage actually picks |
+| **What was not done** | An adjacent area left untouched — the most valuable signal, and the hardest to read |
 
-### Phase 1 — 한 축의 두 극을 시제품으로
+The third is this repo's best product and **is indistinguishable from a distillation error.** → `Q-005`
 
-**1개가 아니라 쌍인 이유:** 철학 ⑤(상충이 산출물)와 `C-005`(분기 스키마)는 **한 쌍이 없으면 시험할 수 없다.** BD가 워크드 예제 2개로 설계를 검증한 것과 같은 방법이다.
+---
 
-**축의 선정은 이 레포가 하지 않는다** (§0) — 상의 안건 3.
+## 4. The plan
 
-| 할 일 | 종료 조건 |
+Phases are ordered, and each carries its **exit condition**. A phase without one does not end.
+
+### Phase 0 — sketch (now)
+
+| Task | Exit condition |
 |---|---|
-| 축 하나를 고르고 **두 극**을 정한다 | 두 극이 같은 계에 반대 방향 가치를 붙이는 실례가 하나 나온다 |
-| 각 극의 가치 조건을 쓴다 | `T-013` 절차대로 — 가치 조건 → 리뷰 Outlook·문헌군 궤적 → 정합 확인 |
-| 분기 기록 스키마 초안 | `C-005`의 해소 조건 |
-| 궤적 정합 검사 1회 | `T-014` — 극의 주장이 그 문헌군의 실제 궤적과 맞는가 |
+| Fix the boundaries between the three repos | [charter.md](design/charter.md) §3 is filled with no item owned twice |
+| Register ideas, conflicts, questions | [ideas.md](design/ideas.md) — **register, do not resolve** |
+| Read the microscope's `kb/expertise/` | `Q-002` closes — J1's basis is either confirmed or weakened. **Cheapest item on the list** |
+| Re-derive [charter.md](design/charter.md) §2 from the BD **remote** | `T-041` — the table was built from a local snapshot that is probably behind |
 
-### Phase 2 — 인터록 (KB **내용보다 먼저**)
+### Phase 1 — prototype the two poles of one axis
 
-**착수 순서가 반대로 보이는 것이 의도다.** BD `I-075`·`I-076`이 이미 KB가 죽는 두 경로를 진단해 뒀다 — ① 아무도 안 채운다(기록은 항상 마지막 단계이자 항상 건너뛰는 단계) ② 인덱스가 낡아서 **파일은 다 있는데 검색이 안 된다.** 이 레포는 KB **자체**이므로 두 실패가 치명적이다.
+**Why a pair and not one:** philosophy ⑤ (disagreement is the product) and `C-005` (the divergence schema) **cannot be tested without a pair.** Same method BD used when two worked examples validated its design.
 
-| 할 일 | 종료 조건 |
+**Choosing the axis is not this repo's call** (§0) — agenda 3.
+
+| Task | Exit condition |
 |---|---|
-| `capture-gate` — 기록 없으면 세션 종료 차단 | 경고 모드로 1주 돈 뒤 차단 모드 |
-| 검색 인덱스 강제 갱신 | 인덱스 갱신 없이 사이클이 끝나지 않는다 |
-| KB 형식 객체 스키마 확정 | [kb-schema.md](design/kb-schema.md) — 자연어 필드가 상태로 쓰이는 자리가 0개 |
+| Pick one axis and fix its **two poles** | One real case exists where the two poles attach opposite value to the same system |
+| Write each pole's value conditions | Per `T-013` — value conditions → review Outlook and trajectory → check consistency |
+| Draft the divergence-record schema | The closing condition for `C-005` |
+| Run the trajectory check once | `T-014` — does a pole's claim match the actual trajectory of its literature? |
 
-### Phase 3 — J2 파이프라인
+### Phase 2 — interlocks (**before** any KB content)
 
-| 할 일 | 종료 조건 |
+**The order looks backwards on purpose.** BD's `I-075` and `I-076` already diagnosed the two ways a KB dies — ① nobody fills it (recording is always the last step and always the skipped one) ② the index goes stale, so **the files are all there and search finds nothing.** This repo *is* the KB, so both failures are fatal.
+
+| Task | Exit condition |
 |---|---|
-| 키워드 → 자료조사 | BD `I-080`(저자 인접 → 계 인접) · `I-082`(인용 그래프) 승계 |
-| forward citation 색인 연결 | `Q-006` — OpenAlex / Semantic Scholar. **이것 없이 J2는 원리적으로 못 돈다** |
-| 질문 게이트 | BD `I-052` — 질문의 운명은 LLM 투표가 아니라 **검색 결과 유무**가 정한다 |
-| 주제 후보 산출 | 산출물이 BD·MS가 **반증할 수 있는 형태**다 (`T-034` 감쇠) |
+| `capture-gate` — block session exit with no record | One week in warn mode, then blocking |
+| Force the search index to refresh | A cycle cannot end without an index refresh |
+| Settle the KB formal-object schema | [kb-schema.md](design/kb-schema.md) — zero places where a natural-language field is used as state |
 
-### Phase 4 — 통합
+### Phase 3 — the J2 pipeline
+
+| Task | Exit condition |
+|---|---|
+| Keywords → literature survey | Inherit BD `I-080` (author-adjacent, then system-adjacent) and `I-082` (citation graph) |
+| Wire up a forward-citation index | `Q-006` — OpenAlex / Semantic Scholar. **J2 cannot run at all without this** |
+| The question gate | BD `I-052` — a question's fate is decided by whether a search returns anything, not by an LLM vote |
+| Emit topic candidates | The output is in a form BD and the microscope **can falsify** (`T-034`, damping) |
+
+### Phase 4 — integration
 
 → §7.
 
-### 아직 계획에 없는 것
+### Not in the plan yet
 
-- **가치의 사후 검증.** `C-003` — "이 주제가 가치 있었나"는 몇 년 뒤에나 안다. 주제 성적표(`T-033`)가 유일한 접지이고 **루프 초기에는 접지가 없다.** 이건 미룬 게 아니라 **아직 답이 없다.**
+- **Retrospective validation of value.** `C-003` — whether a topic was worth doing is known years later. The topic scorecard (`T-033`) is the only grounding, and **early in the loop there is none.** This is not deferred; there is no answer yet.
 
 ---
 
-## 5. 참여자와 역할
+## 5. People and roles
 
-| 축 | 메인 | 참여 | 확정 상태 |
+| Axis | Lead | Also | Commitment |
 |---|---|---|---|
-| **BD 에이전트** ([repo](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)) | Dr. Takuya Kobayashi | Saksham Malik | `예정` |
-| **agentic-microscope** ([repo](https://github.com/kyu-softmatter/agentic-microscope)) | Kyu Hwan Choi | Saksham Malik | `예정` |
-| **research-topic** — KB · 엄밀성 정의 (J1 · J3) — **직접 구축** | Prof. Sho Takatori | — | **`요청 예정`** — 2026-09-03 |
-| **전체 관리** | Kyu Hwan Choi | — | `확정` |
-| **Funding · advising** | Prof. Sho Takatori | — | **`요청 예정`** |
+| **BD agent** ([repo](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)) | Dr. Takuya Kobayashi | Saksham Malik | `planned` |
+| **agentic-microscope** ([repo](https://github.com/kyu-softmatter/agentic-microscope)) | Kyu Hwan Choi | Saksham Malik | `planned` |
+| **research-topic** — KB · rigor definitions (J1 · J3) — **built directly** | Prof. Sho Takatori | — | **`to be asked`** — 2026-09-03 |
+| **Overall management** | Kyu Hwan Choi | — | `confirmed` |
+| **Funding · advising** | Prof. Sho Takatori | — | **`to be asked`** |
 
-### 확정 상태 열이 있는 이유
+### Why there is a commitment column
 
-이 레포의 기본 규칙 — **판정할 근거가 없으면 통과가 아니다**(철학 ①) — 이 역할 배정에도 걸린다. 남이 맡을 일을 확정으로 적으면 그건 근거 없는 귀속이고, [personas/lineages.md](design/personas/lineages.md)가 문헌에 대해 금지한 것과 같은 종류의 오류다.
+This repo's base rule — **no basis, no pass** (philosophy ①) — applies to role assignments too. Writing down someone else's work as settled is an attribution without a basis, the same class of error [lineages.md](design/personas/lineages.md) forbids for literature.
 
-| 값 | 뜻 |
+| Value | Meaning |
 |---|---|
-| `확정` | 본인이 이미 하고 있거나 동의했다 |
-| `예정` | 계획이고 당사자가 알고 있다 |
-| `요청 예정` | **아직 안 물어봤다.** 합의 전 |
+| `confirmed` | Already doing it, or has agreed |
+| `planned` | Planned, and the person knows |
+| `to be asked` | **Not asked yet.** No agreement |
 
-**J1·J3와 funding 두 행은 `요청 예정`이다.** 2026-09-03 상의(§6)에서 확정되고, 그때까지 이 표는 계획이지 합의가 아니다.
+**The J1/J3 row and the funding row are both `to be asked`.** They settle at the 2026-09-03 discussion (§6); until then this table is a plan, not an agreement.
 
-### 역할이 겹치는 곳 — 구조적 경고
+### Where the roles overlap — a structural warning
 
-**J3(엄밀성 정의)를 저술하는 사람이 동시에 가치 계보의 원전 저자이면, `T-014`의 유일한 자동 검사가 약해진다.**
+**If the person authoring J3 (the rigor definitions) is also a canonical-source author of a value lineage, the one automatic check in `T-014` weakens.**
 
-`trajectory_check`(계보의 가치 주장이 그 문헌군의 실제 궤적과 맞는가)는 **가치 조건이 문헌에서 독립적으로 역산됐을 때만** 정보를 가진다. 조건을 직접 써 주면 검사는 통과에 가까워지고 정보량이 줄어든다.
+`trajectory_check` — does a lineage's value claim match the actual trajectory of its literature? — carries information **only when the value conditions were back-derived from the literature independently.** Written directly, the check approaches guaranteed-pass and its information content drops.
 
-**이건 이미 알려진 패턴이다.** BD `personas/_common.md` §8:
+**This shape is already named.** BD `personas/_common.md` §8:
 
-> *벤치마크의 입력이 모형의 입력과 겹치면 그 검사는 통과가 보장돼 있고 정보량이 0이다.* → `trivially_satisfied: true`
+> *If a benchmark's input overlaps the model's input, that check is guaranteed to pass and carries zero information.* → `trivially_satisfied: true`
 
-**인명을 뺀 개정(`T-018`)이 이 위험을 크게 줄였다** — 페르소나가 특정 개인이 아니므로 겹침이 구조적이지 않다. **다만 없어지지는 않았다:** `X1`의 `V1`(환원 극) 문헌군에 본인의 원전이 들어 있다.
+**Removing names (`T-018`) cut this risk sharply** — a persona is no longer a specific individual, so the overlap is not structural. **It did not disappear:** the `V1` (reduction pole) literature of axis `X1` contains his own canonical papers.
 
-**분리:**
+**The split:**
 
-| 무엇 | 누가 | 왜 |
+| What | Who | Why |
 |---|---|---|
-| **J3 — 엄밀성 정의** (축 · 통과 조건의 형식 · 원전의 성립 조건) | **직접 저술** | 엄밀성은 권위가 저술하는 것이 **엄격하게 더 낫다.** 겹침 문제 없음 |
-| **`V1`의 가치 조건** | **문헌에서 독립 증류** | 본인 답변은 **held-out 대조**로만 쓴다 |
+| **J3 — the rigor definitions** (axes · the form of pass conditions · conditions of validity from the sources) | **Authored directly** | Rigor is **strictly better** authored by the authority. No overlap problem |
+| **`V1`'s value conditions** | **Back-derived from literature independently** | His answers are used as a **held-out** comparison only |
 
-**결과: 목요일 전에 `V1` 대조군 초안을 써야 하는 이유가 두 개가 됐다.** ① 상의가 검정이 되려면(§6) ② `trivially_satisfied`를 피하려면. → `T-016`
+**So there are now two reasons, not one, to write the `V1` control draft before Thursday:** ① so the discussion is a test (§6) ② to avoid `trivially_satisfied`. → `T-016`
 
-### Saksham Malik이 두 축에 걸친다
+### Saksham Malik spans two axes
 
-**이것이 통합 질문(`Q-008`)에 실린 실질적 압력이다.** 기준이 두 벌인 비용은 지금까지 추상적이었지만, 두 레포에 걸친 사람이 있으면 **그 비용을 사람이 낸다** — 같은 것을 두 형식으로 두 번 배운다. §7의 판단 시점을 앞당길 근거가 될 수 있다.
+**This is the real pressure behind the integration question (`Q-008`).** The cost of two sets of criteria has been abstract so far; with a person on both repos, **a person pays it** — learning the same thing twice in two formats. It may pull §7's decision point earlier.
 
 ---
 
-## 6. Sho Takatori 교수 상의 — 2026-09-03 (목)
+## 6. Discussion with Prof. Sho Takatori — 2026-09-03 (Thu)
 
-**이 상의가 설계의 일부인 이유 둘.**
+**Two reasons this discussion is part of the design.**
 
-**① 구축 인계.** J1·J3의 구축은 본인이 직접 한다(§5). 이 레포는 스케치이므로, 상의의 1차 목적은 **§0의 "구축하는 사람이 바꿔야 하는 것" 네 줄을 채울 수 있게 하는 것**이다.
+**① Handing over construction.** J1 and J3 get built directly by him (§5). This repo is a sketch, so the first purpose of the discussion is **to make the four rows of §0's "what the builder is expected to change" fillable.**
 
-**② `C-003`에 대한 유일하게 싼 공격 경로.**
+**② The only cheap attack on `C-003`.**
 
-> **가치 계보에는 ground truth가 없다** — 증류가 맞는지 확인할 방법이 없다. 단 **원전 저자에게 물어볼 수 있는 계보**는 예외다.
+> **A value lineage has no ground truth** — there is no way to check whether the distillation is right. The exception is **a lineage whose canonical-source author can be asked.**
 
-`A5.E8`(swim pressure, *PRL* **113**, 2014)과 `A6`(비평형 정량화)의 원전이 `X1`의 `V1`(환원 극) 문헌군에 들어 있다. **즉 6극 중 하나에 대해서만은 대조 경로가 존재한다.** 증류 방법론 자체를 한 사례로 검정하는 것이고, 다른 다섯 극에는 이 경로가 없다.
+The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (nonequilibrium quantification) sit in the `V1` (reduction pole) literature of axis `X1`. **So for exactly one of the six poles a comparison path exists.** The distillation method itself gets tested on one case; the other five poles have no such path.
 
-### 상의 안건 — 우선순위 순
+### Agenda — in priority order
 
-| # | 안건 | 걸린 ID | 왜 이 사람이어야 하나 |
+| # | Item | IDs | Why it has to be him |
 |---|---|---|---|
-| **1** | **"무엇을 갖춘 문제를 고르는가"** — 본인의 가치 조건을 명시적으로 말해줄 수 있나 | `T-013` · `C-003` | 증류의 정답지. 문헌에서 역산하는 것과 대조 가능 |
-| **2** | **철학 ⑥의 가설 검정** — 가치의 원전이 리뷰 Outlook + 논문 궤적이라는 가설이 맞나. 본인의 선택이 그 두 곳에 실제로 드러나 있나 | `T-012` | 이 가설이 틀리면 Phase 1 전체가 무너진다 |
-| **3** | **액티브매터에서 실제로 갈리는 축은 무엇인가** — [lineages.md](design/personas/lineages.md)의 3축 6극 초안을 **버리고 다시 잡는다** | `Q-004` · 철학 ⑤ | 분야 내부의 실제 분기선은 문헌 표면에 안 드러난다. **§0의 첫 두 줄이 여기서 채워진다** |
-| **4** | **`C-004` — "아무도 안 물어봤다"와 "시시해서 안 물어봤다"를 어떻게 가르나** | `C-004` · `T-007` | 이것이 시니어 연구자의 암묵지 그 자체다. 자동화 경로가 안 보이는 항목 |
-| **5** | **`Q-005` — 증류 오류인가 진짜 빈칸인가** | `Q-005` · `T-014` | 계보가 "X는 흥미롭다"고 했는데 그 문헌군에 X가 없을 때 |
-| **6** | **엄밀성 축 `A5`·`A6`의 통과 조건 검토** — BD 쪽 기존 산출물. 원전 저자의 직접 확인 | BD `A5` · `A6` | **J3 구축의 실제 착수점.** 원전 레지스트리의 `conditions` 필드가 여기서 나온다 |
-| **7** | **`Q-009` — J1·J3를 맡을 것인가, funding은 어떻게 되나** | `Q-009` · §5 | 두 행이 `요청 예정`이다. **거절·보류의 경우 계획이 어디까지 유효한지 안 적혀 있다** |
-| **8** | **인명 제거로 충분한가** — 계보로 바꿨지만 `V1` 문헌군이 그룹 성과와 겹쳐 **문헌 목록이 사실상 지목한다** | `T-019` · §8 | 공개 범위의 실제 상한. `C-006`(통합) 판단에 직결 |
+| **1** | **"What does a problem need before you pick it?"** — can the value conditions be stated explicitly? | `T-013` · `C-003` | The answer key for distillation. Comparable against what the literature yields |
+| **2** | **Test philosophy ⑥** — is it true that value lives in review Outlooks and work trajectories? Do his own choices actually show up in those two places? | `T-012` | If this is false, all of Phase 1 collapses |
+| **3** | **What actually divides active matter** — **throw away** the 3-axis / 6-pole draft in [lineages.md](design/personas/lineages.md) and set it again | `Q-004` · philosophy ⑤ | The real dividing lines inside a field are not on the surface of its literature. **§0's first two rows get filled here** |
+| **4** | **`C-004` — how do you tell "nobody asked" from "nobody asked because it is boring"?** | `C-004` · `T-007` | This is senior tacit knowledge itself. No automation path is visible |
+| **5** | **`Q-005` — distillation error, or a real gap?** | `Q-005` · `T-014` | When a pole says X is interesting but X is absent from its literature |
+| **6** | **Review the pass conditions of rigor axes `A5` and `A6`** — existing BD output, checked by the canonical author | BD `A5` · `A6` | **The actual starting point for building J3.** The `conditions` field of the source registry comes from here |
+| **7** | **`Q-009` — will he take J1/J3, and what happens with funding?** | `Q-009` · §5 | Two rows are `to be asked`. **What stays valid if declined is not written down** |
+| **8** | **Is removing names enough?** — lineages replaced individuals, but `V1`'s literature overlaps the group's own output, so **the reading list points anyway** | `T-019` · §8 | The real ceiling on disclosure. Feeds directly into the `C-006` integration call |
 
-### 상의 전에 준비할 것
+### To prepare beforehand
 
-- **`V1`(환원 극)의 가치 조건 초안** — 문헌만으로 역산한 것. 안건 1의 대조군. **물어보기 전에 써 놔야 대조가 성립한다.**
-- 안건 3의 **후보 축** 2~3개 — 버려질 것을 전제로.
-- BD `A5`·`A6` 페르소나 파일 (기존 산출물, 보여줄 수 있는 실물). 안건 6의 재료.
+- **A draft of `V1`'s (reduction pole) value conditions**, back-derived from literature alone. The control for agenda 1. **It has to exist before asking, or there is no comparison.**
+- Two or three **candidate axes** for agenda 3 — on the assumption they get discarded.
+- The BD `A5` and `A6` persona files (existing output, something real to show). Material for agenda 6.
 
-> **주의:** 안건 1·2를 먼저 물어보면 답에 끌려간다. **대조군 초안 없이 상의에 들어가면 검정이 아니라 받아쓰기가 된다.**
+> **Careful:** ask agenda 1–2 first and the answer drags the design with it. **Walking in without the control draft turns the test into dictation.**
 >
-> **단, 안건 3은 반대다** — 축 배정은 이 레포가 정할 것이 아니므로(§0) 초안을 방어하지 않는다. 초안은 **버리기 위해** 가져간다.
+> **Agenda 3 is the opposite** — the axis assignment is not this repo's to decide (§0), so the draft is not defended. It is carried in **to be thrown away.**
 
 ---
 
-## 7. 기존 두 에이전트와의 통합 — 고려 중
+## 7. Integration with the two existing agents — under consideration
 
-**현재 결정은 "통합하지 않고 인덱싱"이다** (`T-004`). 근거는 BD `I-057` — 경계선은 *되돌릴 수 있고 검증 가능한가*. 인덱싱은 되돌릴 수 있고 이관은 못 되돌린다.
+**The current decision is "index, do not merge"** (`T-004`). The grounds are BD `I-057` — a boundary is drawn at *is it reversible and checkable*. Indexing is reversible; migration is not.
 
-**그러나 통합은 열려 있다.** 세 후보:
+**But integration is open.** Three candidates:
 
-| 후보 | 형태 | 얻는 것 | 잃는 것 |
+| Option | Shape | Gains | Loses |
 |---|---|---|---|
-| **A. 별도 3레포 + 인덱싱** *(현재)* | 이 레포가 두 레포를 가리킨다 | 되돌릴 수 있다. 두 레포 무수정 | 기준이 두 벌 될 위험. 크로스 참조가 수동 |
-| **B. 모노레포** | 셋을 한 레포로 | 기준이 한 벌. 참조가 깨지지 않는다 | **microscope는 public, 이 레포는 private** — 공개 범위가 충돌한다 (§8) |
-| **C. 이 레포가 상위 오케스트레이터** | 두 레포를 서브모듈로 두고 루프를 여기서 돌린다 | 3축 루프가 실물이 된다 | 이 레포가 집행자가 되어 [charter.md](design/charter.md) §5의 구조적 금지를 자기가 위반한다 |
+| **A. Three repos + indexing** *(current)* | This repo points at the other two | Reversible. Neither repo is touched | Risk of two sets of criteria. Cross-references are manual |
+| **B. Monorepo** | All three in one | One set of criteria. References never break | **The microscope is public, this repo is private** — the disclosure scopes conflict (§8) |
+| **C. This repo as the orchestrator** | The other two as submodules, the loop runs here | The three-axis loop becomes real | This repo becomes an enforcer and violates its own structural prohibition ([charter.md](design/charter.md) §5) |
 
-**B의 걸림돌이 기술적인 게 아니라 공개 범위라는 점이 핵심이다.** `agentic-microscope`는 2026-08-28에 벤더 자료를 걷어내고 public이 됐고, 이 레포는 private여야 한다(§8). **둘을 한 레포에 두면 더 엄격한 쪽이 이긴다** — 즉 microscope가 다시 private가 된다.
+**The point is that B's obstacle is disclosure scope, not engineering.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and this repo has to stay private (§8). **Put them in one repo and the stricter side wins** — the microscope goes private again.
 
-**2026-08-31 인명 제거로 이 걸림돌이 낮아졌다** (`T-018` · `C-006`) — 실명 귀속이 없어졌으므로 가장 큰 근거가 사라졌다. **단 `T-019`의 두 근거가 남아 있어 B가 가능해진 것은 아니다.** 논의 대상이 된 것뿐이다.
+**Removing names on 2026-08-31 lowered that obstacle** (`T-018` · `C-006`) — with no attribution by name, the largest argument is gone. **But `T-019`'s two remaining arguments mean B has not become possible.** It has become discussable.
 
-**통합 판단 시점:** Phase 1이 끝나고 **분기 기록이 실제로 BD·MS에 쓸모 있는 형태로 나오는지 확인한 뒤.** 그전에 통합하면 무엇을 통합하는지 모르는 상태로 구조를 고정한다. → `Q-008`
+**Decision point:** after Phase 1, once it is clear whether divergence records come out in a form BD and the microscope can actually use. Integrating before that fixes the structure without knowing what is being integrated. → `Q-008`
 
 ---
 
-## 8. 왜 private인가 — 되돌릴 수 없는 제약
+## 8. Why private — an irreversible constraint
 
-### 원래 근거 — 그리고 그것을 이미 없앤 것
+### The original reason, and how it was already removed
 
-초안에서 페르소나는 **실명 연구자의 연구철학**을 증류하는 것이었다. 그러면 산출물에 이런 문장이 생긴다:
+In the first draft a persona distilled **a named researcher's research philosophy**. That produces sentences like:
 
-> *"이 계는 X 교수의 관점에서 이미 답이 알려진 문제로 보일 것이다."*
+> *"To Prof. X this system would look like a problem whose answer is already known."*
 
-**실명 연구자에게 귀속된 가치 판단은 공개되면 명예의 문제가 된다.** BD 명단 ~200명은 전부 실재 인물이고 상당수가 생존해 있다. `agentic-microscope`가 public이 될 수 있었던 것은 그 렌즈가 **서브시스템**(optics·detection·compute)이지 사람이 아니었기 때문이다.
+**A value judgment attributed to a named researcher becomes a matter of reputation once public.** BD's roster of ~200 is entirely real people, many of them living. `agentic-microscope` could go public because its lenses were **subsystems** (optics, detection, compute), not people.
 
-**2026-08-31에 이것을 정의 단계에서 미리 없앴다** (`T-018` · `T-035`) — 페르소나는 개인이 아니라 **문헌군으로 정의된 계보**이고, 원칙은 **인용은 남기고 귀속은 뺀다.** [lineages.md](design/personas/lineages.md)에 인명이 없다.
+**On 2026-08-31 this was removed at the definition stage rather than the output stage** (`T-018` · `T-035`) — a persona is not an individual but a **lineage defined by a body of literature**, and the rule is **citations stay, attributions go.** [lineages.md](design/personas/lineages.md) contains no names.
 
-### 그래도 private인 이유 — 남은 근거 둘
+### Why it stays private anyway — two remaining reasons
 
 `T-019`:
 
-1. **KB에 축적될 주제 평가 자체가 미발표 연구 방향이다.** 인명과 무관하다.
-2. **`X1`의 `V1` 문헌군이 소속 그룹의 성과와 겹친다.** 계보를 특정하지 않아도 **문헌 목록이 사실상 지목한다.** 즉 `T-035`의 "인명 벗기기"가 **얼마나 벗겨졌는지 측정되지 않았다.**
+1. **The topic assessments that will accumulate in the KB are unpublished research directions.** Nothing to do with names.
+2. **The `V1` literature of axis `X1` overlaps the group's own output.** Without naming the lineage, **the reading list points at it anyway.** So how much `T-035`'s name-stripping actually strips **has not been measured.**
 
-**따라서:**
+**Therefore:**
 
-- 이 레포는 **private로 유지한다.** 근거가 하나 줄었을 뿐 없어진 게 아니다.
-- 2번이 `C-006`(통합 걸림돌) 완화의 **상한**이다 — 모노레포가 불가능에서 논의 가능으로 바뀐 것이고, 가능해진 것은 아니다.
-- **본인 동의**는 여전히 별개 문제다. 페르소나 대상은 아니게 됐지만 문헌군 겹침이 남아 있다. → §6 안건 8.
+- This repo **stays private.** One reason fewer is not no reason.
+- Point 2 is the **ceiling** on relaxing `C-006` — the monorepo went from impossible to discussable, not to possible.
+- **Consent from the people involved** is still a separate matter. They are no longer persona targets, but the literature overlap remains. → §6 agenda 8.
 
 ---
 
-## 9. 하지 않는 일
+## 9. What this repo does not do
 
-| 안 하는 것 | 어디서 하나 |
+| Not done here | Done where |
 |---|---|
-| 시뮬레이션 실행·판정 | BD |
-| 장비 설정 제안·실험 실행 | microscope |
-| 숫자 생성 | 어디서도 안 한다 (철학 ②) |
-| 임계값·허용오차 결정 | BD·MS 각자. 값은 도메인 소유 |
-| 결론 확정 ("이 주제는 가치 있다") | 사람. 되돌릴 수 없는 판단은 자동 경로에 없다 (BD `I-057`) |
+| Running or judging simulations | BD |
+| Proposing instrument settings, running experiments | microscope |
+| Originating numbers | Nowhere (philosophy ②) |
+| Setting thresholds and tolerances | BD and the microscope, each for itself. Values are domain-owned |
+| Settling a conclusion ("this topic has value") | A human. Irreversible judgments are not on the automatic path (BD `I-057`) |
 
 ---
 
-## 10. 문서
+## 10. Documents
 
-| 문서 | 내용 | 상태 |
+| Document | Contents | Status |
 |---|---|---|
-| [design/charter.md](design/charter.md) | 세 레포의 경계. 두 레포가 수렴한 것의 증거 | `sketch` |
-| [design/ideas.md](design/ideas.md) | 아이디어 로그 (`T-` · `C-` · `Q-`) | `sketch` |
-| [design/kb-schema.md](design/kb-schema.md) | J1의 형식 객체. BD `I-133` 대응 | `sketch` |
-| [design/personas/_common.md](design/personas/_common.md) | 가치 페르소나 공통 계약 | `sketch` |
-| [design/personas/lineages.md](design/personas/lineages.md) | 가치 계보 3축 6극 + 문헌 진입점. **인명 없음** | `sketch` |
-| `src/` | 없음 | — |
+| [design/charter.md](design/charter.md) | Boundaries between the three repos. The evidence that two of them converged | `sketch` |
+| [design/ideas.md](design/ideas.md) | Idea log (`T-` · `C-` · `Q-`) | `sketch` |
+| [design/kb-schema.md](design/kb-schema.md) | J1's formal objects. The answer to BD `I-133` | `sketch` |
+| [design/personas/_common.md](design/personas/_common.md) | The common contract for value personas | `sketch` |
+| [design/personas/lineages.md](design/personas/lineages.md) | Value lineages, 3 axes / 6 poles, plus literature entry points. **No names** | `sketch` |
+| `src/` | Does not exist | — |
 
 ---
 
-## 참조 규약
+## Reference convention
 
-다른 레포의 ID는 접두어를 붙인다: `BD:I-050` · `MS:G27`. 이 레포의 ID는 `T-`(아이디어) · `C-`(충돌) · `Q-`(열린 질문).
+IDs from other repos carry a prefix: `BD:I-050` · `MS:G27`. This repo's own IDs are `T-` (idea), `C-` (conflict), `Q-` (open question).
 
-**인덱싱 대상** (`T-004` — 이관하지 않고 인덱싱한다):
+Quotations from BD's design documents are translated; the Korean originals are findable by ID in that repo.
 
-| 접두어 | 레포 | 공개 |
+**Indexing targets** (`T-004` — index, do not migrate):
+
+| Prefix | Repo | Visibility |
 |---|---|---|
-| `BD:` | https://github.com/kyu-softmatter/Brownian-Dynamics-Agent | — |
+| `BD:` | https://github.com/kyu-softmatter/Brownian-Dynamics-Agent | public |
 | `MS:` | https://github.com/kyu-softmatter/agentic-microscope | public |
 
-`Q-007`(BD를 무엇으로 가리키나) **해소** — 두 레포 모두 GitHub에 있으므로 커밋 SHA로 고정 참조가 가능하다. 로컬 경로(`/d/BD`)는 쓰지 않는다.
+`Q-007` (what does this repo point at for BD) is **closed** — both repos are on GitHub, so references pin commit SHAs. Local paths are not used.

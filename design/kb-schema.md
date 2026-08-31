@@ -1,74 +1,74 @@
-# KB 형식 객체 — J1의 스키마
+# KB formal objects — J1's schema
 
-작성: 2026-08-31 · 상태: `sketch` — **항목을 채우지 않는다. 형식만 정한다.**
-관련: [ideas.md](ideas.md) `T-031` · `T-030` · `C-005` · BD:`I-133` · BD:`I-076`
+Drafted 2026-08-31 · status `sketch` — **no entries are created here. Only the shape is fixed.**
+Related: [ideas.md](ideas.md) `T-031` · `T-030` · `C-005` · BD:`I-133` · BD:`I-076`
 
 ---
 
-## 0. 이 문서가 하는 일
+## 0. What this document does
 
-> **§4의 JSON은 결정이 아니라 예시다** → [README.md](../README.md) §0.
+> **The JSON in §4 is an example, not a decision** → [README.md](../README.md) §0.
 >
-> **확정된 것은 §1의 규칙 하나와 §3의 스칼라 금지뿐이다.** 필드 이름·열거형 값·항목 종류의 수는 **J1·J3를 구축하는 사람이 정한다.** 예시를 구체적으로 쓴 이유는 §1의 규칙이 **추상적으로는 지켜지는지 확인할 수 없기** 때문이다 — "자연어를 상태로 쓰지 말라"는 필드가 실제로 놓여 봐야 위반이 보인다.
+> **The only settled things are the single rule in §1 and the no-scalar rule in §3.** Field names, enum values, and the number of entry kinds are for **whoever builds J1 and J3.** The examples are written out concretely because §1's rule **cannot be checked in the abstract** — "do not use natural language as state" only becomes visible as a violation once fields are actually laid down.
 
-**KB 항목을 만들지 않는다.** 어떤 모양이어야 하는지만 정한다. 항목 축적은 Phase 2 이후다.
+**No KB entries are created.** Only their shape is fixed. Accumulation comes after Phase 2.
 
-이 순서가 반대로 보이는 것은 의도다. BD `I-075`·`I-076`이 KB가 죽는 두 경로를 이미 진단해 뒀다 — ① 아무도 안 채운다 ② 인덱스가 낡아서 파일은 다 있는데 검색이 안 된다. 형식을 정하기 전에 채우면 **형식이 바뀔 때 채운 것을 버려야 한다.**
+That order looks backwards on purpose. BD's `I-075` and `I-076` already diagnosed the two ways a KB dies — ① nobody fills it ② the index goes stale, so the files are all there and search finds nothing. Filling before the form is fixed means **throwing away what was filled when the form changes.**
 
 ---
 
-## 1. 단 하나의 규칙
+## 1. One rule
 
-> **자연어는 사람이 읽는 필드에만 둔다. 분기·라우팅·판정에 쓰이는 필드는 형식 값이어야 한다.**
+> **Natural language goes only in fields a human reads. Any field used for branching, routing, or a verdict must be a formal value.**
 
-BD `I-133`(LLM이 쓴 자연어 요약을 상태로 사용)의 이 레포판이다. BD가 그 안티패턴을 발견한 자리는 `MDCrow/mdcrow/agent/memory.py:119`였고, 요구된 대체물은 *"`{엔진, 설정 해시, 시드, 진행 스텝, 체크포인트, 관측량, 수렴 상태}` 형태의 형식 있는 객체"* 였다.
+This is the local form of BD's `I-133` (using an LLM-written natural-language summary as state). BD found that antipattern at `MDCrow/mdcrow/agent/memory.py:119`, and the replacement it demanded was *"a formal object of the shape `{engine, config hash, seed, steps completed, checkpoint, observable, convergence state}`."*
 
-**이 레포에서 위반이 일어나는 자리는 예측 가능하다** — 가치 판단이 원래 자연어이기 때문이다. "이 주제는 흥미롭다"는 문장은 상태가 될 수 없다.
+**Where the violation will happen here is predictable** — because a value judgment is natural language to begin with. The sentence "this topic is interesting" cannot be state.
 
-### 검사
+### The check
 
-각 스키마에 대해: **어떤 코드가 이 필드를 읽고 분기하는가?** 분기한다면 그 필드는 열거형·수·ID·불리언이어야 한다. 사람만 읽는다면 자연어 허용.
+For each schema: **what code reads this field and branches on it?** If anything branches, the field must be an enum, a number, an ID, or a boolean. If only a human reads it, natural language is fine.
 
-| 필드 성격 | 허용 |
+| Field's role | Allowed |
 |---|---|
-| 상태 · 판정 · 라우팅 키 | 열거형만 |
-| 식별자 · 참조 | ID (문자열이나 **자유 텍스트가 아니다**) |
-| 근거의 **위치** | ID + 좌표 (DOI · 절 번호 · 표 행) |
-| 근거의 **내용** | 자연어 허용 — 사람이 읽는다 |
-| 가치 주장 | **스칼라 점수 금지** → §3 |
+| State · verdict · routing key | Enums only |
+| Identifier · reference | An ID (a string, but **not free text**) |
+| The **location** of evidence | ID + coordinates (DOI, section number, table row) |
+| The **content** of evidence | Natural language — a human reads it |
+| A value claim | **No scalar score** → §3 |
 
 ---
 
-## 2. 항목 종류 (초안 6종)
+## 2. Entry kinds (draft, six)
 
-각 항목은 파일 하나. 파일명이 ID.
+One file per entry. The filename is the ID.
 
-| 종류 | 무엇 | 누가 쓰나 | 누가 읽나 |
+| Kind | What | Written by | Read by |
 |---|---|---|---|
-| `literature/` | 문헌 항목 + **성립 조건** | 이 레포 | BD · MS · J2 |
-| `rigor/` | 엄밀성 축 정의 · 통과 조건의 형식 · 원전 (J3) | 이 레포 | BD · MS |
-| `question/` | 질문 + falsifier (`T-008`) | 가치 페르소나 | J2 게이트 |
-| `divergence/` | 분기 기록 (`T-011` · `C-005`) | J2 게이트 | 사람 · BD · MS |
-| `topic/` | 주제 후보 | J2 | BD · MS · 사람 |
-| `dead-end/` | 막다른 길 (`T-032`) | **BD · MS** | J2 |
+| `literature/` | A literature entry plus its **conditions of validity** | this repo | BD · MS · J2 |
+| `rigor/` | Axis definitions, the form of pass conditions, canonical sources (J3) | this repo | BD · MS |
+| `question/` | A question plus its falsifier (`T-008`) | value personas | the J2 gate |
+| `divergence/` | A divergence record (`T-011` · `C-005`) | the J2 gate | humans · BD · MS |
+| `topic/` | A topic candidate | J2 | BD · MS · humans |
+| `dead-end/` | A dead end (`T-032`) | **BD · MS** | J2 |
 
-> **`dead-end/`만 쓰는 쪽이 밖이다.** 이 레포는 보관만 한다. → [charter.md](charter.md) §3
-
----
-
-## 3. 가치는 스칼라가 아니다
-
-**금지: `value_score: 0.7`.**
-
-이유는 하나다. 점수를 내면 **여러 페르소나의 점수를 평균할 수 있게 되고**, 평균하는 순간 분기가 사라진다. 그런데 분기가 이 레포의 산출물이다 (`T-010`).
-
-BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 합의가 아니다"*, 그리고 게이트 시제품의 발견 1: *"Q-016의 답은 집계하지 않는다"*. **집계 금지가 BD에서는 판정에, 여기서는 가치에 걸린다.**
-
-**대신:** 페르소나는 자기 정의 파일에 박힌 **가치 조건**들에 대해 `met: yes | no | unknown`만 낸다. 조건 자체는 실행 시점에 만들지 않는다 (BD `_common.md` §4의 "인용 없는 수치 기준 금지"와 같은 방식 — 조건을 상수로 박는 것이 지식 주장 금지를 지키는 방식이다).
+> **`dead-end/` is the only kind written from outside.** This repo only holds custody. → [charter.md](charter.md) §3
 
 ---
 
-## 4. 스키마 초안
+## 3. Value is not a scalar
+
+**Forbidden: `value_score: 0.7`.**
+
+One reason. A score makes it possible to **average across personas**, and the moment you average, divergence is gone. Divergence is this repo's product (`T-010`).
+
+BD reached the same conclusion for the same reason — *"a verdict vector is not a consensus,"* and finding 1 of its gate prototype: *"the answer to Q-016 is: do not aggregate."* **Aggregation is forbidden on verdicts in BD and on value here.**
+
+**Instead:** a persona emits only `met: yes | no | unknown` against the **value conditions** written into its own definition file. The conditions themselves are not manufactured at run time — the same discipline as BD `_common.md` §4's "no numeric criterion without a citation," where **fixing the criteria as constants is how the no-new-knowledge rule gets kept.**
+
+---
+
+## 4. Draft schemas
 
 ### 4.1 `literature/`
 
@@ -82,17 +82,17 @@ BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 
   "claims": [
     { "id": "lit-0001.c1",
       "formula_ref": "eq. 7",
-      "conditions": "이 식이 언제 성립하는가 — 원 논문에서만 나오는 것",
-      "conditions_locator": "§III B, p. 3" }
+      "conditions": "when this expression holds -- the part that appears only in the original paper",
+      "conditions_locator": "sec. III B, p. 3" }
   ],
-  "outlook_section": { "present": true, "locator": "§V" },
+  "outlook_section": { "present": true, "locator": "sec. V" },
   "cited_by_count": null,
   "index_source": "openalex | semanticscholar | manual",
   "retrieved": "2026-09-03"
 }
 ```
 
-> **`conditions`가 이 항목의 존재 이유다.** BD `A5` 절이 명시한 것 — *"식은 어디서나 구하지만 유효 범위는 원 논문에 있다."* 자연어 필드지만 **사람과 페르소나가 읽고 코드가 분기하지 않으므로** §1 규칙에 걸리지 않는다. 분기하는 것은 `present`·`kind`뿐이다.
+> **`conditions` is why this entry kind exists.** As BD's `A5` section puts it: *"the expression is available anywhere, but its range of validity is in the original paper."* It is a natural-language field, but **humans and personas read it while no code branches on it**, so §1's rule is satisfied. What branches is `present` and `kind`.
 
 ### 4.2 `question/`
 
@@ -101,14 +101,14 @@ BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 
   "id": "q-0001",
   "persona": "V1",
   "target_id": "topic-0003",
-  "text": "질문 한 문장. 결론을 전제하지 않는다",
-  "unknown": "무엇이 미지수인가 — 답을 보면 알아볼 수 있을 만큼 지목",
+  "text": "the question, one sentence. Presupposes no conclusion",
+  "unknown": "what the unknown is -- named precisely enough to recognize the answer on sight",
   "citations": ["lit-0001"],
   "falsifier": {
     "search_query": "...",
     "expected_authors": ["..."],
     "expected_venues": ["..."],
-    "dies_if": "이 조건을 만족하는 문헌이 나오면 이 질문은 죽는다"
+    "dies_if": "literature satisfying this condition exists"
   },
   "gate_verdict": "open | answered_in_kb | answered_in_literature | not_searched",
   "answered_by": null,
@@ -116,33 +116,33 @@ BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 
 }
 ```
 
-> **`gate_verdict`가 BD `I-052`의 집행 지점이다** — LLM 투표가 아니라 검색 결과 유무.
-> **`not_searched`가 기본값이다.** `open`이 아니다 (BD `I-055` 기본값은 실패).
-> **`search_budget_spent`를 기록하는 이유** (`T-023`): 이게 없으면 `open`이 "정말 없다"인지 "덜 찾았다"인지 구분이 안 되고, **검색 예산이 곧 가치 판정**이 된다.
+> **`gate_verdict` is where BD's `I-052` is enforced** — search-result presence, not an LLM vote.
+> **`not_searched` is the default, not `open`** (BD `I-055`: the default is failure).
+> **Why `search_budget_spent` is recorded** (`T-023`): without it, `open` cannot be told apart from "we did not look hard enough," and then **the search budget becomes the value judgment.**
 
-### 4.3 `divergence/` — `C-005`의 해소 조건
+### 4.3 `divergence/` — `C-005`'s closing condition
 
 ```json
 {
   "id": "div-0001",
   "target_id": "topic-0003",
   "personas": ["V1", "V2"],
-  "axis": "reducibility | novelty_of_state | measurability | generality | mechanism_vs_phenomenology",
+  "axis": "reducibility | mechanism_vs_phenomenology | measurability",
   "conditions_met": { "V1": ["c1:no", "c3:yes"], "V2": ["c2:yes"] },
-  "shared": ["둘이 동의하는 사실 — ID 목록"],
+  "shared": ["facts both agree on -- a list of IDs"],
   "contested": {
-    "claim": "갈리는 지점 하나. 문장",
+    "claim": "the single point of divergence, as a sentence",
     "V1_position": "supports | opposes | unknown",
     "V2_position": "supports | opposes | unknown"
   },
   "resolvable_by": "bd_run | ms_experiment | literature | not_resolvable",
-  "resolution_target": "무엇을 재면 갈리는 것이 갈리지 않게 되나",
+  "resolution_target": "what measurement would make the divergence stop diverging",
   "routed_to": null
 }
 ```
 
-> **`resolvable_by`가 `T-034`의 감쇠 장치다.** `not_resolvable`이면 루프를 돌지 않고 사람 경로로 간다. 이 필드가 없으면 3축 루프가 반증 불가능한 주제를 계속 순환시킨다 (`C-001`).
-> **`axis`는 열거형이다.** 자연어로 두면 분기가 안 되고 `T-031`을 위반한다. 값 목록은 **Phase 1에서 실례 2개를 보고 정한다** — 지금 정하면 근거 없이 정하는 것이다.
+> **`resolvable_by` is `T-034`'s damping device.** `not_resolvable` means the topic does not enter the loop and goes to the human path. Without this field the three-axis loop keeps circulating unfalsifiable topics (`C-001`).
+> **`axis` is an enum.** Left as natural language it cannot be branched on and violates `T-031`. **The value list comes from [lineages.md](personas/lineages.md), which is itself a draft** — settle it in Phase 1 after seeing two real cases.
 
 ### 4.4 `topic/`
 
@@ -159,18 +159,18 @@ BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 
 }
 ```
 
-> **`falsifiable_by: neither`인 주제는 자동 경로에 올리지 않는다** (`T-034`).
-> **`human_signoff`가 `null`인 동안 "가치 있다"는 어디에도 기록되지 않는다** (`T-007` · BD `I-057`).
+> **A topic with `falsifiable_by: neither` does not go on the automatic path** (`T-034`).
+> **While `human_signoff` is `null`, "this has value" is recorded nowhere** (`T-007` · BD `I-057`).
 
 ### 4.5 `rigor/` — J3
 
 ```json
 {
   "id": "rigor-A5",
-  "name": "열역학적 정합성",
+  "name": "thermodynamic consistency",
   "pass_conditions": [
     { "id": "E8",
-      "question": "통과 조건 한 문장",
+      "question": "the pass condition, one sentence",
       "form": "identity | inequality | comparison_to_analytic | declaration | declaration_plus_compatibility",
       "canonical_source": ["lit-0001"],
       "threshold_owner": "bd | ms",
@@ -179,12 +179,12 @@ BD가 같은 이유로 같은 결론에 도달해 있다 — *"판정 벡터는 
 }
 ```
 
-> **`threshold_owner`가 [charter.md](charter.md) §3 경계표의 집행 지점이다.** 이 레포는 형식(`form`)과 원전(`canonical_source`)을 갖고, **값은 갖지 않는다.**
-> **`form`의 값 목록은 BD의 열 축에서 역산했다.** `declaration_plus_compatibility`는 BD `_common.md` §7이 발견한 것 — 선언만 받는 기준은 선언된 것이 목표를 담지 못하는 경우를 놓치므로 짝이 되는 양립성 기준을 갖는다. **BD에서는 `A10.T1b`만 구현돼 있고 `A2`·`A4`·`A7`은 짝이 없다.** J3가 이 결손을 표로 들고 있어야 할 자리다.
+> **`threshold_owner` is where [charter.md](charter.md) §3's boundary table is enforced.** This repo holds the `form` and the `canonical_source`, and **does not hold values.**
+> **The `form` value list was back-derived from BD's ten axes.** `declaration_plus_compatibility` is what BD `_common.md` §7 found — a criterion that only takes a declaration misses the case where what was declared cannot carry the goal, so it needs a paired compatibility criterion. **In BD only `A10.T1b` implements this; `A2`, `A4`, and `A7` have no pair.** J3 is where that gap should be held as a table.
 
 ### 4.6 `dead-end/`
 
-BD `I-077`의 템플릿을 그대로 쓴다 — 무엇을 시도했나 / 무엇이 어긋났나 / **배제한 가설** / 남은 가설 / 다음에 다르게.
+Uses BD's `I-077` template unchanged — what was tried / what diverged / **which hypotheses were excluded** / which remain / what to do differently.
 
 ```json
 {
@@ -197,23 +197,23 @@ BD `I-077`의 템플릿을 그대로 쓴다 — 무엇을 시도했나 / 무엇�
 }
 ```
 
-> **`hypotheses_excluded`가 값어치의 전부다.** BD가 적어 둔 이유 그대로 — *"이 조건에서는 안 됐다"는 GPU 시간으로 산 정보이고, 안 남기면 다음 세션이 같은 돈을 다시 쓴다.*
+> **`hypotheses_excluded` is the whole value.** BD's own reason, unchanged: *"'it did not work under these conditions' is information bought with GPU time, and unrecorded, the next session spends that money again."*
 
 ---
 
-## 5. 검색 인덱스
+## 5. The search index
 
-**항목 파일이 정본이고 인덱스는 파생물이다.** 인덱스를 손으로 고치는 경로를 만들지 않는다.
+**Entry files are canonical; the index is derived.** No code path exists for editing the index by hand.
 
-BD `I-076`: *매 사이클 끝에 인덱스를 갱신하지 않으면 이번에 쓴 지식을 다음 세션이 못 찾는다 — 파일은 다 있는데 검색이 안 되는 상태.* 그래서 갱신은 훅이고 문서가 아니다 (Phase 2).
+BD `I-076`: *unless the index is refreshed at the end of every cycle, the next session cannot find the knowledge written this one — the state where all the files are there and search does not work.* So the refresh is a hook, not a document (Phase 2).
 
-**BD `I-053`의 2층 분리를 승계한다** — 페르소나 정의 파일과 검색 코퍼스를 분리하고, 관점 분리는 저장소가 아니라 **페르소나마다 다른 검색 쿼리**로 만든다. 딸린 결과: 코퍼스가 커도 **컨텍스트 비용이 없다**(인덱스이지 컨텍스트가 아니므로). 그래서 명단을 지금 줄이지 않는다 (BD `I-069`).
+**BD `I-053`'s two-layer separation carries over** — persona definition files and the search corpus stay separate, and perspective separation is produced not by separate stores but by **a different search query per persona.** Consequence: a large corpus **costs nothing in context** (it is an index, not context). That is why the corpus is not trimmed (BD `I-069`).
 
 ---
 
-## 6. 미결
+## 6. Open
 
-- **`divergence.axis`의 값 목록** — Phase 1의 실례 2개를 보고 정한다.
-- **`literature.conditions`가 자연어인 것이 정말 안전한가.** 페르소나가 이 필드를 읽고 판단하면 그건 라우팅이다. 읽기만 하는지 분기하는지 Phase 1에서 확인.
-- **항목 ID 발급 주체.** 순번이면 병렬 기입에서 충돌한다.
-- **`rigor/`가 BD·MS의 실제 파일과 어긋날 때의 탐지.** `implemented_in`이 손으로 관리되면 낡는다 — BD `I-076`이 인덱스에 대해 말한 것과 같은 실패.
+- **The value list for `divergence.axis`** — settle after two real cases in Phase 1.
+- **Whether `literature.conditions` being natural language is actually safe.** If a persona reads that field and decides on it, that is routing. Check in Phase 1 whether it is read only or branched on.
+- **Who issues entry IDs.** Sequential numbers collide under parallel writes.
+- **Detecting when `rigor/` drifts from BD's and MS's real files.** Hand-maintained `implemented_in` goes stale — the same failure BD named for the index.

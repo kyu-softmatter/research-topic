@@ -1,90 +1,90 @@
-# 경계 — 무엇이 여기 있고 무엇이 저기 있나
+# Boundaries — what lives here and what lives there
 
-작성: 2026-08-31 · 상태: `sketch`
-관련: [ideas.md](ideas.md) `T-001`~`T-006` · `Q-001`~`Q-003`
-
----
-
-## 1. 왜 세 번째 레포인가
-
-두 레포 안에 두면 안 되는 이유는 하나다. **BD와 microscope는 각자 자기 도메인의 집행자이고, 둘의 공통 기준을 어느 한쪽에 두면 다른 쪽이 그것을 수입해야 한다.** 수입 방향이 정해지지 않으면 기준이 두 벌 생긴다.
-
-그런데 이것만으로는 새 레포의 근거가 약하다. 진짜 근거는 아래 §2다.
+Drafted 2026-08-31 · status `sketch`
+Related: [ideas.md](ideas.md) `T-001`–`T-006` · `T-041` · `Q-001`–`Q-003`
 
 ---
 
-## 2. 두 레포가 독립적으로 수렴한 것 — J3의 실증 근거
+## 1. Why a third repo
 
-BD `design/`과 microscope `README.md`·`.claude/agents/`를 대조한 결과다. 두 레포는 서로를 참조하지 않고 만들어졌다.
+There is one reason not to put this inside either existing repo. **BD and the microscope are each the enforcer for their own domain, and if criteria shared by both live in one of them, the other has to import them.** With no settled direction of import, two sets of criteria appear.
 
-| 무엇 | BD | microscope | 수렴 |
+That alone is a weak basis for a new repo. The real basis is §2.
+
+---
+
+## 2. What the two repos converged on independently — the evidence for J3
+
+Built by comparing BD's `design/` against the microscope's `README.md` and `.claude/agents/`. Neither repo references the other.
+
+| What | BD | microscope | Converged |
 |---|---|---|---|
-| **관점 분할 단위** | 엄밀성 축 `A1`~`A10` | 서브시스템 렌즈 8개 | ○ 둘 다 **사람이 아니라 축**으로 나눴다 |
-| **판정의 집행자** | `gate.md` — 결정론적 게이트 | `compute/gate.py` + hard gate `G1`~`G32` | ○ |
-| **기본값** | `I-055` 기본값은 통과가 아니라 실패 | `BLOCKED`가 기본. 누락 입력을 지목 | ○ |
-| **판정에 동봉하는 것** | `I-065` 판정을 뒤집을 검사(falsifier) | `kb/expertise/` 각 항목이 자기 falsifier를 가진다 | ○ |
-| **LLM의 자리** | 페르소나가 기준을 지정, 확정은 코드 | 서브에이전트는 닫힌 형태가 없는 절반만. **숫자를 생성하지 않는다** | ○ |
-| **자기 점검 렌즈** | 없음 | 렌즈 6(validity)이 다른 렌즈의 판정을 검토 → 마지막에 호출 | ✗ BD에 없다 |
-| **위원회 미소집 탐지** | 없음 | `G27`이 그것만 본다 | ✗ BD에 없다 |
-| **지식 베이스** | `I-032` — **`raw`. 미구현** | `kb/systems` · `kb/calibrations` · `kb/expertise` · `kb/decisions`. 아키텍처에 R/W로 명시 | ✗ **BD에 없다** |
+| **Unit of perspective** | Rigor axes `A1`–`A10` | 8 subsystem lenses | ○ Both divided **by axis, not by person** |
+| **Who enforces a verdict** | `gate.md` — a deterministic gate | `compute/gate.py` + hard gates `G1`–`G32` | ○ |
+| **Default** | `I-055` — the default is failure, not passing | `BLOCKED` is the default; it names the missing input | ○ |
+| **What a judgment carries** | `I-065` — the check that would overturn it (a falsifier) | Each `kb/expertise/` entry carries its own falsifier | ○ |
+| **Where the LLM sits** | Personas name the criteria; code settles them | The subagent supplies only the half with no closed form, and **originates no number** | ○ |
+| **A self-review lens** | None | Lens 6 (validity) reviews the other lenses' verdicts, so it is called last | ✗ Absent in BD |
+| **Detecting that the committee never met** | None | `G27` looks at nothing else | ✗ Absent in BD |
+| **A knowledge base** | `I-032` — **still `raw`. Not built** | `kb/systems`, `kb/calibrations`, `kb/expertise`, `kb/decisions`, with R/W marked in the architecture | ✗ **Absent in BD** |
 
-### 이 표가 말하는 것
+### What this table says
 
-**① 상위 6행이 수렴했다는 것은 그 6개가 도메인 특이적이 아니라는 뜻이다.** 콜로이드 BD와 광학 현미경이 공통 조상 없이 같은 모양에 도달했다. 그것이 J3가 관리할 대상의 실제 범위다 — 축 분할 · 결정론적 집행 · 기본값 실패 · falsifier 동봉 · LLM의 자리.
+**① The top six rows converging means those six are not domain-specific.** Colloidal BD and optical microscopy reached the same shape with no common ancestor. That is the actual scope of what J3 manages — axis division, deterministic enforcement, default-failure, an attached falsifier, and where the LLM sits.
 
-**② 하위 3행은 수렴하지 않았고, 방향이 한쪽이다.** 세 개 전부 microscope에만 있다. 그중 두 개(자기 점검 렌즈 · 미소집 탐지)는 BD가 수입하면 될 일이고 이 레포의 일이 아니다.
+**② The bottom three did not converge, and all three lean one way.** All are present only in the microscope. Two of them — the self-review lens and the never-met detector — are BD's to import, and not this repo's business.
 
-**③ 남는 하나가 이 레포의 일이다.** microscope의 `kb/`는 **장비에 묶여 있다** — `kb/systems/current.md`는 "이 현미경이 실제로 어느 기계인지"다. BD가 그걸 쓸 수 없다. 그래서 KB는 세 번째 자리가 필요하다. 이것이 J1의 근거이며, **사용자가 J1을 먼저 말한 것과 독립적으로 도출된다.**
+**③ The remaining one is this repo's business.** The microscope's `kb/` is **bound to the instrument** — `kb/systems/current.md` is "which machine this microscope actually is." BD cannot use that. So the KB needs a third place. This is the basis for J1, and **it follows independently of the user having asked for J1 first.**
 
-> **주의 1 — 아직 확인 안 한 것.** microscope의 `kb/expertise/`가 실제로 무엇을 담고 있는지 파일 내용을 읽지 않았다. 담긴 것이 이미 도메인 중립이면 §2③의 결론이 약해진다. → [ideas.md](ideas.md) `Q-002`
+> **Caveat 1 — not yet checked.** The file contents of the microscope's `kb/expertise/` were never read. If what is in there is already domain-neutral, the conclusion in §2③ weakens. → [ideas.md](ideas.md) `Q-002`
 >
-> **주의 2 — 대조에 쓴 소스.** 이 표는 `/d/BD/design/`(로컬, git 미추적)과 `/d/backup/연구/agentic-microscope-prefilter.git`(bare 백업, `HEAD` = `9f4517d`)을 읽고 만들었다. **live 레포는 [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope)이고 이름이 다르다** — 백업 이후 변경이 있으면 이 표는 낡았다. 재확인이 `Q-002`와 같이 묶인다. → `Q-007`
+> **Caveat 2 — the sources this comparison used.** This table was built from `/d/BD/design/` (local, not under git) and `/d/backup/연구/agentic-microscope-prefilter.git` (a bare backup, `HEAD` = `9f4517d`). **The live repos are [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) and [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope), and the microscope's name differs from the backup's.** BD's public description suggests the remote is **ahead of** the snapshot that was read, which would make this table stale. Re-deriving it from the remotes is bundled with `Q-002`. → `T-041`
 
 ---
 
-## 3. 경계표 — 겹쳐 보이는 것의 소유권
+## 3. The boundary table — who owns what looks shared
 
-BD `personas/_common.md` §5의 축 경계표와 같은 모양이다. **탐지와 진단을 분리한다**는 원칙도 그대로 승계한다.
+Same shape as the axis boundary table in BD `personas/_common.md` §5, and it inherits the same principle: **detection and diagnosis are separated.**
 
-| 대상 | 소유 | 다른 레포는 |
+| Subject | Owner | The other repos |
 |---|---|---|
-| **엄밀성 축의 정의** (무엇을 묻는 축인가) | **research-topic** | BD·MS는 자기 도메인 인스턴스를 갖는다 |
-| **통과 조건의 형식** (검사 가능한 형태란 무엇인가) | **research-topic** | BD·MS는 그 형식으로 자기 조건을 쓴다 |
-| **통과 조건의 값** (임계값·허용오차) | **BD** / **MS** 각자 | research-topic은 **값을 정하지 않는다** |
-| **원전 문헌 목록** | **research-topic** | BD·MS는 인용만 |
-| **원전에서 뽑은 성립 조건** ("이 식이 언제 유효한가") | **research-topic** | BD는 그것을 레지스트리 `conditions` 필드로 쓴다 |
-| **주제 후보** | **research-topic** | BD·MS는 그것을 검증 대상으로 받는다 |
-| **주제가 검증 가능한가의 판정** | **BD** / **MS** | research-topic은 낼 뿐, 가능성을 스스로 판정하지 않는다 |
-| **실패·막다른 길 기록** | **research-topic** (보관) | BD·MS가 기입한다 (BD:`I-077` 템플릿) |
-| **장비 상태·캘리브레이션** | **MS** | 여기 오지 않는다 |
-| **런 프로버넌스·시드·엔진 버전** | **BD** | 여기 오지 않는다 |
+| **The definition of a rigor axis** (what the axis asks) | **research-topic** | BD and MS hold their own domain instances |
+| **The form of a pass condition** (what counts as checkable) | **research-topic** | BD and MS write their conditions in that form |
+| **The value of a pass condition** (thresholds, tolerances) | **BD** / **MS**, each | research-topic **does not set values** |
+| **The canonical-source list** | **research-topic** | BD and MS cite only |
+| **Conditions of validity drawn from a source** ("when does this expression hold?") | **research-topic** | BD writes them into the registry's `conditions` field |
+| **Topic candidates** | **research-topic** | BD and MS receive them as targets to test |
+| **Whether a topic is testable** | **BD** / **MS** | research-topic emits; it does not judge testability itself |
+| **Failures and dead ends** | **research-topic** (custody) | BD and MS write them (BD `I-077` template) |
+| **Instrument state, calibrations** | **MS** | Does not come here |
+| **Run provenance, seeds, engine versions** | **BD** | Does not come here |
 
-> **경계 원칙:** research-topic은 **형식과 출처**를 갖고, **값과 실행**은 갖지 않는다.
-> 값을 가지면 BD의 "인용 없는 수치 기준 금지"를 이 레포가 대신 위반하는 통로가 된다.
-
----
-
-## 4. 이관하지 않는다
-
-BD `design/personas/*.md`는 `ideas.md`의 `I-` 번호를 본문에서 촘촘히 참조한다. 파일을 옮기면 그 참조가 전부 끊긴다.
-
-**결정 (되돌릴 수 있는 쪽):** 옮기지 않는다. 이 레포는 **정본 스키마와 원전 레지스트리**를 갖고, BD·MS의 기존 파일은 제자리에 둔다. 필요한 것은 이 레포가 두 레포를 **인덱싱**하는 것이다.
-
-근거는 BD `I-057`이다 — 경계선은 "되돌릴 수 있고 검증 가능한가". 인덱싱은 되돌릴 수 있고, 이관은 못 되돌린다.
-
-**재검토 조건:** BD와 MS가 같은 축의 통과 조건을 **서로 다른 형식으로** 쓰기 시작하면. 그때는 형식이 실제로 갈라진 것이고 정본이 필요해진다.
+> **Boundary principle:** research-topic holds **form and provenance**, and holds neither **values** nor **execution**.
+> Holding values would make this repo the channel through which BD's own "no numeric criterion without a citation" gets violated on its behalf.
 
 ---
 
-## 5. 이 레포가 하지 않는 일 — 구조적 금지
+## 4. Nothing migrates
 
-| 금지 | 왜 |
+BD's `design/personas/*.md` reference `ideas.md` `I-` numbers densely in their prose. Move the files and all of those references break.
+
+**Decision (the reversible one):** do not move them. This repo holds **the canonical schema and the source registry**; BD's and MS's existing files stay where they are. What is needed is for this repo to **index** the two.
+
+The grounds are BD `I-057` — a boundary is drawn at *is it reversible and checkable*. Indexing is reversible; migration is not.
+
+**Revisit when:** BD and MS start writing the pass conditions of the same axis **in different forms.** At that point the form really has diverged and a canonical copy is needed.
+
+---
+
+## 5. What this repo does not do — structural prohibitions
+
+| Prohibited | Why |
 |---|---|
-| **숫자 생성** | 두 레포의 공통 규약. LLM은 숫자를 만들지 않는다 |
-| **임계값·허용오차 결정** | §3 경계표. 값은 도메인 소유 |
-| **시뮬·실험 실행** | 집행자가 아니다 |
-| **주제의 가치를 확정** | 가치 확정은 되돌릴 수 없다. 사람 경로 (BD:`I-057`) |
-| **자연어 요약을 상태로 쓰기** | BD:`I-133` 안티패턴. J1이 정확히 여기서 죽는다 → [kb-schema.md](kb-schema.md) |
-| **페르소나가 다른 페르소나를 반박** | ...**이 금지는 승계하지 않는다.** → [personas/_common.md](personas/_common.md) §3 |
+| **Originating numbers** | The shared rule of both repos. The LLM does not make numbers |
+| **Deciding thresholds and tolerances** | §3. Values are domain-owned |
+| **Running simulations or experiments** | This is not an enforcer |
+| **Settling a topic's value** | Settling value is irreversible. Human path (BD `I-057`) |
+| **Using natural language as state** | BD `I-133` antipattern. J1 dies exactly here → [kb-schema.md](kb-schema.md) |
+| **A persona rebutting another persona** | ...**this one is not inherited.** → [personas/_common.md](personas/_common.md) §3 |
 
-마지막 행이 BD와 갈라지는 유일한 지점이고, 그것이 이 레포의 설계상 가장 위험한 결정이다.
+The last row is the only place this repo parts from BD, and it is the most dangerous decision in its design.

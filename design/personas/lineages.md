@@ -1,177 +1,177 @@
-# 가치 계보 — 논의 재료
+# Value lineages — discussion material
 
-작성: 2026-08-31 · 개정: 2026-08-31 (인명 제거 · 지위 하향) · 상태: `sketch`
-관련: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `C-002` · `Q-004`
+Drafted 2026-08-31 · revised 2026-08-31 (names removed · status lowered) · status `sketch`
+Related: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `C-002` · `Q-004`
 
-> ## 이 문서는 결정이 아니다
+> ## This document is not a decision
 >
-> **아래 3축 6극 배정과 문헌 목록은 논의 재료다** → [README.md](../../README.md) §0.
+> **The 3-axis / 6-pole assignment and the literature lists below are discussion material** → [README.md](../../README.md) §0.
 >
-> **가치 축이 무엇이고 몇 개인지는 Prof. Takatori가 정한다.** 이 문서가 구체적으로 적혀 있는 이유는 그것이 정해졌기 때문이 아니라, **논의가 구체적인 대상을 갖게 하려고**다 — 백지에서 "액티브매터의 가치 축이 뭘까요"를 묻는 것보다, 틀린 초안을 놓고 "이건 아니고 저건 이렇다"를 듣는 것이 싸다.
+> **What the value axes are, and how many, is for Prof. Takatori to decide.** This file is written out concretely not because any of it is settled but **to give the discussion something specific to push against** — hearing "not that, and this one works like so" against a wrong draft is cheaper than asking "what are the value axes in active matter?" against a blank page.
 >
-> | 이 문서에서 | 지위 |
+> | In this document | Status |
 > |---|---|
-> | **인명을 뺀 원칙** (인용은 남기고 귀속은 뺀다) | **결정** |
-> | **분할 단위 = 가치 축의 극** (`T-018`) | **결정** |
-> | **증류 절차** `T-013` (가치 조건 → 원전 → 정합) | **결정** — BD `I-096`의 승계 |
-> | 3축 6극이 무엇인가 | **초안. 대체 예상** |
-> | 각 극의 **가치 조건** | **비어 있다.** 극의 이름만 있다 |
-> | 문헌 목록 | **재료.** `?` 표시는 DOI 미확인 |
+> | **The rule for removing names** (citations stay, attributions go) | **Decided** |
+> | **Unit of division = a pole of a value axis** (`T-018`) | **Decided** |
+> | **The distillation procedure** `T-013` (value condition → source → consistency) | **Decided** — inherited from BD `I-096` |
+> | What the 3 axes and 6 poles are | **A draft. Expect replacement** |
+> | Each pole's **value conditions** | **Empty.** Only the pole names exist |
+> | The literature lists | **Material.** A `?` marks a DOI that was never verified |
 
-## 이 문서의 위치
+## Where this document sits
 
-[ideas.md](../ideas.md)는 **아이디어 로그**, 이 문서는 **데이터**다.
+[ideas.md](../ideas.md) is the **idea log**; this is **data**.
 
-이전 이름은 `roster.md`(인명 명단)였다. 인명을 뺐으므로 명단이 아니다.
+Its earlier name was `roster.md` (a roster of names). With the names gone it is not a roster.
 
 ---
 
-## 개정 이유 — 인명을 뺐다
+## Why the names were removed
 
-사용자 지시. `T-035`("산출물을 외부로 내보낼 때 인명을 벗긴다")는 이걸 **나중 일**로 뒀는데, **정의 단계에서 미리** 한다.
+User instruction. `T-035` ("strip names before anything leaves") had this as a **later** step; it is done **at the definition stage** instead.
 
-### 원칙
+### The rule
 
-> **인용은 남긴다. 귀속은 뺀다.**
+> **Citations stay. Attributions go.**
 
-| 남긴 것 | 뺀 것 |
+| Kept | Removed |
 |---|---|
-| 문헌 인용 — 저자명 포함. **학술 관행이고 문제 없다** | *"이 사람은 X를 가치 있다고 본다"* 형태의 귀속 |
-| 리뷰 Outlook 절의 위치 (DOI · 절 번호) | 인명 명단 자체 |
-| 계보의 문헌군 | `[지정]` 표기 (인명에 붙는 것이므로) |
+| Literature citations, author names included. **Normal scholarship, no problem** | Sentences of the form *"this person considers X valuable"* |
+| The location of a review's Outlook section (DOI + section number) | The roster of names itself |
+| A lineage's body of literature | `[designated]` markers (they attach to names) |
 
-### 인명 명단을 이 레포가 보유하지 않는 두 번째 근거
+### A second reason not to hold a roster here
 
-**BD roster에 이미 ~200명이 있다.** `T-004`(이관하지 않고 인덱싱)에 따라 중복 보유하지 않는다. 저자 필터가 필요하면 [`BD:design/personas-roster.md`](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)를 참조한다 — 그 명단은 **방법론 원전 여부**로 태그돼 있어(BD `I-096`) 가치 관점의 배정과 애초에 다른 축이었다(`Q-003`).
+**BD's roster already holds ~200 names.** Under `T-004` (index, do not migrate) this repo does not duplicate it. When an author filter is needed, reference [`BD:design/personas-roster.md`](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) — and note that those tags were assigned by **methodological canonicity** (BD `I-096`), a different axis from value assignment (`T-013`) to begin with (`Q-003`).
 
 ---
 
-## 이 개정이 같이 푼 것 — 예상 못 한 이득
+## What this revision also fixed — unanticipated
 
-인명 제거는 안전 조치로 지시됐는데, **설계 문제 넷을 동시에 건드린다.**
+Removing names was instructed as a safety measure, but it **moved four design problems at once.**
 
-| ID | 개정 전 | 개정 후 |
+| ID | Before | After |
 |---|---|---|
-| **`C-002`** 사람 vs 축 | BD `I-067`과 정면 충돌. 미해소 | **전환.** 분할 단위가 사람이 아니라 **가치 축의 극(pole)** 이 됐다 → §분할 단위 |
-| **`Q-004`** 페르소나 수 | 사람 단위라 **상한이 없다** | **해소.** 축에서 역산하므로 유한하다 — 현재 3축 6극 |
-| **`T-016`** 역할 겹침 | Takatori가 J3 저술 + 페르소나 대상 → `trivially_satisfied` | **대폭 완화.** 페르소나가 특정 개인이 아니므로 겹침이 구조적이지 않다 |
-| **`C-006`** 통합 걸림돌 | 실명 귀속 때문에 private 필수 → 모노레포 불가 | **완화.** 공개 제약의 가장 큰 근거가 사라졌다. **단 private는 유지한다** (§미결) |
+| **`C-002`** person vs axis | Head-on collision with BD `I-067`. Open | **Transformed.** The unit of division became **a pole of a value axis** → §Unit of division |
+| **`Q-004`** persona count | Person-based, so **no upper bound** | **Closed.** Back-derived from axes, hence finite — currently 3 axes / 6 poles |
+| **`T-016`** role overlap | One person authoring J3 while also being a persona target → `trivially_satisfied` | **Sharply weakened.** A persona is not a specific individual, so the overlap is not structural |
+| **`C-006`** integration obstacle | Attribution by name forces private, so no monorepo | **Relaxed.** The largest argument for the disclosure constraint is gone. **Private is still kept** (§Open) |
 
-> **사용자 지시가 `C-002`를 우회하는 경로였다.** `T-010`은 "사람으로 나눠도 된다"를 논증했지만, 나누지 않는 편이 더 나았다 — **의도(연구자의 연구철학으로 보기)는 계보에 그대로 남고**, 상충이 산출물이라는 성질도 그대로다(축당 두 극이므로).
+> **The instruction turned out to be a route around `C-002`.** `T-010` argued that dividing by person was defensible, but not dividing was better — **the intent (seeing through researchers' research philosophies) carries over into lineages**, and so does the property that disagreement is the product (two poles per axis).
 
 ---
 
-## 분할 단위 — 가치 축의 극(pole)
+## Unit of division — a pole of a value axis
 
-BD `I-067`은 **축당 페르소나 하나**였다. 축이 직교해서 판정이 상충하지 않는 것이 목적이었다.
+BD `I-067` had **one persona per axis.** The goal was orthogonality, so that verdicts never conflict.
 
-여기서는 **축당 둘 — 두 극**이다. 목적이 반대이기 때문이다: 상충이 산출물이다(`T-010`).
+Here it is **two per axis — the two poles.** The goal is the opposite: disagreement is the product (`T-010`).
 
 ```
-가치 축 X?          두 극이 같은 대상에 반대 방향 가치를 붙인다
+value axis X?       the two poles attach opposite value to the same target
    |
    +-- V(a)  ---+
-   |            +--> divergence 항목 (kb-schema §4.3)
-   +-- V(b)  ---+        resolvable_by 로 감쇠 (T-034)
+   |            +--> a divergence entry (kb-schema sec. 4.3)
+   +-- V(b)  ---+        damped by resolvable_by (T-034)
 ```
 
-**한 극만 부르면 `divergence/`가 생기지 않는다** → [`_common.md`](_common.md) §6.
+**Convene one pole and no `divergence/` exists** → [`_common.md`](_common.md) §6.
 
 ---
 
-## 3축 6극 — 초안
+## 3 axes / 6 poles — draft
 
-| 축 | 갈리는 질문 | 극 | 가치 조건의 방향 |
+| Axis | The question it splits on | Pole | Direction of the value condition |
 |---|---|---|---|
-| **X1 · 환원성** | 액티브를 열역학적·무차원 양으로 환원할 수 있는가가 가치의 조건인가 | **V1 환원** | 환원되면 가치. 응력·압력·유효온도로 표현되는가 |
-| | | **V2 창발** | 새 상태가 실물로 나타나면 가치. 환원 여부는 조건이 아니다 |
-| **X2 · 기제 vs 현상론** | 미시 기제를 규명해야 가치인가 | **V3 기제** | 기제가 규명되면 가치. 경계조건·화학장까지 |
-| | | **V4 최소모형** | 최소모형으로 상태도를 얻으면 가치. 기제는 무관 |
-| **X3 · 측정 가능성** | 재지 못하는 양을 이론적으로 정의하는 것에 가치가 있는가 | **V5 측정** | 잴 수 있으면 가치. 프로브 교란·분해능까지 |
-| | | **V6 이론적 정의** | 정의가 정합하면 가치. 현재 측정 가능성은 조건이 아니다 |
+| **X1 · reducibility** | Is being reducible to a thermodynamic or dimensionless quantity a condition of value? | **V1 reduction** | Reducible means valuable. Expressible as a stress, a pressure, an effective temperature |
+| | | **V2 emergence** | A new state appearing in the lab means valuable. Reducibility is not a condition |
+| **X2 · mechanism vs phenomenology** | Must the microscopic mechanism be established for it to be valuable? | **V3 mechanism** | Establishing the mechanism means valuable. Down to boundary conditions and chemical fields |
+| | | **V4 minimal model** | Getting a phase diagram from a minimal model means valuable. Mechanism is irrelevant |
+| **X3 · measurability** | Is there value in defining, theoretically, a quantity that cannot be measured? | **V5 measurement** | Measurable means valuable. Including probe perturbation and resolution |
+| | | **V6 theoretical definition** | A consistent definition means valuable. Present measurability is not a condition |
 
-> **`X1`을 Phase 1의 시험 쌍으로 권고한다.** 이유는 §Phase 1.
-> **`X3`은 BD 내부의 긴장과 같은 모양이다** — `A1`(측정 가능성) ↔ `A6`(비평형 정량화). BD roster의 `A6` 절 각주가 그 긴장을 이미 적어 뒀다: *"Stokes–Einstein을 `cross` 경로로 쓰는 것은 액티브 계에서 애초에 유효하지 않다."*
-> **`kb-schema.md` §4.3의 `divergence.axis` 열거형이 이 표에서 나온다** — `reducibility` · `mechanism_vs_phenomenology` · `measurability`. 나머지 두 값(`novelty_of_state` · `generality`)은 이 표에 대응이 없으므로 Phase 1에서 정리한다.
+> **`X1` is recommended as the Phase 1 test pair.** Reasons in §Phase 1.
+> **`X3` has the same shape as a tension inside BD** — `A1` (measurability) against `A6` (nonequilibrium quantification). A footnote in BD's roster under `A6` already records it: *"using Stokes–Einstein as a `cross` path is not valid in an active system in the first place."*
+> **The `divergence.axis` enum in [kb-schema.md](../kb-schema.md) §4.3 comes from this table** — `reducibility`, `mechanism_vs_phenomenology`, `measurability`. Since the table is a draft, so is the enum.
 
 ---
 
-## Phase 1 — 시험 쌍
+## Phase 1 — the test pair
 
-**1개가 아니라 쌍이 필요한 이유:** 철학 ⑤(상충이 산출물)와 `C-005`(분기 스키마)는 한 쌍이 없으면 시험할 수 없다.
+**Why a pair and not one:** philosophy ⑤ (disagreement is the product) and `C-005` (the divergence schema) cannot be tested without a pair.
 
-| 축 | 왜 이 축인가 | 왜 아닌가 |
+| Axis | Why this one | Why not |
 |---|---|---|
-| **X1 환원성** ← **권고** | ① 두 극의 문헌군이 **둘 다 두껍다** ② **한 극의 원전 저자에게 직접 물어볼 수 있다**(`T-015`) — 즉 V1의 가치 조건에 대해서만은 대조 경로가 있다 ③ 사용자의 도메인 정중앙 | — |
-| **X2 기제** | 문헌 표면에 분기가 잘 드러난다 | 대조 경로 없음 |
-| **X3 측정** | BD 내부 긴장과 대응되어 J3에 바로 쓰인다 | 두 극이 비대칭 — V6의 문헌군이 얇을 가능성 |
+| **X1 reducibility** ← **recommended** | ① both poles have **thick** bodies of literature ② **one pole's canonical author can be asked directly** (`T-015`) — so for `V1`'s value conditions a comparison path exists ③ dead centre of the group's own domain | — |
+| **X2 mechanism** | The divergence shows plainly on the surface of the literature | No comparison path |
+| **X3 measurability** | Maps onto a tension inside BD, so it feeds J3 directly | The poles are asymmetric — `V6`'s literature may be thin |
 
-확정은 2026-09-03 상의 안건 3.
-
----
-
-## 문헌 진입점
-
-**`T-013` 절차의 ②단계 재료다.** 인명이 아니라 **문헌에서 시작한다** — BD `I-068`이 축 페르소나에서 이미 확인한 것과 같은 이유.
-
-**확인 표기:** `✔` = BD roster에 실려 있어 사용자가 확인한 문헌 · `?` = **이 세션에서 제시했고 미확인.** Phase 1에서 DOI로 확정한다.
-
-### X1 · 환원성
-
-| 극 | 문헌 | Outlook | 확인 |
-|---|---|---|---|
-| **V1** | Takatori · Yan · Brady, *PRL* **113** (2014) — swim pressure. BD `A5.E8`의 원전 | 원 논문 | ✔ |
-| **V1** | Takatori & Brady, *Curr. Opin. Colloid Interface Sci.* (2016) | 리뷰 | `?` |
-| **V1** | Brady & Bossis, "Stokesian Dynamics", *Annu. Rev. Fluid Mech.* **20** (1988) | 리뷰 | ✔ |
-| **V1** | ten Hagen · van Teeffelen · Löwen, *JPCM* **23** (2011) — 단일 ABP 정확 MSD | 원 논문 | ✔ |
-| **V2** | Marchetti 외, "Hydrodynamics of soft active matter", *Rev. Mod. Phys.* **85** (2013) | **§Outlook** | ✔ |
-| **V2** | Needleman & Dogic, *Nat. Rev. Mater.* **2** (2017) | 리뷰 | `?` |
-| **V2** | Palacci 외, *PRL* **105** (2010) — 액티브 침강 정상상태 실측 | 원 논문 | ✔ |
-
-### X2 · 기제 vs 현상론
-
-| 극 | 문헌 | Outlook | 확인 |
-|---|---|---|---|
-| **V3** | Anderson, "Colloid transport by interfacial forces", *Annu. Rev. Fluid Mech.* **21** (1989) | 리뷰 | ✔ |
-| **V3** | Golestanian · Liverpool · Ajdari (2005, 2007) — 자기추진 phoretic | 원 논문 | ✔ |
-| **V3** | Lauga & Powers, *Rep. Prog. Phys.* **72** (2009) — 미소 스위머 유체역학 | 리뷰 | ✔ |
-| **V4** | Tailleur & Cates, *PRL* **100** (2008) — 액티브 정상상태 밀도 | 원 논문 | ✔ |
-| **V4** | Cates & Tailleur, "Motility-Induced Phase Separation", *Annu. Rev. Condens. Matter Phys.* **6** (2015) | 리뷰 | `?` |
-| **V4** | Stenhammar 외 (2014) — MIPS 조대화 | 원 논문 | ✔ |
-
-### X3 · 측정 가능성
-
-| 극 | 문헌 | Outlook | 확인 |
-|---|---|---|---|
-| **V5** | Furst & Squires, *Microrheology* (Oxford, 2017) | **텍스트북 — Outlook 약함** | ✔ |
-| **V5** | Crocker & Grier (1996) — 입자 추적 알고리즘 | 원 논문 | ✔ |
-| **V5** | Savin & Doyle (2005) — 추적의 정적·동적 오차 | 원 논문 | ✔ |
-| **V6** | Harada & Sasa (2005) — FDT 위반과 소산의 정확한 관계 | 원 논문 | ✔ |
-| **V6** | Cugliandolo (2011) — 효과 온도의 성립 조건 | 리뷰 | ✔ |
-| **V6** | Sekimoto, *Stochastic Energetics* | 텍스트북 | ✔ |
-
-> **V5의 첫 행이 `T-012`의 반례 후보다** — 텍스트북은 **방법의 정전**이지만 Outlook이 약하다. 즉 **방법 원전이 두꺼운 극이 오히려 가치 원전은 얇을 수 있다.** `T-012`("가치의 원전은 텍스트북이 아니다")가 예측하는 것과 정합하지만, 그러면 V5의 가치 조건을 무엇에서 역산하는지가 미결이다.
+Settled at agenda 3 of the 2026-09-03 discussion.
 
 ---
 
-## 가치 원전으로서 특별한 것 — 로드맵 리뷰
+## Literature entry points
 
-`T-012`가 가치의 원전을 **리뷰의 Outlook 절**로 지목했다. 그렇다면 **로드맵 형식 리뷰가 최상급 진입점**이다 — 여러 저자의 Outlook을 한 편에 모아 놓은 것이기 때문이다.
+**Material for step ② of the `T-013` procedure.** Start from literature, not from names — the same reason BD `I-068` established for its axis personas.
 
-| 문헌 | 왜 특별한가 | 확인 |
+**Verification marks:** `✔` = carried in BD's roster, so already checked by the user · `?` = **proposed in this session and unverified.** DOIs get settled in Phase 1.
+
+### X1 · reducibility
+
+| Pole | Reference | Outlook | Verified |
+|---|---|---|---|
+| **V1** | Takatori, Yan & Brady, *PRL* **113** (2014) — swim pressure. The canonical source for BD `A5.E8` | original paper | ✔ |
+| **V1** | Takatori & Brady, *Curr. Opin. Colloid Interface Sci.* (2016) | review | `?` |
+| **V1** | Brady & Bossis, "Stokesian Dynamics", *Annu. Rev. Fluid Mech.* **20** (1988) | review | ✔ |
+| **V1** | ten Hagen, van Teeffelen & Löwen, *JPCM* **23** (2011) — exact single-ABP MSD | original paper | ✔ |
+| **V2** | Marchetti et al., "Hydrodynamics of soft active matter", *Rev. Mod. Phys.* **85** (2013) | **Outlook section** | ✔ |
+| **V2** | Needleman & Dogic, *Nat. Rev. Mater.* **2** (2017) | review | `?` |
+| **V2** | Palacci et al., *PRL* **105** (2010) — measured active sedimentation steady state | original paper | ✔ |
+
+### X2 · mechanism vs phenomenology
+
+| Pole | Reference | Outlook | Verified |
+|---|---|---|---|
+| **V3** | Anderson, "Colloid transport by interfacial forces", *Annu. Rev. Fluid Mech.* **21** (1989) | review | ✔ |
+| **V3** | Golestanian, Liverpool & Ajdari (2005, 2007) — self-propelled phoretic particles | original papers | ✔ |
+| **V3** | Lauga & Powers, *Rep. Prog. Phys.* **72** (2009) — hydrodynamics of microswimmers | review | ✔ |
+| **V4** | Tailleur & Cates, *PRL* **100** (2008) — active steady-state density | original paper | ✔ |
+| **V4** | Cates & Tailleur, "Motility-Induced Phase Separation", *Annu. Rev. Condens. Matter Phys.* **6** (2015) | review | `?` |
+| **V4** | Stenhammar et al. (2014) — MIPS coarsening | original paper | ✔ |
+
+### X3 · measurability
+
+| Pole | Reference | Outlook | Verified |
+|---|---|---|---|
+| **V5** | Furst & Squires, *Microrheology* (Oxford, 2017) | **textbook — weak Outlook** | ✔ |
+| **V5** | Crocker & Grier (1996) — particle-tracking algorithms | original paper | ✔ |
+| **V5** | Savin & Doyle (2005) — static and dynamic errors in tracking | original paper | ✔ |
+| **V6** | Harada & Sasa (2005) — the exact relation between FDT violation and dissipation | original paper | ✔ |
+| **V6** | Cugliandolo (2011) — when an effective temperature holds | review | ✔ |
+| **V6** | Sekimoto, *Stochastic Energetics* | textbook | ✔ |
+
+> **`V5`'s first row is a candidate counterexample to `T-012`** — a textbook is **canonical for a method** but weak on Outlook. So **a pole thick in methodological canon may be thin in value canon.** Consistent with what `T-012` predicts, but it leaves open what `V5`'s value conditions get back-derived from.
+
+---
+
+## Special as a source of value — roadmap reviews
+
+`T-012` names the **Outlook section of a review** as the source of value. If so, **roadmap-format reviews are the best entry point** — they collect many authors' Outlooks in one article.
+
+| Reference | Why special | Verified |
 |---|---|---|
-| Gompper 외, *The 2020 motile active matter roadmap*, *J. Phys. Condens. Matter* **32** (2020) | **수십 개의 Outlook이 절 단위로 분리되어 실려 있다.** 극별 가치 조건 추출에 구조가 이미 맞다 | `?` — 최신판 존재 여부도 함께 확인 |
-| Bechinger 외, "Active particles in complex and crowded environments", *Rev. Mod. Phys.* **88** (2016) | 액티브 입자 전반. Outlook 있을 가능성 높음 | `?` |
-| Marchetti 외, *Rev. Mod. Phys.* **85** (2013) | 액티브 매터 10년치의 압축 (BD `I-068`의 표현) + Outlook | ✔ |
+| Gompper et al., *The 2020 motile active matter roadmap*, *J. Phys. Condens. Matter* **32** (2020) | **Dozens of Outlooks, separated section by section.** The structure already matches per-pole value-condition extraction | `?` — also check whether a newer edition exists |
+| Bechinger et al., "Active particles in complex and crowded environments", *Rev. Mod. Phys.* **88** (2016) | Active particles broadly. Likely has an Outlook | `?` |
+| Marchetti et al., *Rev. Mod. Phys.* **85** (2013) | Ten years of active matter compressed (BD `I-068`'s phrasing) plus an Outlook | ✔ |
 
-> **이 표가 Phase 1의 첫 착수 대상이다.**
+> **This table is Phase 1's first target.**
 
 ---
 
-## 미결
+## Open
 
-- **6극 배정은 초안이다.** `T-013` 절차(가치 조건 → 원전 → 정합)를 한 번도 돌리지 않았다. 현재 배정은 **문헌군 인상에 의한 대용품**이며, 극의 이름이 곧 가치 조건인 것처럼 보이지만 **조건은 아직 안 쓰였다.**
-- **`?` 표시 문헌 전부 미확인.** DOI 확정이 Phase 1의 첫 작업이며, **이 세션에서 제시한 리뷰 목록을 근거로 설계를 진행하지 않는다.**
-- **인명을 뺐지만 private는 유지한다.** 근거가 하나 줄었을 뿐 없어진 게 아니다 — ① KB에 축적될 주제 평가 자체가 미발표 연구 방향이다 ② `X1`의 V1 문헌군이 **사용자 소속 그룹의 성과와 겹친다** — 계보를 특정하지 않아도 문헌 목록이 사실상 지목한다. → [README.md](../README.md) §8
-- **극이 문헌군을 지목하는 것과 사람을 지목하는 것의 실질적 차이가 얼마인가.** 위 항목이 그 한계다. `T-035`의 "인명 벗기기"가 **얼마나 벗겨지는지** 측정되지 않았다.
-- **`V6`의 문헌군이 얇을 가능성** — X3의 두 극이 비대칭이면 분기 시험이 공정하지 않다.
+- **All six pole assignments are drafts.** The `T-013` procedure (value condition → source → consistency) has never been run once. The current assignment **stands in for it, resting on impressions of the literature**, and although a pole's name reads like its value condition, **the conditions have not been written.**
+- **Every `?` reference is unverified.** Settling DOIs is Phase 1's first task, and **the review list proposed in this session is not a basis for advancing the design.**
+- **Names are gone but private stays.** One reason fewer, not none — ① the topic assessments that will accumulate in the KB are unpublished research directions ② `X1`'s `V1` literature **overlaps the group's own output**, so without naming the lineage **the reading list points at it anyway.** → [README.md](../../README.md) §8 · `T-019`
+- **How much practical difference there is between a pole pointing at a body of literature and pointing at a person.** The item above is the limit. How much of `T-035`'s name-stripping actually strips **has not been measured.**
+- **`V6`'s literature may be thin** — if `X3`'s poles are asymmetric, the divergence test is not a fair one.
