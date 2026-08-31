@@ -36,7 +36,9 @@ BD `design/`과 microscope `README.md`·`.claude/agents/`를 대조한 결과다
 
 **③ 남는 하나가 이 레포의 일이다.** microscope의 `kb/`는 **장비에 묶여 있다** — `kb/systems/current.md`는 "이 현미경이 실제로 어느 기계인지"다. BD가 그걸 쓸 수 없다. 그래서 KB는 세 번째 자리가 필요하다. 이것이 J1의 근거이며, **사용자가 J1을 먼저 말한 것과 독립적으로 도출된다.**
 
-> **주의 — 아직 확인 안 한 것.** microscope의 `kb/expertise/`가 실제로 무엇을 담고 있는지 파일 내용을 읽지 않았다. 담긴 것이 이미 도메인 중립이면 §2③의 결론이 약해진다. → [ideas.md](ideas.md) `Q-002`
+> **주의 1 — 아직 확인 안 한 것.** microscope의 `kb/expertise/`가 실제로 무엇을 담고 있는지 파일 내용을 읽지 않았다. 담긴 것이 이미 도메인 중립이면 §2③의 결론이 약해진다. → [ideas.md](ideas.md) `Q-002`
+>
+> **주의 2 — 대조에 쓴 소스.** 이 표는 `/d/BD/design/`(로컬, git 미추적)과 `/d/backup/연구/agentic-microscope-prefilter.git`(bare 백업, `HEAD` = `9f4517d`)을 읽고 만들었다. **live 레포는 [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope)이고 이름이 다르다** — 백업 이후 변경이 있으면 이 표는 낡았다. 재확인이 `Q-002`와 같이 묶인다. → `Q-007`
 
 ---
 
