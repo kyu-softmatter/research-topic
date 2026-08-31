@@ -1,0 +1,20 @@
+# 스크래치·임시
+*.tmp
+*.bak
+~$*
+.DS_Store
+Thumbs.db
+
+# 파이썬 (src/ 착수 시)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# 인덱스는 파생물이다 — 항목 파일이 정본 (kb-schema.md §5)
+index/
+*.index
+
+# 비공개 자료: 페르소나 대상 본인 확인 전 초안
+private/
