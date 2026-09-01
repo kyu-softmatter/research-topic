@@ -1,8 +1,32 @@
 # research-topic — the topic-selection and knowledge axis
 
+> [!IMPORTANT]
+> **IDEA SKETCH / CONCEPT DOCUMENT**
+>
+> This repository is a design proposal for the third axis of a three-part
+> system. It contains design documents only — **no code, no knowledge-base
+> entries, and no running pipeline.** The value axes, schemas and literature
+> lists written out here are **discussion material, not decisions**;
+> construction is to be done by someone else (§5), and all of it is subject to
+> change. What is fixed and what is open is separated in §0.
+
 The third axis. It supplies [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) (experiment) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) (simulation) with **what to work on**, and takes back what those two produce **as knowledge**.
 
 Drafted 2026-08-31 · status `sketch` — **no code. An idea sketch only.**
+
+## Project status
+
+Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`, no tests — those directories are not empty, they do not exist.
+
+| | |
+|---|---|
+| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 33 ideas, 6 conflicts, 9 open questions |
+| **Drafted, expected to be replaced** | 3 value axes / 6 poles · KB formal-object schemas · literature entry points |
+| **Empty** | The value conditions of every pole. Only the pole names exist |
+| **Not started** | Everything in Phase 1 and after → §4 |
+| **Depends on this repo** | Nothing. Both working repositories run without it |
+
+The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose purpose is to make the four rows of §0 fillable by the person who will build this.
 
 ---
 
