@@ -1,5 +1,7 @@
 # research-topic — the topic-selection and knowledge axis
 
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
+
 > [!IMPORTANT]
 > **IDEA SKETCH / CONCEPT DOCUMENT**
 >
@@ -384,3 +386,13 @@ Quotations from BD's design documents are translated; the Korean originals are f
 | `MS:` | https://github.com/kyu-softmatter/agentic-microscope | public |
 
 `Q-007` (what does this repo point at for BD) is **closed** — both repos are on GitHub, so references pin commit SHAs. Local paths are not used.
+
+---
+
+## Licence
+
+[MIT](LICENSE), settled 2026-09-04 — the same as [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent). **A documentation licence would have been the more exact instrument for a repo that is currently all prose**, and it was rejected on one ground: this is a software repo that has not got its code yet (`src/` arrives in Phase 1), and with `C-006` dissolved (§7) a monorepo is now possible on disclosure grounds. Choosing differently here would rebuild a smaller version of the seam that just came down.
+
+**Two things it does not reach.** The **literature** these documents cite — the entry points in [lineages.md](design/personas/lineages.md) are citations, and a citation carries no right over the work it points at. And the **quotations from BD's design documents**, which are translated here; those are the same author's and MIT there, so nothing is in conflict, but they are that repo's text and not this one's.
+
+**And the thing a licence cannot settle**, stated here because §8 is the section people will not read: MIT grants reuse of these documents. **It does not grant anything about the researchers whose literature the value lineages were back-derived from.** That is a consent question, not a copyright one → §8.
