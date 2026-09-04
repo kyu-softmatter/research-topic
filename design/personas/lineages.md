@@ -55,7 +55,7 @@ Removing names was instructed as a safety measure, but it **moved four design pr
 | **`C-002`** person vs axis | Head-on collision with BD `I-067`. Open | **Transformed.** The unit of division became **a pole of a value axis** → §Unit of division |
 | **`Q-004`** persona count | Person-based, so **no upper bound** | **Closed.** Back-derived from axes, hence finite — currently 3 axes / 6 poles |
 | **`T-016`** role overlap | One person authoring J3 while also being a persona target → `trivially_satisfied` | **Sharply weakened.** A persona is not a specific individual, so the overlap is not structural |
-| **`C-006`** integration obstacle | Attribution by name forces private, so no monorepo | **Relaxed.** The largest argument for the disclosure constraint is gone. **Private is still kept** (§Open) |
+| **`C-006`** integration obstacle | Attribution by name forces private, so no monorepo | **Relaxed** here, and **dissolved 2026-09-04** (`T-044`): removing names took the largest argument, and the decision to stay public took the rest → §Open |
 
 > **The instruction turned out to be a route around `C-002`.** `T-010` argued that dividing by person was defensible, but not dividing was better — **the intent (seeing through researchers' research philosophies) carries over into lineages**, and so does the property that disagreement is the product (two poles per axis).
 
@@ -172,6 +172,6 @@ Settled at agenda 3 of the 2026-09-03 discussion.
 
 - **All six pole assignments are drafts.** The `T-013` procedure (value condition → source → consistency) has never been run once. The current assignment **stands in for it, resting on impressions of the literature**, and although a pole's name reads like its value condition, **the conditions have not been written.**
 - **Every `?` reference is unverified.** Settling DOIs is Phase 1's first task, and **the review list proposed in this session is not a basis for advancing the design.**
-- **Names are gone but private stays.** One reason fewer, not none — ① the topic assessments that will accumulate in the KB are unpublished research directions ② `X1`'s `V1` literature **overlaps the group's own output**, so without naming the lineage **the reading list points at it anyway.** → [README.md](../../README.md) §8 · `T-019`
-- **How much practical difference there is between a pole pointing at a body of literature and pointing at a person.** The item above is the limit. How much of `T-035`'s name-stripping actually strips **has not been measured.**
+- **Names are gone and the repo stays public** — decided 2026-09-04 (`T-044`). Neither of `T-019`'s two reasons was retracted; both moved from gating visibility to constraining content. ① the topic assessments that will accumulate in the KB are unpublished research directions, so **there has to be a rule about what J1 may write, and it is unwritten** ② `X1`'s `V1` literature **overlaps the group's own output**, so without naming the lineage **the reading list points at it anyway** — now an accepted cost rather than a reason to close the repo. → [README.md](../../README.md) §8
+- **How much practical difference there is between a pole pointing at a body of literature and pointing at a person.** The item above is the limit, and going public raises what it is worth: **how much of `T-035`'s name-stripping actually strips is still unmeasured**, and it now decides whether `V1`'s entry points need thinning rather than whether the repo is readable.
 - **`V6`'s literature may be thin** — if `X3`'s poles are asymmetric, the divergence test is not a fair one.

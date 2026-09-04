@@ -192,6 +192,7 @@ Phases are ordered, and each carries its **exit condition**. A phase without one
 | `capture-gate` — block session exit with no record | One week in warn mode, then blocking |
 | Force the search index to refresh | A cycle cannot end without an index refresh |
 | Settle the KB formal-object schema | [kb-schema.md](design/kb-schema.md) — zero places where a natural-language field is used as state |
+| **What J1 may write into a public repo** | `T-044` · `T-019`① — the rule exists and is enforced **before the first topic assessment lands.** This repo is public, and deleting the file afterwards does not undo the disclosure → §8 |
 
 ### Phase 3 — the J2 pipeline
 
@@ -301,22 +302,22 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 | Option | Shape | Gains | Loses |
 |---|---|---|---|
 | **A. Three repos + indexing** *(current)* | This repo points at the other two | Reversible. Neither repo is touched | Risk of two sets of criteria. Cross-references are manual |
-| **B. Monorepo** | All three in one | One set of criteria. References never break | Turns on §8. **All three repos are public today**, so the disclosure conflict as written does not bind — and it returns in full the moment this one goes private |
+| **B. Monorepo** | All three in one | One set of criteria. References never break | **The disclosure obstacle is gone** — all three repos are public, and this one stays public by decision (§8). What is left against B is timing, not scope |
 | **C. This repo as the orchestrator** | The other two as submodules, the loop runs here | The three-axis loop becomes real | This repo becomes an enforcer and violates its own structural prohibition ([charter.md](design/charter.md) §5) |
 
-**B's obstacle is disclosure scope, not engineering — and the premise it was argued on has changed.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and **this repo is public too** (§8), so the "put them in one repo and the stricter side wins" argument has nothing to bite on today.
+**B's obstacle was disclosure scope, not engineering — and that obstacle is gone.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and **this repo is public by decision as of 2026-09-04** (§8). *"Put them in one repo and the stricter side wins"* needed two different scopes. There is one. **`C-006` is dissolved, not relaxed.** → `T-044`
 
-**That is not the obstacle being resolved; it is the obstacle being unsettled.** `T-019`'s two reasons for keeping this repo private were never retracted (§8), so if they are acted on, B goes straight back to impossible and the microscope goes private again. **Deciding B therefore means deciding §8 first**, not the other way round.
+**Which does not make B the answer — it exposes the quieter argument.** Disclosure was the loud objection, and it was doing the work of looking like the only one. `T-004`'s actual grounds never mentioned it: **indexing is reversible, migration is not.** Nor does the decision point below.
 
-**Removing names on 2026-08-31 lowered that obstacle** (`T-018` · `C-006`) — with no attribution by name, the largest argument is gone. **But `T-019`'s two remaining arguments mean B has not become possible.** It has become discussable.
+**The sequence, for the record.** Removing names on 2026-08-31 (`T-018` · `C-006`) took away the largest argument and moved B from impossible to discussable. `T-019`'s two remaining arguments held the ceiling there. The 2026-09-04 decision removed the ceiling **by settling the scope question, not by answering `T-019`** — both of its reasons survive as constraints on content (§8). So B is now possible on disclosure grounds and undecided on every other one.
 
 **Decision point:** after Phase 1, once it is clear whether divergence records come out in a form BD and the microscope can actually use. Integrating before that fixes the structure without knowing what is being integrated. → `Q-008`
 
 ---
 
-## 8. Disclosure scope — an unsettled constraint
+## 8. Disclosure scope — public, and what that costs
 
-> **Correction, 2026-09-04.** This section used to read *"Why private — an irreversible constraint"* and concluded *"this repo **stays private**."* **That was never true of the repository as published** — `research-topic` has been public since it was created on 2026-09-01. The reasoning below is kept because it was not retracted; what changed is that it no longer describes the state of the repo.
+> **Decided 2026-09-04: this repository stays public.** It has been public since it was created on 2026-09-01, and an earlier draft of this section described it as private, which was never true of the repository as published. The decision settles **visibility**. It does not retract `T-019`'s two reasons — each one becomes a constraint on **content** instead, and one of them is not yet written down. → `T-044`
 
 ### The original reason for private, and how it was already removed
 
@@ -328,19 +329,19 @@ In the first draft a persona distilled **a named researcher's research philosoph
 
 **On 2026-08-31 this was removed at the definition stage rather than the output stage** (`T-018` · `T-035`) — a persona is not an individual but a **lineage defined by a body of literature**, and the rule is **citations stay, attributions go.** [lineages.md](design/personas/lineages.md) contains no names.
 
-### The two reasons that argued for private, and where each one now lands
+### The two reasons that argued for private, and what each one becomes
 
 `T-019`:
 
-1. **The topic assessments that will accumulate in the KB are unpublished research directions.** Nothing to do with names. **Nothing of this kind is exposed today** — J1 has not started and `kb/` does not exist — so this reason is about what may be *written*, not about what is currently readable. It becomes live the moment the first topic assessment lands.
-2. **The `V1` literature of axis `X1` overlaps the group's own output.** Without naming the lineage, **the reading list points at it anyway.** So how much `T-035`'s name-stripping actually strips **has not been measured** — and it is public and unmeasured now, which is the part that cannot be deferred.
+1. **The topic assessments that will accumulate in the KB are unpublished research directions.** Nothing to do with names. **This one is not resolved, it is relocated.** Nothing of the kind is exposed today — J1 has not started and `kb/` does not exist — so it stops being a question about who can read the repo and becomes **a rule about what J1 is allowed to write into it.** That rule does not exist yet, and **it has to before the first topic assessment lands**: in a public repo, deleting the file afterwards does not undo the disclosure.
+2. **The `V1` literature of axis `X1` overlaps the group's own output.** Without naming the lineage, **the reading list points at it anyway.** So how much `T-035`'s name-stripping actually strips **has not been measured** — and staying public means carrying that cost while it stays unmeasured. Measuring it no longer gates the repository; it decides whether `V1`'s entry points need thinning.
 
 **Therefore:**
 
-- **This is an open decision, not a settled one.** Either the repo goes private, or `T-019`'s two reasons are rewritten as content rules for what J1 is allowed to put in a public KB. **Reason 1 has to be settled before the first topic assessment is written; reason 2 is already in effect.**
-- Point 2 was the **ceiling** on relaxing `C-006` (§7), and it still is. What has changed is that the ceiling is no longer enforced by the repo's visibility.
-- **Consent from the people involved** is still a separate matter, and a sharper one now: they are no longer persona targets, but the literature overlap remains and is publicly readable. → §6 agenda 8.
-- **The design documents have not been swept.** [ideas.md](design/ideas.md) (`T-019` · `C-006` · `T-043`), [lineages.md](design/personas/lineages.md) and [_common.md](design/personas/_common.md) still say this repo is private. Those entries are dated log records, so they read correctly as history — but nothing in them points here.
+- **A content rule for J1 is now a Phase 2 interlock**, alongside the other two ways a KB dies. It is a writing rule, not a disclosure question, so it belongs with the schema rather than here. → §4 Phase 2
+- **`C-006` dissolves** (§7). Its whole force was that two repos had different disclosure scopes; all three are public and this one stays public, so there is one scope. What survives in `Q-008` is the timing argument, which never depended on visibility.
+- **Consent from the people involved is a separate matter, and this decision sharpens it.** They are no longer persona targets, but the literature overlap remains and is now public **by decision rather than by oversight**. → §6 agenda 8.
+- **The prohibition in [_common.md](design/personas/_common.md) matters more, not less.** *"This person would find X uninteresting"* was forbidden as attribution without a basis — reasoning that never rested on the repo being private. What has changed is only the size of the audience for a slip.
 
 ---
 

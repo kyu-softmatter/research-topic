@@ -148,7 +148,7 @@ This is the value counterpart of BD `I-096` (pass condition → source → autho
 | **Trigger condition** | When this persona gets convened (§6) |
 | **Question habits** | What **shape of question** this lineage asks — BD `I-053`'s "a different search query per persona" |
 
-**Forbidden: sentences of the form "this person would find X uninteresting."** That is attribution without a basis — the reason this repo is private (README §8) and not distillation but guesswork. A definition file holds only **value conditions and the locations of their basis.**
+**Forbidden: sentences of the form "this person would find X uninteresting."** That is attribution without a basis — not distillation but guesswork, and it was the original reason this repo was going to be private (README §8). **The repo is public as of 2026-09-04, which makes the prohibition weigh more, not less**: the reasoning never rested on who could read the file, and now everyone can. A definition file holds only **value conditions and the locations of their basis.**
 
 ---
 
