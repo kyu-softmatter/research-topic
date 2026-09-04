@@ -214,25 +214,19 @@ Phases are ordered, and each carries its **exit condition**. A phase without one
 
 ## 5. People and roles
 
-| Axis | Lead | Also | Commitment |
-|---|---|---|---|
-| **BD agent** ([repo](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)) | Dr. Takuya Kobayashi | Saksham Malik | `planned` |
-| **agentic-microscope** ([repo](https://github.com/kyu-softmatter/agentic-microscope)) | Kyu Hwan Choi | Saksham Malik | `planned` |
-| **research-topic** — KB · rigor definitions (J1 · J3) — **built directly** | Prof. Sho Takatori | — | **`to be asked`** — 2026-09-03 |
-| **Overall management** | Kyu Hwan Choi | — | `confirmed` |
-| **Funding · advising** | Prof. Sho Takatori | — | **`to be asked`** |
-
-### Why there is a commitment column
-
-This repo's base rule — **no basis, no pass** (philosophy ①) — applies to role assignments too. Writing down someone else's work as settled is an attribution without a basis, the same class of error [lineages.md](design/personas/lineages.md) forbids for literature.
-
-| Value | Meaning |
+| Axis | Participants |
 |---|---|
-| `confirmed` | Already doing it, or has agreed |
-| `planned` | Planned, and the person knows |
-| `to be asked` | **Not asked yet.** No agreement |
+| **BD agent** ([repo](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent)) | Dr. Takuya Kobayashi · Saksham Malik |
+| **agentic-microscope** ([repo](https://github.com/kyu-softmatter/agentic-microscope)) | Kyu Hwan Choi · Saksham Malik |
+| **research-topic** — KB · rigor definitions (J1 · J3) — **built directly** | Prof. Sho Takatori · Kyu Hwan Choi |
+| **Overall management** | Kyu Hwan Choi |
+| **Funding · advising** | Prof. Sho Takatori |
 
-**The J1/J3 row and the funding row are both `to be asked`.** They settle at the 2026-09-03 discussion (§6); until then this table is a plan, not an agreement.
+### Why there is no lead column
+
+Everyone named in a row is a participant in that axis, and how the work divides inside it is theirs to settle rather than this document's to assign. The table records **who is on which axis** — nothing about seniority, and nothing about who reports to whom.
+
+It also carries no commitment status. An earlier draft tagged every row with one, which was the right hedge while the rows were a proposal. They are not a proposal now.
 
 ### Where the roles overlap — a structural warning
 
@@ -283,7 +277,7 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 | **4** | **`C-004` — how do you tell "nobody asked" from "nobody asked because it is boring"?** | `C-004` · `T-007` | This is senior tacit knowledge itself. No automation path is visible |
 | **5** | **`Q-005` — distillation error, or a real gap?** | `Q-005` · `T-014` | When a pole says X is interesting but X is absent from its literature |
 | **6** | **Review the pass conditions of rigor axes `A5` and `A6`** — existing BD output, checked by the canonical author | BD `A5` · `A6` | **The actual starting point for building J3.** The `conditions` field of the source registry comes from here |
-| **7** | **`Q-009` — will he take J1/J3, and what happens with funding?** | `Q-009` · §5 | Two rows are `to be asked`. **What stays valid if declined is not written down** |
+| **7** | **`Q-009` — will he take J1/J3, and what happens with funding?** | `Q-009` · §5 | Authoring J1/J3 and the funding line rest on the same person. **What stays valid if declined is not written down** |
 | **8** | **Is removing names enough?** — lineages replaced individuals, but `V1`'s literature overlaps the group's own output, so **the reading list points anyway** | `T-019` · §8 | The real ceiling on disclosure. Feeds directly into the `C-006` integration call |
 
 ### To prepare beforehand
@@ -307,10 +301,12 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 | Option | Shape | Gains | Loses |
 |---|---|---|---|
 | **A. Three repos + indexing** *(current)* | This repo points at the other two | Reversible. Neither repo is touched | Risk of two sets of criteria. Cross-references are manual |
-| **B. Monorepo** | All three in one | One set of criteria. References never break | **The microscope is public, this repo is private** — the disclosure scopes conflict (§8) |
+| **B. Monorepo** | All three in one | One set of criteria. References never break | Turns on §8. **All three repos are public today**, so the disclosure conflict as written does not bind — and it returns in full the moment this one goes private |
 | **C. This repo as the orchestrator** | The other two as submodules, the loop runs here | The three-axis loop becomes real | This repo becomes an enforcer and violates its own structural prohibition ([charter.md](design/charter.md) §5) |
 
-**The point is that B's obstacle is disclosure scope, not engineering.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and this repo has to stay private (§8). **Put them in one repo and the stricter side wins** — the microscope goes private again.
+**B's obstacle is disclosure scope, not engineering — and the premise it was argued on has changed.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and **this repo is public too** (§8), so the "put them in one repo and the stricter side wins" argument has nothing to bite on today.
+
+**That is not the obstacle being resolved; it is the obstacle being unsettled.** `T-019`'s two reasons for keeping this repo private were never retracted (§8), so if they are acted on, B goes straight back to impossible and the microscope goes private again. **Deciding B therefore means deciding §8 first**, not the other way round.
 
 **Removing names on 2026-08-31 lowered that obstacle** (`T-018` · `C-006`) — with no attribution by name, the largest argument is gone. **But `T-019`'s two remaining arguments mean B has not become possible.** It has become discussable.
 
@@ -318,9 +314,11 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 
 ---
 
-## 8. Why private — an irreversible constraint
+## 8. Disclosure scope — an unsettled constraint
 
-### The original reason, and how it was already removed
+> **Correction, 2026-09-04.** This section used to read *"Why private — an irreversible constraint"* and concluded *"this repo **stays private**."* **That was never true of the repository as published** — `research-topic` has been public since it was created on 2026-09-01. The reasoning below is kept because it was not retracted; what changed is that it no longer describes the state of the repo.
+
+### The original reason for private, and how it was already removed
 
 In the first draft a persona distilled **a named researcher's research philosophy**. That produces sentences like:
 
@@ -330,18 +328,19 @@ In the first draft a persona distilled **a named researcher's research philosoph
 
 **On 2026-08-31 this was removed at the definition stage rather than the output stage** (`T-018` · `T-035`) — a persona is not an individual but a **lineage defined by a body of literature**, and the rule is **citations stay, attributions go.** [lineages.md](design/personas/lineages.md) contains no names.
 
-### Why it stays private anyway — two remaining reasons
+### The two reasons that argued for private, and where each one now lands
 
 `T-019`:
 
-1. **The topic assessments that will accumulate in the KB are unpublished research directions.** Nothing to do with names.
-2. **The `V1` literature of axis `X1` overlaps the group's own output.** Without naming the lineage, **the reading list points at it anyway.** So how much `T-035`'s name-stripping actually strips **has not been measured.**
+1. **The topic assessments that will accumulate in the KB are unpublished research directions.** Nothing to do with names. **Nothing of this kind is exposed today** — J1 has not started and `kb/` does not exist — so this reason is about what may be *written*, not about what is currently readable. It becomes live the moment the first topic assessment lands.
+2. **The `V1` literature of axis `X1` overlaps the group's own output.** Without naming the lineage, **the reading list points at it anyway.** So how much `T-035`'s name-stripping actually strips **has not been measured** — and it is public and unmeasured now, which is the part that cannot be deferred.
 
 **Therefore:**
 
-- This repo **stays private.** One reason fewer is not no reason.
-- Point 2 is the **ceiling** on relaxing `C-006` — the monorepo went from impossible to discussable, not to possible.
-- **Consent from the people involved** is still a separate matter. They are no longer persona targets, but the literature overlap remains. → §6 agenda 8.
+- **This is an open decision, not a settled one.** Either the repo goes private, or `T-019`'s two reasons are rewritten as content rules for what J1 is allowed to put in a public KB. **Reason 1 has to be settled before the first topic assessment is written; reason 2 is already in effect.**
+- Point 2 was the **ceiling** on relaxing `C-006` (§7), and it still is. What has changed is that the ceiling is no longer enforced by the repo's visibility.
+- **Consent from the people involved** is still a separate matter, and a sharper one now: they are no longer persona targets, but the literature overlap remains and is publicly readable. → §6 agenda 8.
+- **The design documents have not been swept.** [ideas.md](design/ideas.md) (`T-019` · `C-006` · `T-043`), [lineages.md](design/personas/lineages.md) and [_common.md](design/personas/_common.md) still say this repo is private. Those entries are dated log records, so they read correctly as history — but nothing in them points here.
 
 ---
 
