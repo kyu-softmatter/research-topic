@@ -1,7 +1,7 @@
 # KB formal objects — J1's schema
 
-Drafted 2026-08-31 · status `sketch` — **no entries are created here. Only the shape is fixed.**
-Related: [ideas.md](ideas.md) `T-031` · `T-030` · `C-005` · BD:`I-133` · BD:`I-076`
+Drafted 2026-08-31 · **revised 2026-09-05** (a seventh entry kind, `challenge/` — §2 · §4.7) · status `sketch` — **no entries are created here. Only the shape is fixed.**
+Related: [ideas.md](ideas.md) `T-031` · `T-030` · `T-047`–`T-049` · `C-005` · `C-007` · `Q-010` · BD:`I-133` · BD:`I-076`
 
 ---
 
@@ -39,7 +39,7 @@ For each schema: **what code reads this field and branches on it?** If anything 
 
 ---
 
-## 2. Entry kinds (draft, six)
+## 2. Entry kinds (draft, seven)
 
 One file per entry. The filename is the ID.
 
@@ -51,8 +51,11 @@ One file per entry. The filename is the ID.
 | `divergence/` | A divergence record (`T-011` · `C-005`) | the J2 gate | humans · BD · MS |
 | `topic/` | A topic candidate | J2 | BD · MS · humans |
 | `dead-end/` | A dead end (`T-032`) | **BD · MS** | J2 |
+| `challenge/` | Doubt against a claim already in any of the three KBs, plus the routing of its falsifier (`T-047` · `T-048`) | **any of the three** | the repo that owns the falsifier · humans |
 
-> **`dead-end/` is the only kind written from outside.** This repo only holds custody. → [charter.md](charter.md) §3
+> **`dead-end/` was the only kind written from outside. `challenge/` is the first written from *any* side** — including BD and MS writing one against an entry held here. That is the point of it. → [charter.md](charter.md) §3 *"Ownership is fixed; the direction of a work order is not"*
+>
+> **Six kinds accumulate and one retires.** A KB that only accumulates goes stale — BD `I-076` named the failure as *all the files are there and search finds nothing*. `challenge/` is the half of J1 that the word "accumulate" leaves out: **custody has to include retirement.**
 
 ---
 
@@ -142,7 +145,7 @@ BD reached the same conclusion for the same reason — *"a verdict vector is not
 ```
 
 > **`resolvable_by` is `T-034`'s damping device.** `not_resolvable` means the topic does not enter the loop and goes to the human path. Without this field the three-axis loop keeps circulating unfalsifiable topics (`C-001`).
-> **`axis` is an enum.** Left as natural language it cannot be branched on and violates `T-031`. **The value list comes from [lineages.md](personas/lineages.md), which is itself a draft** — settle it in Phase 1 after seeing two real cases.
+> **`axis` is an enum.** Left as natural language it cannot be branched on and violates `T-031`. **The three values shown are now known to be wrong, not merely draft** — `T-051` replaced the axes on 2026-09-05 with **trend · difficulty · impact**, so the enum reads `trend | difficulty | impact` once [lineages.md](personas/lineages.md) is rewritten. It is left as-is here because **the poles' value conditions are empty and `C-008` blocks the procedure that would fill them**, and renaming an enum whose members have no definitions buys nothing. Settle it in Phase 1 after seeing two real cases.
 
 ### 4.4 `topic/`
 
@@ -199,6 +202,50 @@ Uses BD's `I-077` template unchanged — what was tried / what diverged / **whic
 
 > **`hypotheses_excluded` is the whole value.** BD's own reason, unchanged: *"'it did not work under these conditions' is information bought with GPU time, and unrecorded, the next session spends that money again."*
 
+### 4.7 `challenge/` — `T-047`'s formal object
+
+```json
+{
+  "id": "chal-0001",
+  "target": { "repo": "bd | ms | research-topic",
+              "entry": "knowledge/source/papers/2005-pantina-furst-bending-coefficient.md",
+              "claim": "which claim in it -- an ID or a section locator" },
+  "raised_by": "bd | ms | research-topic",
+  "doubt_kind": "conditions_not_met | superseded_by_measurement
+                 | contradicted_by_run | scope_exceeded | never_verified",
+  "falsifier_cited": "the target's own falsification condition, quoted by locator",
+  "resolvable_by": "bd_run | ms_experiment | literature | not_resolvable",
+  "routed_to": "bd | ms | research-topic | human",
+  "state": "raised | routed | declined | running | upheld | rejected | unknown",
+  "resolved_by": null,
+  "depth": 0,
+  "cost": { "gpu_hours": 0, "instrument_hours": 0, "search_budget_spent": 0 }
+}
+```
+
+**`falsifier_cited` is what makes this a work order rather than an argument** (`T-048`). It is **mandatory**, and it must point into the target, not into the challenger. Consequences worth stating because they look like bugs:
+
+- **An entry with no falsifier cannot be challenged.** That is a defect in the entry — philosophy ③ says every judgment carries the check that would overturn it — and not a gap here.
+- **A challenge may not cite a new basis.** Doing so is `T-048`'s prohibited move and reintroduces `C-005`: a natural-language mass of counter-argument in the slot [personas/_common.md](personas/_common.md) §3 vacated.
+
+### `state` — and where it is not deterministic
+
+| Value | Set by | Deterministic |
+|---|---|---|
+| `raised` · `routed` | the gate, from `doubt_kind` → `resolvable_by` → `routed_to` | ○ — a lookup table |
+| `declined` | **the receiving repo.** By [charter.md](charter.md) §3, values and budget are BD's and MS's, so a challenge **must be refusable** | ○ |
+| `running` | the receiving repo | ○ |
+| `upheld` · `rejected` | **the result.** A run's number, a measurement, or search-result presence — never a vote (BD `I-052`) | ○ **for `bd_run` and `ms_experiment`** |
+| `unknown` | no verdict reachable | ○ |
+
+> **⚠ `resolvable_by: literature` is the hole, and it is `C-007`.** The other two routes resolve on code producing a number. This one resolves on **someone reading the paper**, which is an LLM reading and therefore the thing `I-052` forbids of a gate. **It is the same problem as [personas/_common.md](personas/_common.md) §7's "who computes `shared`"** — appearing twice, solved neither time. The partial escape that keeps the gate deterministic is to let this repo resolve only **presence or absence of a locator** (does the cited section exist; does it state the condition) and emit `unknown` otherwise. **That is checkable and it answers a weaker question than the challenge asked.** Not adopted — recorded as the cost of each option in `C-007`.
+
+**`depth` and `cost` are the bound** (`T-049` · `Q-010`). A challenge against a challenge increments `depth`. Without it the loop circulates doubt instead of topics, which is `C-001` in a new costume. **`cost` is recorded for the same reason `T-023` records `search_budget_spent`:** unrecorded, the budget stops being a budget and becomes the retirement decision.
+
+**`not_resolvable` goes to the human path**, exactly as in §4.3. Same damping device (`T-034`), same reason.
+
+> **Not the same as `question/`.** A `question/` entry is a value persona asking about a **topic candidate**, and it dies when the literature turns out to answer it. A `challenge/` is aimed at **a claim already in a KB**, and it dies when that claim's own falsifier is run. **Different target, different death condition** — and the field that separates them is `falsifier_cited`, which a `question/` does not have and cannot borrow.
+
 ---
 
 ## 5. The search index
@@ -217,3 +264,6 @@ BD `I-076`: *unless the index is refreshed at the end of every cycle, the next s
 - **Whether `literature.conditions` being natural language is actually safe.** If a persona reads that field and decides on it, that is routing. Check in Phase 1 whether it is read only or branched on.
 - **Who issues entry IDs.** Sequential numbers collide under parallel writes.
 - **Detecting when `rigor/` drifts from BD's and MS's real files.** Hand-maintained `implemented_in` goes stale — the same failure BD named for the index.
+- **`challenge/`'s literature route has no deterministic resolver** — `C-007`. Two of three routes resolve on a result; the third resolves on a reading. **The largest unclosed item in this document**, and it is the same problem as *"who computes `shared`"*.
+- **A challenge has no cost ceiling and no declined-forever state** — `Q-010`. A falsifier that is never run is indistinguishable from one that failed, so `declined` needs to either expire or retire, and neither is specified.
+- **Which store a challenge may point at.** BD's `entries/` is 135 entries but only **3** are `paper`-origin; the scientific claim surface is `source/papers/` (42) and `wiki/findings/` (23) → `T-045`④. **Pointed at the wrong store, the mechanism finds nothing to do**, and that is a targeting decision, not a schema one.

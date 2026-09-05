@@ -14,6 +14,13 @@
 
 The third axis. It supplies [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) (experiment) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) (simulation) with **what to work on**, and takes back what those two produce **as knowledge**.
 
+**The goal is the three of them running as one multi-agent system** — each stage
+handing the next the knowledge it needs, in a form the receiver can actually
+consume. The two working repositories already run, and each already keeps a
+knowledge base. **What does not exist is the exchange between them:** neither
+repository references the other, so a result BD establishes is not readable by
+the microscope, nor the reverse. That gap is what this repo is for. → §2.1
+
 Drafted 2026-08-31 · status `sketch` — **no code. An idea sketch only.**
 
 ## Project status
@@ -22,11 +29,12 @@ Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`,
 
 | | |
 |---|---|
-| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 33 ideas, 6 conflicts, 9 open questions |
+| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 43 ideas, 9 conflicts, 10 questions (6 still open) · **the seven exchange points, checked against the live repos** → §2.1 |
 | **Drafted, expected to be replaced** | 3 value axes / 6 poles · KB formal-object schemas · literature entry points |
 | **Empty** | The value conditions of every pole. Only the pole names exist |
 | **Not started** | Everything in Phase 1 and after → §4 |
 | **Depends on this repo** | Nothing. Both working repositories run without it |
+| **Verified against the live repos** | 2026-09-05 — what each of the other two actually keeps, and where the exchange would attach → §2.1 |
 
 The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose purpose is to make the four rows of §0 fillable by the person who will build this.
 
@@ -50,8 +58,8 @@ The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose pur
 
 | What | Current state | Who decides |
 |---|---|---|
-| What the value axes are, and how many | 3 axes / 6 poles — **a draft**, standing in for the real thing | **Takatori** (agenda 3) |
-| The value conditions of each pole | **Empty.** Only the pole names exist | **Takatori** (agenda 1–2) |
+| What the value axes are, and how many | ~~3 axes / 6 poles~~ **replaced 2026-09-05** by user decision (`T-051`) with **trend · difficulty · impact**. Still two poles per axis | ~~Takatori (agenda 3)~~ — **decided by the user instead.** The row below is unaffected |
+| The value conditions of each pole | **Empty.** Only the pole names exist — and `C-008` now blocks the procedure that would fill them, because the new axes are meta axes and `T-012`'s Outlook source has nothing to aim at | **Takatori** (agenda 1–2) |
 | The fields of the KB's formal objects | Example JSON. Only the principle is fixed | **Takatori** (J1 · J3) |
 | The form of a rigor axis's pass conditions | A draft back-derived from BD's `A1`–`A10` | **Takatori** (J3, agenda 6) |
 
@@ -81,33 +89,185 @@ Definitions here, enforcement there. **This is not a migration** — BD's `A1`�
 ## 2. The three-axis loop
 
 ```text
-                      +---------------------------------+
-                      |        research-topic           |
-                      |                                 |
-                      |  keywords -> survey -> topics   |
-                      |  value personas ask questions   |
-                      |  (questions, not verdicts.      |
-                      |   BD:I-050)                     |
-                      +----+-------------------+--------+
-                           |                   ^
-              topic + falsification conditions |  KB writes
-                           |                   |  dead ends
-              +------------+------+     +------+----------+
-              v                   v     |                 |
-   +---------------------+  +---------------------+        |
-   |  BD agent           |  |  agentic-microscope |        |
-   |  simulation         |  |  experiment         |--------+
-   |  A1-A10 verdicts    |  |  8 lenses / 32 gates|
-   +----------+----------+  +----------+----------+
-              |                        |
-              +-----------+------------+
-                          v
-              results . counterexamples . dead ends
+                    +-------------------------------------+
+                    |           research-topic            |
+                    |  survey -> topic candidates         |
+                    |  personas ask questions (BD:I-050)  |
+                    |  holds form . provenance . custody  |
+                    +--+-------------------------------+--+
+                       |                               ^
+   (1) topics + falsification conditions               |
+   (2) literature + conditions of validity      (4) results
+   (3) rigor-axis definitions  (J3)             (5) dead ends
+                       |                        (6) questions
+                       v                               |
+     +-----------------+--------+       +--------------+-----------+
+     | Brownian-Dynamics-Agent  |       |    agentic-microscope    |
+     | simulation               |       |    experiment            |
+     | A1-A10 . deterministic   | <---> |    8 gates . G1-G32      |
+     | gate                     |  (7)  |    BLOCKED by default    |
+     +--------------------------+       +--------------------------+
+
+   (1)-(7) are the seven exchange points -> sec 2.1
+
+   ...................................................................
+   challenge/  runs along every edge above, in BOTH directions:
+
+     any node --- cites the TARGET entry's own falsifier ---> any node
+
+     and the falsifier's type -- not the sender -- picks who runs it:
+        a measurement -> microscope . a run -> BD . a condition -> here
+
+   So BD and the microscope send work here too.  No owner in
+   charter sec 3 changes; only the direction stops being fixed. -> sec 2.2
 ```
 
 **The hypothesis:** the three axes pull each other along, forming a positive feedback loop.
 
 **The objection this repo carries:** a positive feedback loop either diverges or confirms itself. If the three axes feed each other, **whatever bias they share gets amplified.** The loop needs damping, and the damping has to come from here — topics go out **only in a form BD and the microscope can falsify.** → [ideas.md](design/ideas.md) `C-001`
+
+### 2.1 What is exchanged at each stage
+
+The arrows above are the goal. What follows is what each arrow would have to
+carry, and what is actually in place.
+
+> **The `Exists today` column is read off the two live repositories on
+> 2026-09-05; everything in `Missing` is unbuilt.** The two working repos have
+> moved well past the snapshot [charter.md](design/charter.md) §2 was built from
+> (`T-041`), so this table supersedes that one on the question of what BD keeps.
+
+| # | Stage | The knowledge that has to cross | Exists today | Missing |
+|---|---|---|---|---|
+| **1** | research-topic → BD · MS | **A topic candidate in falsifiable form** — with `falsifiable_by` naming which of the two can kill it | The receiving slots exist. BD takes a case as `intake/<case>/{sketch,system.yaml,observation.yaml}` (8 cases); MS takes a research goal | **Everything upstream of them.** Nothing produces a topic. Both are fed by hand |
+| **2** | research-topic → BD · MS | **A published number with its conditions of validity** — the part that appears only in the original paper | BD: `knowledge/source/papers/` — **44 distillations** carrying `doi · read_depth · provides · used_by · lab_authored`. MS: `kb/literature/` — **schema, template, and zero entries** | **The two formats do not meet.** BD has 44 entries MS cannot read; MS has an empty folder BD cannot fill. This is the sharpest gap in the system |
+| **3** | research-topic → BD · MS | **Rigor-axis definitions and the form of a pass condition** (J3) | Each runs its own: BD `.claude/rules/` (4 files) + `A1`–`A10`; MS 8 gate modules + `G1`–`G32` | No shared **form**, so the same axis can be written two ways and neither notices → `T-004`'s revisit condition |
+| **4** | BD · MS → research-topic | **Results and counterexamples** | Dense on both sides. BD: **227 `runs/*/record.json`** post-mortems + `l4.json`/`metrics.json`; MS: `kb/calibrations/`, `kb/decisions/` (19) | **No consumer.** Nothing reads them for topic selection |
+| **5** | BD · MS → research-topic | **Dead ends** — cause, not symptom | BD already writes them: `knowledge/wiki/findings/dead-end-*.md`, with a mandatory `## Prevention` section | Custody here is **empty**, and BD's dead ends are not indexed anywhere outside BD |
+| **6** | value personas → the gate | **A question plus what would close it** | **BD already implemented this** — `knowledge/wiki/questions/`: *"open questions, with what would close them."* Independent arrival at `T-008` | Two entries, BD-internal. No cross-repo question store |
+| **7** | MS ↔ BD | **A number measured on one setup, reused on the other** | MS solved this *within itself*: [`docs/03-cross-system-transfer.md`](https://github.com/kyu-softmatter/agentic-microscope/blob/main/docs/03-cross-system-transfer.md) separates what transfers as-is from what needs recomputation | Nothing crosses **between** repos. The hardest row, and the one neither repo can do alone |
+
+**Row 2 is where to start.** It is the only row where one side holds the content
+and the other holds an empty slot shaped to receive it, so it can be tested
+without either repo changing what it does.
+
+### The convergence that makes row 2 tractable
+
+The three repos independently arrived at the same rule: **a published number is
+unusable without the conditions under which it holds, and it never counts as a
+measurement.**
+
+| Repo | How it says it |
+|---|---|
+| **research-topic** | `literature.conditions` — *"when this expression holds — the part that appears only in the original paper"* → [kb-schema.md](design/kb-schema.md) §4.1 |
+| **microscope** | **Transfer conditions** is a mandatory section, and a literature value is always `assumed`, never `measured`, so **it cannot advance a verdict**. *"An entry that cannot say what would have to hold for its number to apply here is not usable, however good the paper is"* |
+| **BD** | Provenance is `from_paper` · `from_knowledge` · `assumed` · `derived` plus a **tier**, and *"a derived value is recomputed and compared, never trusted as written."* The cost of getting this wrong is recorded: `T = 300 K` mislabelled as measured propagated a −4 % to −14 % error into every `τ_B` downstream |
+
+**This is a fourth convergence, and it was not in [charter.md](design/charter.md) §2.**
+It matters more than the count: §2's table established that the three agree on
+*shape*, and this one shows they agree on **the field the exchange actually turns
+on.** Row 2 does not need a format negotiated from scratch — both sides already
+demand the same thing of a literature entry.
+
+> **What this does not settle.** BD keeping a real knowledge base removes one of
+> the three grounds for J1 (`T-003` argued a third place was needed because the
+> microscope's KB is instrument-bound and BD had none). **The ground narrows
+> rather than falls:** BD's `knowledge/wiki/` is simulation-bound the way MS's
+> `kb/` is instrument-bound — `systems/` cards, `concepts/` in BD's own
+> conventions — but `source/papers/` is not, and neither is MS's `kb/literature/`.
+> **The shared layer is the literature layer, and that is exactly row 2.**
+> → `Q-002`
+
+### 2.2 Collaboration, not dispatch — challenging a claim
+
+The seven rows above still run one way at the criteria level: definitions and
+topics go down, results come up. **That is management, not collaboration.**
+[charter.md](design/charter.md) §5 forbids this repo from becoming an enforcer —
+but nothing in it says the other two cannot send work **here**.
+
+**The missing primitive is already in all three repos: every KB entry carries its
+own falsifier.** That is philosophy ③, and [charter.md](design/charter.md) §2
+records it as one of the six things BD and the microscope arrived at
+independently.
+
+| Where | The falsifier that is already there |
+|---|---|
+| MS `kb/expertise/` (6) | each entry carries **the observation that would retire it** |
+| MS `kb/literature/` | `## Falsification conditions` is mandatory — *"the first is always the local measurement that would replace this"* — and *"what sits in this folder is exactly **what is worth measuring next**"* |
+| BD `knowledge/wiki/findings/` (23) | `## Scope / limits` — where this stops being true |
+| BD `knowledge/wiki/benchmarks/` (5) | known-answer systems **already running as regression tests** |
+| BD `knowledge/wiki/questions/` (2) | open questions, **with what would close them** |
+
+**A falsifier is a work order that nobody executes yet.** Raising doubt about a
+claim is asserting that its falsification condition may now be reachable;
+verifying it is running that condition. And **the type of the falsifier decides
+who does the work** — which is what turns the hierarchy into a graph:
+
+| The doubt | Falsifier type | Routes to |
+|---|---|---|
+| the published number does not transfer to this setup | a local measurement | **microscope** |
+| the claim is contradicted by what the model actually does | a run | **BD** |
+| the conditions of validity were never checked against the source | literature | **research-topic** |
+| the claim was used outside the scope it stated | none available | **a human** (`not_resolvable`) |
+
+**BD and the microscope become senders.** No row of
+[charter.md](design/charter.md) §3 changes — the microscope still owns instrument
+values, BD still owns run provenance, this repo still holds form and custody —
+but **the direction of a work order is no longer fixed.**
+
+Three rules it has to keep.
+
+1. **A challenge is a work order, not an argument.** It must cite the target
+   entry's own falsification condition. An entry with no falsifier **cannot be
+   challenged**, and that is a defect in the entry rather than a limit here. This
+   is also what keeps the mechanism clear of
+   [_common.md](design/personas/_common.md) §3, which forbids a persona rebutting
+   another persona's *basis*: a challenge is settled by a run, a measurement or a
+   search, never by the better argument.
+2. **The verdict is a result, not a vote** — BD `I-052`. `upheld` / `rejected` is
+   set by what the run or the search returned, and `not_run` is the default
+   (`I-055`).
+3. **It is bounded.** A challenge carries `resolvable_by` (`T-034`'s damping
+   device), a cost, and a **depth** — a challenge against a challenge increments
+   it. Without the bound the loop circulates doubt instead of topics, which is
+   `C-001` wearing a new costume.
+
+> **This is the damping the loop was missing.** §2 raises the objection that a
+> positive feedback loop amplifies whatever bias the three axes share, and asks
+> for damping without naming a mechanism. A channel in which **any axis can
+> invalidate another axis's input** is negative feedback, and it is the first
+> mechanism in this design that is one.
+
+> **This already happens, by hand.** MS
+> `kb/expertise/oil-objective-trapping-in-water` **is a challenge that was
+> upheld.** A human observed on 2026-08-18 that oil objectives do trap in an
+> aqueous sample; the entry records that *"that observation is correct and it
+> corrected this project: lens 7 had been refusing those objectives
+> outright."* It carries `evidence: measured`, `review_after: 2027-08-18` and
+> `supersedes: null` — a resolution, a retirement date, and a supersession slot.
+> **The mechanism is not being invented here.** What is missing is only that it
+> runs inside one repository instead of between three.
+
+**Not to be confused with `question/`.** A `question/` entry is a value persona
+asking something about a **topic candidate**, and it dies when the literature
+turns out to answer it. A challenge is aimed at **a claim already in the KB**, and
+it dies when the claim's own falsifier is run. Different target, different death
+condition. → [kb-schema.md](design/kb-schema.md) §4.2
+
+> **Where the challengeable surface actually is.** BD's `entries/` store is 135
+> entries distributed **52 `tooling` · 45 `method` · 25 `handbook` · 10 `intake`
+> · 3 `paper`** — BD's own note on that table is that the tooling-to-paper gap
+> *"is widening."* So most of what is recorded is *our machinery misled us*, not
+> *the literature said something*. **The scientific claims worth doubting are in
+> `source/papers/` (42), `wiki/findings/` (23) and `wiki/benchmarks/` (5)** — not
+> in `entries/`. A challenge system pointed at the wrong store would find almost
+> nothing to do.
+
+**Where this belongs in the three jobs.** Not a fourth job — it is the half of
+**J1** that the word "accumulate" leaves out. A knowledge base that only
+accumulates goes stale, and BD `I-076` already named that failure: all the files
+are there and search finds nothing. **Custody has to include retirement.**
+[kb-schema.md](design/kb-schema.md) needs a seventh entry kind, `challenge/`, and
+it is not written.
 
 ---
 
@@ -163,14 +323,31 @@ The third is this repo's best product and **is indistinguishable from a distilla
 
 Phases are ordered, and each carries its **exit condition**. A phase without one does not end.
 
+> **The corpus arrives after the system.** Papers and books are to be supplied
+> later, so **every phase below has to be completable without them** — which is
+> the order [kb-schema.md](design/kb-schema.md) §0 and `T-030` already argued for
+> on independent grounds (fill before the form is fixed and you throw away what
+> you filled). Two consequences.
+>
+> **① The supply layer's first job is ingest, not crawling.** Accepting a
+> hand-supplied document is the path that exists on day one; the
+> forward-citation index (Phase 3, `Q-006`) is what a corpus needs *after* it
+> arrives, not what gets it there.
+>
+> **② A book never enters the repository.** BD already solved this — an
+> `origin: handbook` entry's `source` reads
+> `distillation#section ← [short-name] p.page`, so *"a claim can be walked back
+> to the page it came from **without the book being in the repository**."* That
+> is the contract for the books to come, and it is already running for two.
+
 ### Phase 0 — sketch (now)
 
 | Task | Exit condition |
 |---|---|
 | Fix the boundaries between the three repos | [charter.md](design/charter.md) §3 is filled with no item owned twice |
 | Register ideas, conflicts, questions | [ideas.md](design/ideas.md) — **register, do not resolve** |
-| Read the microscope's `kb/expertise/` | `Q-002` closes — J1's basis is either confirmed or weakened. **Cheapest item on the list** |
-| Re-derive [charter.md](design/charter.md) §2 from the BD **remote** | `T-041` — the table was built from a local snapshot that is probably behind |
+| Read the microscope's `kb/expertise/` | ✅ **2026-09-05 — `Q-002` closes, on neither branch it offered.** The *contents* are instrument- and lab-bound (`n_medium = 1.333` for this lab's samples, this nosepiece's oil, `applies_to_systems: [current, …]`), so §2③ holds and **J1's basis survives**. But the *frontmatter* is domain-neutral — `question · source · expert · confidence · evidence · scope · applies_to_systems · review_after · supersedes`. **The form transfers although no value does, and the form is J3's business, not J1's** |
+| Re-derive [charter.md](design/charter.md) §2 from the BD **remote** | ◐ **partially, 2026-09-05.** `T-041` was right: one row is now **false** — BD's knowledge base is built, not `raw` (46 wiki pages · 135 entries · 227 run post-mortems) → §2.1. The other rows are not re-derived, and §2's caveat 2 still stands |
 
 ### Phase 1 — prototype the two poles of one axis
 
@@ -299,6 +476,8 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 
 **The current decision is "index, do not merge"** (`T-004`). The grounds are BD `I-057` — a boundary is drawn at *is it reversible and checkable*. Indexing is reversible; migration is not.
 
+**What changed on 2026-09-05:** the seven exchange points are now written down against the live repositories (§2.1), so this section is no longer choosing between three shapes in the abstract. **Row 2 is testable under option A** — BD holds 44 literature distillations, the microscope holds an empty folder built to receive exactly that, and indexing the two is reversible. Whether the remaining rows need B or C is a question about rows 3 and 7, not about all seven at once.
+
 **But integration is open.** Three candidates:
 
 | Option | Shape | Gains | Loses |
@@ -363,9 +542,9 @@ In the first draft a persona distilled **a named researcher's research philosoph
 
 | Document | Contents | Status |
 |---|---|---|
-| [design/charter.md](design/charter.md) | Boundaries between the three repos. The evidence that two of them converged | `sketch` |
+| [design/charter.md](design/charter.md) | Boundaries between the three repos. The evidence that two of them converged — **§2 re-derived against the live remotes 2026-09-05** | `sketch` |
 | [design/ideas.md](design/ideas.md) | Idea log (`T-` · `C-` · `Q-`) | `sketch` |
-| [design/kb-schema.md](design/kb-schema.md) | J1's formal objects. The answer to BD `I-133` | `sketch` |
+| [design/kb-schema.md](design/kb-schema.md) | J1's formal objects. The answer to BD `I-133`. **Seven entry kinds — `challenge/` added 2026-09-05** | `sketch` |
 | [design/personas/_common.md](design/personas/_common.md) | The common contract for value personas | `sketch` |
 | [design/personas/lineages.md](design/personas/lineages.md) | Value lineages, 3 axes / 6 poles, plus literature entry points. **No names** | `sketch` |
 | `src/` | Does not exist | — |

@@ -1,7 +1,24 @@
 # Value lineages — discussion material
 
-Drafted 2026-08-31 · revised 2026-08-31 (names removed · status lowered) · status `sketch`
-Related: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `C-002` · `Q-004`
+Drafted 2026-08-31 · revised 2026-08-31 (names removed · status lowered) · **superseded in part 2026-09-05** (`T-051` — the three axes replaced) · status `sketch`
+Related: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `T-051` · `C-002` · `C-008` · `C-009` · `Q-004`
+
+> ## ⚠ Superseded in part — 2026-09-05
+>
+> **The three axes below are replaced by user decision** (`T-051`): `X1`
+> reducibility · `X2` mechanism-vs-phenomenology · `X3` measurability are dropped
+> for **trend · difficulty · impact**. **This file has not been rewritten**, so
+> everything from §"3 axes / 6 poles" down — including the whole literature
+> section — is **kept for the record, not for use.**
+>
+> **What survives the replacement:** the name-removal rule, the unit of division
+> (a pole of a value axis, `T-018`), and the `T-013` procedure. **What does not:**
+> the 21 literature rows, which were the only concrete material for `T-013`
+> step ②, and `T-015`'s comparison path, which existed only because `V1`
+> reduction had a reachable canonical author.
+>
+> **`C-008` is the open blocker.** The new axes are *meta* axes, so `T-012`'s
+> canonical source — a review's Outlook section — has nothing to aim at.
 
 > ## This document is not a decision
 >
