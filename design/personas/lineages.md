@@ -1,39 +1,45 @@
 # Value lineages — discussion material
 
-Drafted 2026-08-31 · revised 2026-08-31 (names removed · status lowered) · **superseded in part 2026-09-05** (`T-051` — the three axes replaced) · status `sketch`
-Related: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `T-051` · `C-002` · `C-008` · `C-009` · `Q-004`
+Drafted 2026-08-31 · revised 2026-08-31 (names removed · status lowered) · **rewritten 2026-09-05** (`T-051` axes replaced, then restated per `C-008` ⓑ) · status `sketch`
+Related: [ideas.md](../ideas.md) `T-009` · `T-012` · `T-013` · `T-018` · `T-035` · `T-051` · `T-054` · `C-002` · `C-008` · `C-009` · `Q-004` · `Q-005`
 
-> ## ⚠ Superseded in part — 2026-09-05
+> ## ⚠ The axes were replaced — 2026-09-05
 >
-> **The three axes below are replaced by user decision** (`T-051`): `X1`
-> reducibility · `X2` mechanism-vs-phenomenology · `X3` measurability are dropped
-> for **trend · difficulty · impact**. **This file has not been rewritten**, so
-> everything from §"3 axes / 6 poles" down — including the whole literature
-> section — is **kept for the record, not for use.**
+> **Twice, in one day.** `T-051` dropped `X1` reducibility · `X2`
+> mechanism-vs-phenomenology · `X3` measurability for the user's list of
+> trend · difficulty · impact. Those hit `C-008` — as **meta** axes they left
+> `T-012`'s canonical source with nothing to aim at — and **`C-008` ⓑ was then
+> chosen: restate each axis so it anchors in domain literature.** The result is
+> `X1` maturity · `X2` obstruction · `X3` reach, in §The axes.
 >
-> **What survives the replacement:** the name-removal rule, the unit of division
-> (a pole of a value axis, `T-018`), and the `T-013` procedure. **What does not:**
-> the 21 literature rows, which were the only concrete material for `T-013`
-> step ②, and `T-015`'s comparison path, which existed only because `V1`
-> reduction had a reachable canonical author.
+> **What survived both replacements:** the name-removal rule, the unit of
+> division (a pole of a value axis, `T-018`), and the `T-013` procedure.
 >
-> **`C-008` is the open blocker.** The new axes are *meta* axes, so `T-012`'s
-> canonical source — a review's Outlook section — has nothing to aim at.
+> **What did not:** the 21 per-pole literature rows, which belonged to the
+> original poles and are not translatable to the new ones — they are in git
+> history at `d68065c`. `T-015`'s comparison path also stays dead: it existed
+> only because `V1` reduction had a reachable canonical author, and there is no
+> reduction pole.
+>
+> **Still empty:** every pole's value conditions. The restatement gave `T-013`
+> step ② a target; it did not run the procedure. **That is Phase 1.**
 
 > ## This document is not a decision
 >
 > **The 3-axis / 6-pole assignment and the literature lists below are discussion material** → [README.md](../../README.md) §0.
 >
-> **What the value axes are, and how many, is for Prof. Takatori to decide.** This file is written out concretely not because any of it is settled but **to give the discussion something specific to push against** — hearing "not that, and this one works like so" against a wrong draft is cheaper than asking "what are the value axes in active matter?" against a blank page.
+> **The axes are now the user's call, not Takatori's** — that changed on 2026-09-05 (`T-051`, superseding `T-040`'s handover on this one row). **What has not changed is that the file is still written to be pushed against**: hearing *"not that, and this one works like so"* against a concrete draft is cheaper than asking *"what are the value axes?"* against a blank page.
 >
 > | In this document | Status |
 > |---|---|
 > | **The rule for removing names** (citations stay, attributions go) | **Decided** |
 > | **Unit of division = a pole of a value axis** (`T-018`) | **Decided** |
 > | **The distillation procedure** `T-013` (value condition → source → consistency) | **Decided** — inherited from BD `I-096` |
-> | What the 3 axes and 6 poles are | **A draft. Expect replacement** |
+> | **The three dimensions** — trend · difficulty · impact | **Decided** (`T-051`, user) |
+> | **That each is restated to anchor in domain literature** | **Decided** (`C-008` ⓑ, user) |
+> | The **specific restatement** — maturity · obstruction · reach, and the six poles | **A draft.** Derived, not instructed. This is the row to push against |
 > | Each pole's **value conditions** | **Empty.** Only the pole names exist |
-> | The literature lists | **Material.** A `?` marks a DOI that was never verified |
+> | The literature lists | **The per-pole tables are retired.** What remains is the roadmap-review list → §Special |
 
 ## Where this document sits
 
@@ -98,18 +104,42 @@ value axis X?       the two poles attach opposite value to the same target
 
 ## 3 axes / 6 poles — draft
 
-| Axis | The question it splits on | Pole | Direction of the value condition |
-|---|---|---|---|
-| **X1 · reducibility** | Is being reducible to a thermodynamic or dimensionless quantity a condition of value? | **V1 reduction** | Reducible means valuable. Expressible as a stress, a pressure, an effective temperature |
-| | | **V2 emergence** | A new state appearing in the lab means valuable. Reducibility is not a condition |
-| **X2 · mechanism vs phenomenology** | Must the microscopic mechanism be established for it to be valuable? | **V3 mechanism** | Establishing the mechanism means valuable. Down to boundary conditions and chemical fields |
-| | | **V4 minimal model** | Getting a phase diagram from a minimal model means valuable. Mechanism is irrelevant |
-| **X3 · measurability** | Is there value in defining, theoretically, a quantity that cannot be measured? | **V5 measurement** | Measurable means valuable. Including probe perturbation and resolution |
-| | | **V6 theoretical definition** | A consistent definition means valuable. Present measurability is not a condition |
+**Replaced twice.** `T-051` dropped the original domain axes (reducibility · mechanism · measurability) for the user's list — trend · difficulty · impact. Those ran straight into `C-008`: they are **meta axes**, so `T-012`'s canonical source of value (a review's Outlook section) had nothing to aim at, and `T-013` step ② had no target. **`C-008` ⓑ was chosen on 2026-09-05:** restate each axis so it anchors in domain literature.
 
-> **`X1` is recommended as the Phase 1 test pair.** Reasons in §Phase 1.
-> **`X3` has the same shape as a tension inside BD** — `A1` (measurability) against `A6` (nonequilibrium quantification). A footnote in BD's roster under `A6` already records it: *"using Stokes–Einstein as a `cross` path is not valid in an active system in the first place."*
-> **The `divergence.axis` enum in [kb-schema.md](../kb-schema.md) §4.3 comes from this table** — `reducibility`, `mechanism_vs_phenomenology`, `measurability`. Since the table is a draft, so is the enum.
+### What the restatement does, and what it trades
+
+**The move is to stop asking the meta question in the abstract and ask what the domain literature *asserts* about it.** An Outlook section never says "this topic is trending." It says *"the field is now in a position to attack X"* — which is the same dimension, stated as a claim with a locator. All three dimensions survive; the question changes from meta to domain.
+
+| The user's dimension | Restated as | The claim it looks for in the literature |
+|---|---|---|
+| **trend** | **`X1` maturity** | *"this is now possible"* / *"this was posed and left"* |
+| **difficulty** | **`X2` obstruction** | *"this has not been done because [named barrier]"* |
+| **impact** | **`X3` reach** | *"this would carry to [other system]"* / *"this would settle [recurring dispute]"* |
+
+> **What is traded, stated plainly.** You no longer get *"is this trending"* as a **citation measurement** from a value pole. **You do not lose it** — it moves to the supply layer, where a number comes from an API and not from an LLM ([charter.md](../charter.md) §5, `T-053`①). **Trend as a number is crawler output; trend as a value claim is domain-anchored.** The same split applies to impact: `cited_by_count` is already a field in [kb-schema.md](../kb-schema.md) §4.1.
+
+### The axes
+
+| Axis | The question it splits on | Pole | Direction of the value condition | `T-012` source |
+|---|---|---|---|---|
+| **`X1` · maturity** | Does value come from a problem the field has **just become able** to attack, or from one it **named and left**? | **`V1` frontier** | Valuable when a recently arrived capability makes it newly attackable | ① Outlook — *"now possible"* |
+| | | **`V2` unfinished** | Valuable when the problem was posed in the literature and the trajectory shows it was not pursued | ③ **what was not done** |
+| **`X2` · obstruction** | Is value in the problem whose obstruction is **named and physical**, or in the one whose only obstruction is that **nobody tried**? | **`V3` named obstruction** | Valuable when the literature states a specific barrier — a length scale, a timescale, an SNR limit. The value is in removing a stated barrier | ① Outlook — *"limited by"* |
+| | | **`V4` unattempted** | Valuable when nothing is claimed to block it and it simply has not been done. The value is in the cheapness of a first result | ③ + absence |
+| **`X3` · reach** | Does value come from a result that **transfers to another system**, or from one that **settles a dispute inside this one**? | **`V5` transfer** | Valuable when the result is claimed to carry to a different system class | ① Outlook — transfer claims |
+| | | **`V6` settlement** | Valuable when it closes a definitional or framework dispute the field keeps returning to | ② trajectory — recurrence |
+
+> **The `divergence.axis` enum becomes `maturity | obstruction | reach`** → [kb-schema.md](../kb-schema.md) §4.3.
+
+### What this closed that was not the target
+
+**`C-008` was the reason for the restatement. Two other things fell out of it.**
+
+**① `C-009` closes.** The difficulty axis sat on the wrong side of [charter.md](../charter.md) §3's line — *"whether a topic is testable"* is BD's and MS's, and judging technical difficulty is judging testability. **`V3` does not judge it: it cites where the literature states the obstruction.** That is exactly the shape `C-009` said would work — *"a citation requirement rather than a prohibition"* — and the same shape `T-048` gave the challenge rule: **report what is recorded; do not argue the conclusion yourself.**
+
+**② `T-012`③ gets used for the first time.** *"What was not done — an adjacent area left untouched"* was listed as one of the three canonical sources of value and then never assigned to anything. It is now **`V2`'s primary source** and half of `V4`'s. All three of `T-012`'s sources are now load-bearing.
+
+**And `trajectory_check` (`T-014`) becomes runnable on four of six poles**, against zero before. `V2` (was it really dropped?), `V6` (does the dispute really recur?), `V1` (did the capability really arrive?) and `V4` (is the absence real?) are all trajectory questions. **This does not solve `Q-005`** — `V4` is an absence claim and walks straight into the ⓐ-vs-ⓑ problem — but it means the check has something to run on.
 
 ---
 
@@ -117,13 +147,13 @@ value axis X?       the two poles attach opposite value to the same target
 
 **Why a pair and not one:** philosophy ⑤ (disagreement is the product) and `C-005` (the divergence schema) cannot be tested without a pair.
 
+**`X1`'s original selection reasons are all void** (`T-051`) — they were properties of the reducibility axis. New basis:
+
 | Axis | Why this one | Why not |
 |---|---|---|
-| **X1 reducibility** ← **recommended** | ① both poles have **thick** bodies of literature ② **one pole's canonical author can be asked directly** (`T-015`) — so for `V1`'s value conditions a comparison path exists ③ dead centre of the group's own domain | — |
-| **X2 mechanism** | The divergence shows plainly on the surface of the literature | No comparison path |
-| **X3 measurability** | Maps onto a tension inside BD, so it feeds J3 directly | The poles are asymmetric — `V6`'s literature may be thin |
-
-Settled at agenda 3 of the 2026-09-03 discussion.
+| **`X1` maturity** ← **recommended** | ① **both poles' falsifiers are runnable** — "did the capability arrive" and "was it really dropped" are both trajectory checks, so `C-003` (value has no ground truth) bites least here ② both poles read `T-012`① and ③, and **roadmap reviews are dense in exactly those** → §Special ③ it is the axis where a wrong distillation shows up fastest | — |
+| **`X2` obstruction** | `V3` is the best-anchored single pole in the set — a stated barrier comes with a locator | **Asymmetric.** `V4` is an absence claim, so half the pair lands on `Q-005` with no way out |
+| **`X3` reach** | `V6`'s falsifier is a clean recurrence check | `V6` needs a multi-year trajectory across many reviews. **Most expensive pair to run first** |
 
 ---
 
@@ -131,43 +161,11 @@ Settled at agenda 3 of the 2026-09-03 discussion.
 
 **Material for step ② of the `T-013` procedure.** Start from literature, not from names — the same reason BD `I-068` established for its axis personas.
 
-**Verification marks:** `✔` = carried in BD's roster, so already checked by the user · `?` = **proposed in this session and unverified.** DOIs get settled in Phase 1.
-
-### X1 · reducibility
-
-| Pole | Reference | Outlook | Verified |
-|---|---|---|---|
-| **V1** | Takatori, Yan & Brady, *PRL* **113** (2014) — swim pressure. The canonical source for BD `A5.E8` | original paper | ✔ |
-| **V1** | Takatori & Brady, *Curr. Opin. Colloid Interface Sci.* (2016) | review | `?` |
-| **V1** | Brady & Bossis, "Stokesian Dynamics", *Annu. Rev. Fluid Mech.* **20** (1988) | review | ✔ |
-| **V1** | ten Hagen, van Teeffelen & Löwen, *JPCM* **23** (2011) — exact single-ABP MSD | original paper | ✔ |
-| **V2** | Marchetti et al., "Hydrodynamics of soft active matter", *Rev. Mod. Phys.* **85** (2013) | **Outlook section** | ✔ |
-| **V2** | Needleman & Dogic, *Nat. Rev. Mater.* **2** (2017) | review | `?` |
-| **V2** | Palacci et al., *PRL* **105** (2010) — measured active sedimentation steady state | original paper | ✔ |
-
-### X2 · mechanism vs phenomenology
-
-| Pole | Reference | Outlook | Verified |
-|---|---|---|---|
-| **V3** | Anderson, "Colloid transport by interfacial forces", *Annu. Rev. Fluid Mech.* **21** (1989) | review | ✔ |
-| **V3** | Golestanian, Liverpool & Ajdari (2005, 2007) — self-propelled phoretic particles | original papers | ✔ |
-| **V3** | Lauga & Powers, *Rep. Prog. Phys.* **72** (2009) — hydrodynamics of microswimmers | review | ✔ |
-| **V4** | Tailleur & Cates, *PRL* **100** (2008) — active steady-state density | original paper | ✔ |
-| **V4** | Cates & Tailleur, "Motility-Induced Phase Separation", *Annu. Rev. Condens. Matter Phys.* **6** (2015) | review | `?` |
-| **V4** | Stenhammar et al. (2014) — MIPS coarsening | original paper | ✔ |
-
-### X3 · measurability
-
-| Pole | Reference | Outlook | Verified |
-|---|---|---|---|
-| **V5** | Furst & Squires, *Microrheology* (Oxford, 2017) | **textbook — weak Outlook** | ✔ |
-| **V5** | Crocker & Grier (1996) — particle-tracking algorithms | original paper | ✔ |
-| **V5** | Savin & Doyle (2005) — static and dynamic errors in tracking | original paper | ✔ |
-| **V6** | Harada & Sasa (2005) — the exact relation between FDT violation and dissipation | original paper | ✔ |
-| **V6** | Cugliandolo (2011) — when an effective temperature holds | review | ✔ |
-| **V6** | Sekimoto, *Stochastic Energetics* | textbook | ✔ |
-
-> **`V5`'s first row is a candidate counterexample to `T-012`** — a textbook is **canonical for a method** but weak on Outlook. So **a pole thick in methodological canon may be thin in value canon.** Consistent with what `T-012` predicts, but it leaves open what `V5`'s value conditions get back-derived from.
+> ### ⚠ The per-pole tables are gone
+>
+> The 21 rows that used to sit here were entry points for the **reducibility · mechanism · measurability** poles, and `T-051` retired those poles. **They are not translated across** — a paper that is canonical for *"reducible means valuable"* says nothing about *"the field just became able to do this."* They remain in git history at `d68065c`.
+>
+> **What survives is the section below**, and it survives intact: roadmap reviews were listed for **Outlook density**, not for any particular axis, and the restated axes read Outlook sections harder than the old ones did. **§Special is now the whole of this section's content, and Phase 1's first target.**
 
 ---
 
@@ -187,8 +185,8 @@ Settled at agenda 3 of the 2026-09-03 discussion.
 
 ## Open
 
-- **All six pole assignments are drafts.** The `T-013` procedure (value condition → source → consistency) has never been run once. The current assignment **stands in for it, resting on impressions of the literature**, and although a pole's name reads like its value condition, **the conditions have not been written.**
-- **Every `?` reference is unverified.** Settling DOIs is Phase 1's first task, and **the review list proposed in this session is not a basis for advancing the design.**
-- **Names are gone and the repo stays public** — decided 2026-09-04 (`T-044`). Neither of `T-019`'s two reasons was retracted; both moved from gating visibility to constraining content. ① the topic assessments that will accumulate in the KB are unpublished research directions, so **there has to be a rule about what J1 may write, and it is unwritten** ② `X1`'s `V1` literature **overlaps the group's own output**, so without naming the lineage **the reading list points at it anyway** — now an accepted cost rather than a reason to close the repo. → [README.md](../../README.md) §8
-- **How much practical difference there is between a pole pointing at a body of literature and pointing at a person.** The item above is the limit, and going public raises what it is worth: **how much of `T-035`'s name-stripping actually strips is still unmeasured**, and it now decides whether `V1`'s entry points need thinning rather than whether the repo is readable.
-- **`V6`'s literature may be thin** — if `X3`'s poles are asymmetric, the divergence test is not a fair one.
+- **All six pole assignments are still drafts, and the `T-013` procedure has never been run once.** The restatement fixed *where to look* (`C-008` ⓑ); it did not look. A pole's name still reads like its value condition, and **the conditions are not written.**
+- **`V4` unattempted is the weak pole.** Its value condition is an **absence** claim, so it lands directly on `Q-005` — an absence is either a real gap (the best product) or a distillation error (the worst failure), and nothing tells them apart automatically. **`X2` is therefore not a fair first pair**, which is why Phase 1 recommends `X1`.
+- **The restated axes are more legible than the old ones, and that is a new risk.** *"Was this posed and left"* is a question an LLM will always produce a plausible answer to, and the answer is unverifiable unless the trajectory is actually searched. The old domain axes were harder to fake because they needed physics. **The guard is `T-014`'s `trajectory_check` and `T-023`'s search budget, and neither has been run.**
+- **Whether three axes is right is still unargued.** `Q-004` closed the *count* question by back-deriving poles from axes. **The basis for there being exactly these three is the user's list, restated** — one dimension dropped from that list on the way (rigour → J3, `T-053`③) and two merged (hard problems + technical difficulty → `X2`, `T-051`).
+- **Names are gone and the repo stays public** — decided 2026-09-04 (`T-044`). ① the topic assessments that will accumulate in the KB are unpublished research directions, so **there has to be a rule about what J1 may write, and it is unwritten** — a Phase 2 interlock with no warn mode. ② **`T-019`②'s cost is now paid off by the restatement:** the reading list used to point at the group's own output because `V1` reduction's literature overlapped it. **The new axes are not about this group's physics**, so the reading list no longer points anywhere in particular. That reason was never retracted; it dissolved as a side effect. → [README.md](../../README.md) §8

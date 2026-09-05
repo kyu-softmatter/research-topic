@@ -130,7 +130,7 @@ BD reached the same conclusion for the same reason — *"a verdict vector is not
   "id": "div-0001",
   "target_id": "topic-0003",
   "personas": ["V1", "V2"],
-  "axis": "reducibility | mechanism_vs_phenomenology | measurability",
+  "axis": "maturity | obstruction | reach",
   "conditions_met": { "V1": ["c1:no", "c3:yes"], "V2": ["c2:yes"] },
   "shared": ["facts both agree on -- a list of IDs"],
   "contested": {
@@ -145,7 +145,7 @@ BD reached the same conclusion for the same reason — *"a verdict vector is not
 ```
 
 > **`resolvable_by` is `T-034`'s damping device.** `not_resolvable` means the topic does not enter the loop and goes to the human path. Without this field the three-axis loop keeps circulating unfalsifiable topics (`C-001`).
-> **`axis` is an enum.** Left as natural language it cannot be branched on and violates `T-031`. **The three values shown are now known to be wrong, not merely draft** — `T-051` replaced the axes on 2026-09-05 with **trend · difficulty · impact**, so the enum reads `trend | difficulty | impact` once [lineages.md](personas/lineages.md) is rewritten. It is left as-is here because **the poles' value conditions are empty and `C-008` blocks the procedure that would fill them**, and renaming an enum whose members have no definitions buys nothing. Settle it in Phase 1 after seeing two real cases.
+> **`axis` is an enum.** Left as natural language it cannot be branched on and violates `T-031`. **Replaced twice on 2026-09-05** — `T-051` dropped `reducibility | mechanism_vs_phenomenology | measurability` for the user's dimensions, then `T-054` restated those to anchor in domain literature (`C-008` ⓑ), giving the values above. → [lineages.md](personas/lineages.md) §The axes. **Still a draft, and for a sharper reason than before:** the three *dimensions* are a user decision, but **this particular restatement of them is derived**, and no pole has a value condition yet. Settle it in Phase 1 after seeing two real cases.
 
 ### 4.4 `topic/`
 

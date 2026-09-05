@@ -29,7 +29,7 @@ Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`,
 
 | | |
 |---|---|
-| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 43 ideas, 9 conflicts, 10 questions (6 still open) · **the seven exchange points, checked against the live repos** → §2.1 |
+| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 44 ideas, 9 conflicts, 10 questions (6 still open) · **the seven exchange points, checked against the live repos** → §2.1 |
 | **Drafted, expected to be replaced** | 3 value axes / 6 poles · KB formal-object schemas · literature entry points |
 | **Empty** | The value conditions of every pole. Only the pole names exist |
 | **Not started** | Everything in Phase 1 and after → §4 |
@@ -58,8 +58,8 @@ The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose pur
 
 | What | Current state | Who decides |
 |---|---|---|
-| What the value axes are, and how many | ~~3 axes / 6 poles~~ **replaced 2026-09-05** by user decision (`T-051`) with **trend · difficulty · impact**. Still two poles per axis | ~~Takatori (agenda 3)~~ — **decided by the user instead.** The row below is unaffected |
-| The value conditions of each pole | **Empty.** Only the pole names exist — and `C-008` now blocks the procedure that would fill them, because the new axes are meta axes and `T-012`'s Outlook source has nothing to aim at | **Takatori** (agenda 1–2) |
+| What the value axes are, and how many | **Decided 2026-09-05** (`T-051` · `T-054`). Three dimensions — trend · difficulty · impact — each **restated to anchor in domain literature**: `X1` maturity · `X2` obstruction · `X3` reach. Still two poles per axis | ~~Takatori (agenda 3)~~ — **the user, on both.** The *specific* restatement is derived and is still a draft to push against |
+| The value conditions of each pole | **Empty.** Only the pole names exist. **Nothing blocks filling them any more** — `C-008` was the blocker and `T-054` resolved it by giving `T-013` step ② a target. **This is now the top open item** | **Takatori** (agenda 1–2) |
 | The fields of the KB's formal objects | Example JSON. Only the principle is fixed | **Takatori** (J1 · J3) |
 | The form of a rigor axis's pass conditions | A draft back-derived from BD's `A1`–`A10` | **Takatori** (J3, agenda 6) |
 
