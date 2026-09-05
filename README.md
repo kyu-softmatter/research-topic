@@ -29,7 +29,7 @@ Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`,
 
 | | |
 |---|---|
-| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 44 ideas, 9 conflicts, 10 questions (6 still open) · **the seven exchange points, checked against the live repos** → §2.1 |
+| **Written** | Boundaries between the three repos · six philosophy items · an idea log of 46 ideas, 9 conflicts, 10 questions (6 still open) · **the seven exchange points, checked against the live repos** → §2.1 |
 | **Drafted, expected to be replaced** | 3 value axes / 6 poles · KB formal-object schemas · literature entry points |
 | **Empty** | The value conditions of every pole. Only the pole names exist |
 | **Not started** | Everything in Phase 1 and after → §4 |
@@ -59,7 +59,7 @@ The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose pur
 | What | Current state | Who decides |
 |---|---|---|
 | What the value axes are, and how many | **Decided 2026-09-05** (`T-051` · `T-054`). Three dimensions — trend · difficulty · impact — each **restated to anchor in domain literature**: `X1` maturity · `X2` obstruction · `X3` reach. Still two poles per axis | ~~Takatori (agenda 3)~~ — **the user, on both.** The *specific* restatement is derived and is still a draft to push against |
-| The value conditions of each pole | **Empty.** Only the pole names exist. **Nothing blocks filling them any more** — `C-008` was the blocker and `T-054` resolved it by giving `T-013` step ② a target. **This is now the top open item** | **Takatori** (agenda 1–2) |
+| The value conditions of each pole | **Two of six written** — `T-013` was run on `X1` maturity on 2026-09-05 (`T-055`) → [V1 frontier](design/personas/V1-frontier.md) · [V2 unfinished](design/personas/V2-unfinished.md). **The run came back split:** `V1`'s trajectory check is `consistent`, `V2`'s is `not_run`. **Four poles are still names** | **Takatori** (agenda 1–2) |
 | The fields of the KB's formal objects | Example JSON. Only the principle is fixed | **Takatori** (J1 · J3) |
 | The form of a rigor axis's pass conditions | A draft back-derived from BD's `A1`–`A10` | **Takatori** (J3, agenda 6) |
 
@@ -546,7 +546,9 @@ In the first draft a persona distilled **a named researcher's research philosoph
 | [design/ideas.md](design/ideas.md) | Idea log (`T-` · `C-` · `Q-`) | `sketch` |
 | [design/kb-schema.md](design/kb-schema.md) | J1's formal objects. The answer to BD `I-133`. **Seven entry kinds — `challenge/` added 2026-09-05** | `sketch` |
 | [design/personas/_common.md](design/personas/_common.md) | The common contract for value personas | `sketch` |
-| [design/personas/lineages.md](design/personas/lineages.md) | Value lineages, 3 axes / 6 poles, plus literature entry points. **No names** | `sketch` |
+| [design/personas/lineages.md](design/personas/lineages.md) | Value lineages, 3 axes / 6 poles, plus the roadmap entry points. **No names** | `sketch` |
+| [design/personas/V1-frontier.md](design/personas/V1-frontier.md) | `X1` maturity, positive pole. **The first output of `T-013`, ever.** Trajectory check `consistent` | `draft` |
+| [design/personas/V2-unfinished.md](design/personas/V2-unfinished.md) | `X1` maturity, negative pole. Trajectory check **`not_run`** — and that is not a pass | `draft` |
 | `src/` | Does not exist | — |
 
 ---

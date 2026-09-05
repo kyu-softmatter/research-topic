@@ -173,19 +173,38 @@ value axis X?       the two poles attach opposite value to the same target
 
 `T-012` names the **Outlook section of a review** as the source of value. If so, **roadmap-format reviews are the best entry point** — they collect many authors' Outlooks in one article.
 
-| Reference | Why special | Verified |
-|---|---|---|
-| Gompper et al., *The 2020 motile active matter roadmap*, *J. Phys. Condens. Matter* **32** (2020) | **Dozens of Outlooks, separated section by section.** The structure already matches per-pole value-condition extraction | `?` — also check whether a newer edition exists |
-| Bechinger et al., "Active particles in complex and crowded environments", *Rev. Mod. Phys.* **88** (2016) | Active particles broadly. Likely has an Outlook | `?` |
-| Marchetti et al., *Rev. Mod. Phys.* **85** (2013) | Ten years of active matter compressed (BD `I-068`'s phrasing) plus an Outlook | ✔ |
+**All DOIs verified against OpenAlex on 2026-09-05**, and the open question in the old version of this table — *"check whether a newer edition exists"* — **is closed: it does.**
 
-> **This table is Phase 1's first target.**
+| Reference | DOI | Why special | Verified |
+|---|---|---|---|
+| Gompper et al., ***The 2025 motile active matter roadmap***, *J. Phys. Condens. Matter* | `10.1088/1361-648X/adac98` | **32 authors, open access.** Its abstract states `V1`'s value condition outright: *"with many fundamental properties … now reasonably well understood and under control, **the ground is prepared for** …"* and names five directions | ✔ |
+| Gompper et al., *The 2020 motile active matter roadmap*, *J. Phys. Condens. Matter* **32** | `10.1088/1361-648X/ab6348` | 37 authors, open access. Dozens of Outlooks section by section | ✔ |
+| Bechinger et al., *Active particles in complex and crowded environments*, *Rev. Mod. Phys.* **88** | `10.1103/RevModPhys.88.045006` | Open access, 3031 citations. Broad Outlook | ✔ DOI · Outlook locator not read |
+| Marchetti et al., *Hydrodynamics of soft active matter*, *Rev. Mod. Phys.* **85** | `10.1103/RevModPhys.85.1143` | Ten years of active matter compressed (BD `I-068`) plus an Outlook. **Not open access** | ✔ DOI · not OA |
+
+### The two editions are `X1`'s falsifier instrument
+
+**This is the result of running `T-013` on `X1`** (`T-055`), and it was not anticipated when the axis was written.
+
+Two editions of the same roadmap, five years apart, author sets overlapping (37 → 32). That gives **a locator at both ends of a trajectory claim**, which no other axis in this repo has:
+
+| Diff direction | Reads as | Pole |
+|---|---|---|
+| Named as newly attackable in 2025, absent in 2020 | a capability arrived | **`V1` frontier** |
+| Posed in 2020 **and posed again** in 2025 | named and left, and the recurrence survived five years | **`V2` unfinished** |
+| Posed in 2020, absent from 2025 | **three branches, not two** → §Open | ambiguous |
+
+**Why this matters beyond `X1`:** `C-003` says value has no ground truth, and `T-015`'s one cheap attack on it — asking a reachable canonical author — died with the reducibility pole. **The roadmap diff is a replacement of a different kind: cheaper, repeatable, and not `trivially_satisfied`** (`T-016`), because the roadmap's 32 authors are not this repo. It is weaker than an author's answer and it can be run more than once.
+
+> **This table is Phase 1's first target, and the 2025 edition is the first document to read.**
 
 ---
 
 ## Open
 
-- **All six pole assignments are still drafts, and the `T-013` procedure has never been run once.** The restatement fixed *where to look* (`C-008` ⓑ); it did not look. A pole's name still reads like its value condition, and **the conditions are not written.**
+- **`T-013` has now been run once, on `X1`** (`T-055`, 2026-09-05) → [`V1` frontier](V1-frontier.md) · [`V2` unfinished](V2-unfinished.md). **The four other poles are still names with no conditions**, and the run came back split: `V1`'s `trajectory_check` is `consistent`, `V2`'s is **`not_run`**, which is not a pass.
+- **The `X1` pair is currently unfair, in the same way `X2` was rejected for being.** `V1` has a measured trajectory and `V2` has none, because `V2`'s `c1` needs the *section-level* content of the 2020 roadmap and only abstracts were read. **Both editions are open access, so this is a budget limit rather than an availability limit** — bounded, known, and unpaid.
+- **`X1` produces divergence on a subset, and nothing says how large.** The two poles genuinely disagree on two classes of target and **genuinely agree on a third** (posed long ago *and* newly attackable). Agreement emits `shared`, not `divergence/`. Correct behaviour, unquantified consequence → [`V2`](V2-unfinished.md) §2.
 - **`V4` unattempted is the weak pole.** Its value condition is an **absence** claim, so it lands directly on `Q-005` — an absence is either a real gap (the best product) or a distillation error (the worst failure), and nothing tells them apart automatically. **`X2` is therefore not a fair first pair**, which is why Phase 1 recommends `X1`.
 - **The restated axes are more legible than the old ones, and that is a new risk.** *"Was this posed and left"* is a question an LLM will always produce a plausible answer to, and the answer is unverifiable unless the trajectory is actually searched. The old domain axes were harder to fake because they needed physics. **The guard is `T-014`'s `trajectory_check` and `T-023`'s search budget, and neither has been run.**
 - **Whether three axes is right is still unargued.** `Q-004` closed the *count* question by back-deriving poles from axes. **The basis for there being exactly these three is the user's list, restated** — one dimension dropped from that list on the way (rigour → J3, `T-053`③) and two merged (hard problems + technical difficulty → `X2`, `T-051`).
