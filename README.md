@@ -142,25 +142,38 @@ Definitions here, enforcement there. **This is not a migration** — BD's `A1`�
    charter sec 3 changes; only the direction stops being fixed. -> sec 2.2
 
    ...................................................................
-   librarian-agent sits OUTSIDE this loop.  It reads all three, keeps
-   one index, and writes back only a generated read-only copy.  It
-   originates no topic and produces no result, so it is not a fourth
-   participant here -- what it owns is J1: the store, the index, and
-   retirement.  -> github.com/kyu-softmatter/librarian-agent
+   librarian-agent is ON THE RETURN PATH, not outside it.  J1 moved
+   there, so edge (2) originates in it, and (4) and (5) land in its
+   custody -- J2 reads them from there rather than from BD and MS
+   directly.  It asks no question and returns no result, and it still
+   decides what J2 sees, because a search that ranks is a search that
+   selects.  -> github.com/kyu-softmatter/librarian-agent
 ```
 
-**The hypothesis:** the three axes pull each other along, forming a positive feedback loop.
+**The hypothesis:** the four axes pull each other along, forming a positive feedback loop.
 
-**Three, not four.** The system has four axes; this loop has three. `librarian-agent`
-holds the knowledge but neither asks a question nor returns a result, so adding
-it here would suggest a feedback path it does not have.
+**Four, and the fourth is on the return path.** J1 moved to `librarian-agent`, so
+edge (2) originates there and edges (4) and (5) terminate there — J2 reads a
+result or a dead end out of its custody rather than out of BD and MS directly.
+It asks no question and produces no result, **and it still selects what J2 sees,
+because a search that ranks is a search that selects.** So it is inside `C-001`
+rather than exempt from it, and its own design says so: the retrieval-feedback
+store is where this loop closes most tightly, and the only damping named for it
+is human approval → [librarian FEEDBACK.md §5](https://github.com/kyu-softmatter/librarian-agent/blob/main/FEEDBACK.md).
 
-**The objection this repo carries:** a positive feedback loop either diverges or confirms itself. If the three axes feed each other, **whatever bias they share gets amplified.** The loop needs damping, and the damping has to come from here — topics go out **only in a form BD and the microscope can falsify.** → [ideas.md](design/ideas.md) `C-001`
+**The objection this repo carries:** a positive feedback loop either diverges or confirms itself. If the four axes feed each other, **whatever bias they share gets amplified.** The loop needs damping, and one piece of it has to come from here — topics go out **only in a form BD and the microscope can falsify.** → [ideas.md](design/ideas.md) `C-001`
+
+**J1 moving added a second place the loop can close, and a second damper.** A store that decides which evidence surfaces is an amplifier whether or not it asks anything: what a search ranks, it selects. `librarian-agent` names the tightest form of that — an agent promoting its own retrieval results to ground truth — and damps it with human approval plus reproduction under two distinct index states. **Neither damper covers the other's path**, so `C-001` now has two answers rather than one, and both are partial.
 
 ### 2.1 What is exchanged at each stage
 
 The arrows above are the goal. What follows is what each arrow would have to
 carry, and what is actually in place.
+
+> **Three rows changed hands when J1 moved.** Row 2 is `librarian-agent`'s to
+> send, and rows 4 and 5 are its to hold; this repo reads them from there. The
+> `research-topic` in those three cells is where the knowledge *is consumed*,
+> not where it now sits.
 
 > **The `Exists today` column is read off the two live repositories on
 > 2026-09-05; everything in `Missing` is unbuilt.** The two working repos have
@@ -263,7 +276,7 @@ Three rules it has to keep.
    `C-001` wearing a new costume.
 
 > **This is the damping the loop was missing.** §2 raises the objection that a
-> positive feedback loop amplifies whatever bias the three axes share, and asks
+> positive feedback loop amplifies whatever bias the four axes share, and asks
 > for damping without naming a mechanism. A channel in which **any axis can
 > invalidate another axis's input** is negative feedback, and it is the first
 > mechanism in this design that is one.
@@ -515,7 +528,7 @@ The canonical sources of `A5.E8` (swim pressure, *PRL* **113**, 2014) and `A6` (
 |---|---|---|---|
 | **A. Three repos + indexing** *(current)* | This repo points at the other two | Reversible. Neither repo is touched | Risk of two sets of criteria. Cross-references are manual |
 | **B. Monorepo** | All three in one | One set of criteria. References never break | **The disclosure obstacle is gone** — all three repos are public, and this one stays public by decision (§8). What is left against B is timing, not scope |
-| **C. This repo as the orchestrator** | The other two as submodules, the loop runs here | The three-axis loop becomes real | This repo becomes an enforcer and violates its own structural prohibition ([charter.md](design/charter.md) §5) |
+| **C. This repo as the orchestrator** | The other two as submodules, the loop runs here | The loop becomes real | This repo becomes an enforcer and violates its own structural prohibition ([charter.md](design/charter.md) §5) |
 
 **B's obstacle was disclosure scope, not engineering — and that obstacle is gone.** `agentic-microscope` became public on 2026-08-28 after the vendor material was stripped, and **this repo is public by decision as of 2026-09-04** (§8). *"Put them in one repo and the stricter side wins"* needed two different scopes. There is one. **`C-006` is dissolved, not relaxed.** → `T-044`
 
