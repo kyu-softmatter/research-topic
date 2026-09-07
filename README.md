@@ -41,7 +41,7 @@ Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`,
 | **Empty** | The value conditions of every pole. Only the pole names exist |
 | **Not started** | Everything in Phase 1 and after → §4 |
 | **Depends on this repo** | Nothing. All three other repositories run without it |
-| **Verified against the live repos** | 2026-09-05 — what each of the other two actually keeps, and where the exchange would attach → §2.1 |
+| **Verified against the live repos** | 2026-09-05 — what each of the other two actually keeps, and where the exchange would attach → §2.1. **Counts re-measured 2026-09-07** against BD `d47c319` and MS `2e0118a`: five were stale and one was counting the wrong thing → §2.1 |
 
 The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose purpose is to make the four rows of §0 fillable by the person who will build this.
 
@@ -174,6 +174,20 @@ carry, and what is actually in place.
 > send, and rows 4 and 5 are its to hold; this repo reads them from there. The
 > `research-topic` in those three cells is where the knowledge *is consumed*,
 > not where it now sits.
+>
+> **The counts below were re-measured on 2026-09-07** against BD `d47c319` and
+> MS `2e0118a`, and they carry their definition so they can be recounted:
+> `source/papers/*.md` excluding `INDEX.md`, `wiki/**/*.md` including the
+> contract, `runs/*/record.json` (**227**, in 256 run directories — the
+> directory count is the one that misleads), and folder entries excluding
+> `_`-prefixed templates and indexes.
+>
+> **Three of the corrections are worth naming.** `source/papers/` was 44 here
+> and is 42 — while BD's own `INDEX.md` states 40, so the same folder had three
+> counts and no two agreed. `wiki/benchmarks/` was 5, which is the number of
+> benchmarks `benchmarks.yaml` marks **blocked**; the row describes the ones
+> *already running*, and that is 7. And `wiki/findings/` was the file count,
+> which includes `_TEMPLATE.md`.
 
 > **The `Exists today` column is read off the two live repositories on
 > 2026-09-05; everything in `Missing` is unbuilt.** The two working repos have
@@ -183,9 +197,9 @@ carry, and what is actually in place.
 | # | Stage | The knowledge that has to cross | Exists today | Missing |
 |---|---|---|---|---|
 | **1** | research-topic → BD · MS | **A topic candidate in falsifiable form** — with `falsifiable_by` naming which of the two can kill it | The receiving slots exist. BD takes a case as `intake/<case>/{sketch,system.yaml,observation.yaml}` (8 cases); MS takes a research goal | **Everything upstream of them.** Nothing produces a topic. Both are fed by hand |
-| **2** | research-topic → BD · MS | **A published number with its conditions of validity** — the part that appears only in the original paper | BD: `knowledge/source/papers/` — **44 distillations** carrying `doi · read_depth · provides · used_by · lab_authored`. MS: `kb/literature/` — **schema, template, and zero entries** | **The two formats do not meet.** BD has 44 entries MS cannot read; MS has an empty folder BD cannot fill. This is the sharpest gap in the system |
+| **2** | research-topic → BD · MS | **A published number with its conditions of validity** — the part that appears only in the original paper | BD: `knowledge/source/papers/` — **42 distillations** carrying `doi · read_depth · provides · used_by · lab_authored`. MS: `kb/literature/` — **schema, template, and zero entries** | **The two formats do not meet.** BD has 42 entries MS cannot read; MS has an empty folder BD cannot fill. This is the sharpest gap in the system |
 | **3** | research-topic → BD · MS | **Rigor-axis definitions and the form of a pass condition** (J3) | Each runs its own: BD `.claude/rules/` (4 files) + `A1`–`A10`; MS 8 gate modules + `G1`–`G32` | No shared **form**, so the same axis can be written two ways and neither notices → `T-004`'s revisit condition |
-| **4** | BD · MS → research-topic | **Results and counterexamples** | Dense on both sides. BD: **227 `runs/*/record.json`** post-mortems + `l4.json`/`metrics.json`; MS: `kb/calibrations/`, `kb/decisions/` (19) | **No consumer.** Nothing reads them for topic selection |
+| **4** | BD · MS → research-topic | **Results and counterexamples** | Dense on both sides. BD: **227 `runs/*/record.json`** post-mortems + `l4.json`/`metrics.json`; MS: `kb/calibrations/` (4), `kb/decisions/` (20) | **No consumer.** Nothing reads them for topic selection |
 | **5** | BD · MS → research-topic | **Dead ends** — cause, not symptom | BD already writes them: `knowledge/wiki/findings/dead-end-*.md`, with a mandatory `## Prevention` section | Custody here is **empty**, and BD's dead ends are not indexed anywhere outside BD |
 | **6** | value personas → the gate | **A question plus what would close it** | **BD already implemented this** — `knowledge/wiki/questions/`: *"open questions, with what would close them."* Independent arrival at `T-008` | Two entries, BD-internal. No cross-repo question store |
 | **7** | MS ↔ BD | **A number measured on one setup, reused on the other** | MS solved this *within itself*: [`docs/03-cross-system-transfer.md`](https://github.com/kyu-softmatter/agentic-microscope/blob/main/docs/03-cross-system-transfer.md) separates what transfers as-is from what needs recomputation | Nothing crosses **between** repos. The hardest row, and the one neither repo can do alone |
@@ -237,8 +251,8 @@ independently.
 |---|---|
 | MS `kb/expertise/` (6) | each entry carries **the observation that would retire it** |
 | MS `kb/literature/` | `## Falsification conditions` is mandatory — *"the first is always the local measurement that would replace this"* — and *"what sits in this folder is exactly **what is worth measuring next**"* |
-| BD `knowledge/wiki/findings/` (23) | `## Scope / limits` — where this stops being true |
-| BD `knowledge/wiki/benchmarks/` (5) | known-answer systems **already running as regression tests** |
+| BD `knowledge/wiki/findings/` (22) | `## Scope / limits` — where this stops being true |
+| BD `knowledge/wiki/benchmarks/` (7) | known-answer systems **already running as regression tests** — `benchmarks.yaml` also lists 2 ordinal and **5 blocked**, and 5 was the number this row used to carry |
 | BD `knowledge/wiki/questions/` (2) | open questions, **with what would close them** |
 
 **A falsifier is a work order that nobody executes yet.** Raising doubt about a
@@ -302,7 +316,7 @@ condition. → [kb-schema.md](design/kb-schema.md) §4.2
 > · 3 `paper`** — BD's own note on that table is that the tooling-to-paper gap
 > *"is widening."* So most of what is recorded is *our machinery misled us*, not
 > *the literature said something*. **The scientific claims worth doubting are in
-> `source/papers/` (42), `wiki/findings/` (23) and `wiki/benchmarks/` (5)** — not
+> `source/papers/` (42), `wiki/findings/` (22) and `wiki/benchmarks/` (7)** — not
 > in `entries/`. A challenge system pointed at the wrong store would find almost
 > nothing to do.
 
@@ -391,7 +405,7 @@ Phases are ordered, and each carries its **exit condition**. A phase without one
 | Fix the boundaries between the three repos | [charter.md](design/charter.md) §3 is filled with no item owned twice |
 | Register ideas, conflicts, questions | [ideas.md](design/ideas.md) — **register, do not resolve** |
 | Read the microscope's `kb/expertise/` | ✅ **2026-09-05 — `Q-002` closes, on neither branch it offered.** The *contents* are instrument- and lab-bound (`n_medium = 1.333` for this lab's samples, this nosepiece's oil, `applies_to_systems: [current, …]`), so §2③ holds and **J1's basis survives**. But the *frontmatter* is domain-neutral — `question · source · expert · confidence · evidence · scope · applies_to_systems · review_after · supersedes`. **The form transfers although no value does, and the form is J3's business, not J1's** |
-| Re-derive [charter.md](design/charter.md) §2 from the BD **remote** | ◐ **partially, 2026-09-05.** `T-041` was right: one row is now **false** — BD's knowledge base is built, not `raw` (46 wiki pages · 135 entries · 227 run post-mortems) → §2.1. The other rows are not re-derived, and §2's caveat 2 still stands |
+| Re-derive [charter.md](design/charter.md) §2 from the BD **remote** | ◐ **partially, 2026-09-05.** `T-041` was right: one row is now **false** — BD's knowledge base is built, not `raw` (44 wiki pages · 135 entries · 227 run post-mortems) → §2.1. The other rows are not re-derived, and §2's caveat 2 still stands |
 
 ### Phase 1 — prototype the two poles of one axis
 
