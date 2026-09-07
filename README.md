@@ -1,25 +1,32 @@
-# research-topic — the topic-selection and knowledge axis
+# research-topic — the topic-selection axis
 
 [![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
 > [!IMPORTANT]
 > **IDEA SKETCH / CONCEPT DOCUMENT**
 >
-> This repository is a design proposal for the third axis of a three-part
-> system. It contains design documents only — **no code, no knowledge-base
-> entries, and no running pipeline.** The value axes, schemas and literature
+> This repository is a design proposal for one axis of a four-part system. It
+> contains design documents only — **no code, no knowledge-base entries, and no
+> running pipeline.** The value axes, schemas and literature
 > lists written out here are **discussion material, not decisions**;
 > construction is to be done by someone else (§5), and all of it is subject to
 > change. What is fixed and what is open is separated in §0.
 
-The third axis. It supplies [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) (experiment) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) (simulation) with **what to work on**, and takes back what those two produce **as knowledge**.
+The topic axis. It supplies [agentic-microscope](https://github.com/kyu-softmatter/agentic-microscope) (experiment) and [Brownian-Dynamics-Agent](https://github.com/kyu-softmatter/Brownian-Dynamics-Agent) (simulation) with **what to work on**, and takes back what those two produce **as evidence**.
 
-**The goal is the three of them running as one multi-agent system** — each stage
+**The goal is the four of them running as one multi-agent system** — each stage
 handing the next the knowledge it needs, in a form the receiver can actually
 consume. The two working repositories already run, and each already keeps a
-knowledge base. **What does not exist is the exchange between them:** neither
+knowledge base. **What did not exist is the exchange between them:** neither
 repository references the other, so a result BD establishes is not readable by
-the microscope, nor the reverse. That gap is what this repo is for. → §2.1
+the microscope, nor the reverse. → §2.1
+
+> **Custody of that exchange has moved out of this repo.**
+> [librarian-agent](https://github.com/kyu-softmatter/librarian-agent) is the
+> fourth axis and owns **J1** — the store, the index, and retirement. It is
+> built for the microscope so far: six read tools, no knowledge migrated. This
+> repository keeps **J2** (which topic) and **J3** (the form of a pass
+> condition), which is where §1 now stands.
 
 Drafted 2026-08-31 · status `sketch` — **no code. An idea sketch only.**
 
@@ -33,7 +40,7 @@ Design documents in [`design/`](design/), and nothing else. No `src/`, no `kb/`,
 | **Drafted, expected to be replaced** | 3 value axes / 6 poles · KB formal-object schemas · literature entry points |
 | **Empty** | The value conditions of every pole. Only the pole names exist |
 | **Not started** | Everything in Phase 1 and after → §4 |
-| **Depends on this repo** | Nothing. Both working repositories run without it |
+| **Depends on this repo** | Nothing. All three other repositories run without it |
 | **Verified against the live repos** | 2026-09-05 — what each of the other two actually keeps, and where the exchange would attach → §2.1 |
 
 The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose purpose is to make the four rows of §0 fillable by the person who will build this.
@@ -67,13 +74,26 @@ The nearest thing to a deliverable is the 2026-09-03 discussion (§6), whose pur
 
 ---
 
-## 1. The three jobs
+## 1. The jobs, and which of them is still this repo's
 
-| # | Job | Product | Consumer |
-|---|---|---|---|
-| **J1** | **Accumulate the knowledge base** | KB entries as formal objects + a search index | BD · microscope |
-| **J2** | **Select scientific topics** | Topic candidates in falsifiable form, with the basis for their value | BD · microscope · a human |
-| **J3** | **Manage the definitions of rigor** | Axis definitions · the form of pass conditions · the canonical-source registry | BD · microscope |
+| # | Job | Product | Consumer | Owner |
+|---|---|---|---|---|
+| ~~**J1**~~ | ~~Accumulate the knowledge base~~ | KB entries as formal objects + a search index | BD · microscope | **[librarian-agent](https://github.com/kyu-softmatter/librarian-agent)** — moved |
+| **J2** | **Select scientific topics** | Topic candidates in falsifiable form, with the basis for their value | BD · microscope · a human | this repo |
+| **J3** | **Manage the definitions of rigor** | Axis definitions · the form of pass conditions · the canonical-source registry | BD · microscope | this repo |
+
+**J1 moved because custody is a job, not a by-product.** A store that only
+accumulates goes stale — BD `I-076` — and this repo had no mechanism for the
+other half. The seventh entry kind, `challenge/`
+(→ [kb-schema.md](design/kb-schema.md) §4.7), is implemented there; the other six
+schemas stay here, since the form of an entry is J3's business and its contents
+are not.
+
+**What that does not change:** this repo still holds **form and provenance**, and
+holds neither **values** nor **execution** ([charter.md](design/charter.md) §3).
+The librarian inherits the same prohibition and adds one — it originates no
+numbers, sets no thresholds, and may not settle a challenge whose falsifier it
+cannot run.
 
 **J3 is BD's `I-066` lifted one level.**
 
@@ -86,14 +106,14 @@ Definitions here, enforcement there. **This is not a migration** — BD's `A1`�
 
 ---
 
-## 2. The three-axis loop
+## 2. The loop
 
 ```text
                     +-------------------------------------+
                     |           research-topic            |
                     |  survey -> topic candidates         |
                     |  personas ask questions (BD:I-050)  |
-                    |  holds form . provenance . custody  |
+                    |  holds form . provenance            |
                     +--+-------------------------------+--+
                        |                               ^
    (1) topics + falsification conditions               |
@@ -120,9 +140,20 @@ Definitions here, enforcement there. **This is not a migration** — BD's `A1`�
 
    So BD and the microscope send work here too.  No owner in
    charter sec 3 changes; only the direction stops being fixed. -> sec 2.2
+
+   ...................................................................
+   librarian-agent sits OUTSIDE this loop.  It reads all three, keeps
+   one index, and writes back only a generated read-only copy.  It
+   originates no topic and produces no result, so it is not a fourth
+   participant here -- what it owns is J1: the store, the index, and
+   retirement.  -> github.com/kyu-softmatter/librarian-agent
 ```
 
 **The hypothesis:** the three axes pull each other along, forming a positive feedback loop.
+
+**Three, not four.** The system has four axes; this loop has three. `librarian-agent`
+holds the knowledge but neither asks a question nor returns a result, so adding
+it here would suggest a feedback path it does not have.
 
 **The objection this repo carries:** a positive feedback loop either diverges or confirms itself. If the three axes feed each other, **whatever bias they share gets amplified.** The loop needs damping, and the damping has to come from here — topics go out **only in a form BD and the microscope can falsify.** → [ideas.md](design/ideas.md) `C-001`
 
