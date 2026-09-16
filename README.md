@@ -615,16 +615,16 @@ In the first draft a persona distilled **a named researcher's research philosoph
 
 IDs from other repos carry a prefix: `BD:I-050` · `MS:G27`. This repo's own IDs are `T-` (idea), `C-` (conflict), `Q-` (open question).
 
-Quotations from BD's design documents are translated; the Korean originals are findable by ID in that repo.
+Quotations from BD's design documents are translated; **the Korean originals are not in that repo's public tree** (measured 2026-09-16: 2,587 paths, no `design/`, no `I-NNN`). A `BD:I-` id therefore names a document on the author's disk, and the translation here is the reachable record — which is a weaker citation than an original and worth knowing before relying on one.
 
 **Indexing targets** (`T-004` — index, do not migrate):
 
-| Prefix | Repo | Visibility |
-|---|---|---|
-| `BD:` | https://github.com/kyu-softmatter/Brownian-Dynamics-Agent | public |
-| `MS:` | https://github.com/kyu-softmatter/agentic-microscope | public |
+| Prefix | Repo | Visibility | Is the quoted layer in it? |
+|---|---|---|---|
+| `BD:` | https://github.com/kyu-softmatter/Brownian-Dynamics-Agent | public | **`I-` no.** `.claude/agents/bd-*.md` (9 agents) is there; `design/ideas.md`, `design/personas/*.md` and `roster.md` are not |
+| `MS:` | https://github.com/kyu-softmatter/agentic-microscope | public | yes — every `G-` id is declared in `docs/04-decision-engine.md`. Three (`G2`, `G3`, `G4`) are implemented but named in no Python file, so they resolve to a declaration and not to code |
 
-`Q-007` (what does this repo point at for BD) is **closed** — both repos are on GitHub, so references pin commit SHAs. Local paths are not used.
+`Q-007` (what does this repo point at for BD) is **closed on what it asked** — both repos are on GitHub, and `MS:G-` references pin commit SHAs. Local paths are not used **as a convention**, and for `BD:I-` that is currently the only place the target exists: those ids pin no SHA, because the layer they name is not on the remote. Whether it should be published is a different question and not this one's to close.
 
 ---
 
