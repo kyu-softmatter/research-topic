@@ -2,6 +2,8 @@
 
 [![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
+> **Integration:** the microscope, simulation and librarian axes this sketch connects are being integrated, together with a bridge, as [soft-matter-agents](https://github.com/kyu-softmatter/soft-matter-agents). The topic axis is not part of it — that system *"does not choose research topics"* ([`plan.md` §1](https://github.com/kyu-softmatter/soft-matter-agents/blob/main/plan.md#1-what-is-being-built)).
+
 > [!IMPORTANT]
 > **IDEA SKETCH / CONCEPT DOCUMENT**
 >
